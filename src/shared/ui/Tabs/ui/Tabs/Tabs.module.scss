@@ -1,0 +1,17 @@
+.wrapper {
+}
+
+.tabsList {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: var(--secondary-bg-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-primary);
+  gap: 7px;
+}
+
+.tabContent {
+margin: 0;
+}

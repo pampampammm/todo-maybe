@@ -1,0 +1,32 @@
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-left: 80px;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.tasks {
+  border-left: 1px solid #ccc;
+}
+
+.column {
+  padding: var(--padding-primary);
+  border-radius: var(--border-radius);
+  position: relative;
+}
+
+.columnHeader{
+  position: absolute;
+
+  font-weight: var(--font-weight-primary);
+  font-size: var(--font-size-l);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+  width: 100%;
+}
+
+.active {
+  background: #cdedff;
+}

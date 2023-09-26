@@ -1,0 +1,17 @@
+.pageHeader {
+  padding: var(--padding-primary);
+  font-size: var(--font-line-xl);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary-color);
+}
+
+.notification {
+  padding: var(--padding-primary);
+  font-size: var(--font-size-xl);
+
+  border: var(--border);
+  border-radius: var(--border-radius);
+}

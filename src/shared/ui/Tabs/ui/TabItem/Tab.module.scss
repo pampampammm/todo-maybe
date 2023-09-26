@@ -1,0 +1,23 @@
+.btn {
+  border: none;
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-primary);
+
+
+  padding: 0.3em 1.4em;
+  border-radius: var(--border-radius);
+  background: var(--bg-color);
+  color: var(--primary-color);
+
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.active {
+  background: var(--inverted-secondary-color);
+  font-weight: var(--font-weight-primary);
+  color: var(--inverted-primary-color);
+
+}

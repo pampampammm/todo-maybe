@@ -1,0 +1,38 @@
+.wrapper {
+  padding: var(--padding-primary);
+}
+
+.border {
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.list {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  border: var(--border);
+  border-radius: var(--border-radius);
+
+  width: 100%;
+  padding: var(--padding-primary);
+  outline: white;
+
+  &:focus {
+    background-color: var(--secondary-bg-color);
+  }
+}
+
+.body {
+  padding: var(--padding-primary);
+}
+
+.listHeader {
+  padding: 15px;
+  font-size: var(--font-size-xl);
+}

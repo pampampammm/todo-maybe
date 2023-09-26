@@ -1,0 +1,20 @@
+.pageSection {
+
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+
+  grid-auto-rows: minmax(300px, auto);
+}
+
+.simpleList {
+
+}
+
+.bigList {
+  grid-column: 1/3;
+}

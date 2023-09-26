@@ -1,0 +1,12 @@
+.task {
+  position: absolute;
+  width: inherit;
+
+  background-color: #cdedff;
+  border-radius: var(--border-radius);
+  padding: var(--padding-secondary);
+
+  font-weight: var(--font-weight-primary);
+
+  white-space: normal;
+}

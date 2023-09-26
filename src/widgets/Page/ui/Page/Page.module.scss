@@ -1,0 +1,10 @@
+.pageSection {
+  width: var(--page-width);
+  height: var(--page-height);
+
+  border-radius: var(--border-radius);
+  padding: var(--padding-secondary);
+
+  display: grid;
+  grid-template-rows: 10% 80%;
+}

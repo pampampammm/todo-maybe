@@ -1,0 +1,23 @@
+.wrapper {
+  margin-top: 50px;
+}
+
+.columnGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 7px;
+}
+
+.columnDay {
+
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.time {
+}
+
+//TEMP

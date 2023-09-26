@@ -1,0 +1,25 @@
+.buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    min-width: 350px;
+    align-items: center;
+
+    padding: 0 10px;
+    gap: 30px;
+}
+
+.button-label {
+    background-color: #0f7dc6;
+}
+
+.button-label:hover {
+    background-color: #0f7dc6;
+}
+
+.button-apply:hover {
+}
