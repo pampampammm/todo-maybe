@@ -8,7 +8,7 @@ import styles from './MainPage.module.scss'
 import classNames from "classnames";
 
 const MainPage = () => {
-    const [details, setDetails] = useState<boolean>(tr)
+    const [details, setDetails] = useState<boolean>(true)
 
     const headerComponent = useMemo(() =>
         <PageHeader text={"Main"} notification={19}/>, [])
