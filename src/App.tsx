@@ -3,7 +3,7 @@ import React, {Suspense} from "react";
 import {useTheme} from "app/Providers/ThemeProvider";
 import {AppRouter} from "./app/router";
 import {Header} from "./widgets/Header";
-import {AppBar} from "./entities/AppBar";
+import {AppBar} from "widgets/AppBar";
 
 const App = () => {
     const {theme} = useTheme()

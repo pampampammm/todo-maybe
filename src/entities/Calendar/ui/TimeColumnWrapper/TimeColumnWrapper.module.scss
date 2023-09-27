@@ -4,6 +4,8 @@
 }
 
 .column {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -21,7 +23,7 @@
 
 .line {
   position: absolute;
-  width: 800px;
+  width: 100%;
   color: black;
   background-color: black;
   height: 1px;
@@ -34,6 +36,6 @@
 }
 
 .content {
-
+  height: 100%;
 }
 

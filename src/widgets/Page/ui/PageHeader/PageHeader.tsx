@@ -10,7 +10,6 @@ interface HeaderProps {
 const PageHeader = (props: HeaderProps) => {
     const {className, text, notification,} = props
 
-
     return (
         <div className={styles.pageHeader}>
             {text}

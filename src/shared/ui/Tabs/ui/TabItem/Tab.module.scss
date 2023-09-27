@@ -1,12 +1,12 @@
 .btn {
   border: none;
   font-size: var(--font-size-l);
-  font-weight: var(--font-weight-primary);
+  font-weight: var(--font-weight-xl);
 
 
-  padding: 0.3em 1.4em;
+  padding: 0.5em 1.4em;
   border-radius: var(--border-radius);
-  background: var(--bg-color);
+  background: var(--primary-bg-color);
   color: var(--primary-color);
 
 
@@ -17,7 +17,6 @@
 
 .active {
   background: var(--inverted-secondary-color);
-  font-weight: var(--font-weight-primary);
+  font-weight: var(--font-weight-xl);
   color: var(--inverted-primary-color);
-
 }

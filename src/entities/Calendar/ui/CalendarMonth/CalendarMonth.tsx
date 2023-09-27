@@ -1,4 +1,4 @@
-import {TaskSchema} from "entities/TaskItem";
+import {TaskSchema} from "entities/TaskList/type/Task";
 
 interface MonthCalendarProps {
     items: TaskSchema[]

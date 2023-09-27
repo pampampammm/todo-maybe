@@ -1,0 +1,59 @@
+.wrapper {
+  --margin-input-left: 14px;
+  list-style-type: none;
+
+}
+
+.taskContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin-left: 7px;
+}
+
+.moreDescToggleButton {
+  border: none;
+  background: none;
+
+
+  border-radius: var(--border-radius);
+  padding: var(--padding-primary);
+  width: 32px;
+
+  &:hover {
+    background: var(--inverted-secondary-color);
+  }
+}
+
+.more {
+  margin: 14px 0 0 21px;
+
+}
+
+
+.skeleton {
+
+}

@@ -1,4 +1,4 @@
-import TaskList from "./ui/TaskList"
+import TaskList from "./ui/TaskList/TaskList"
 
 export {
     TaskList

@@ -4,13 +4,15 @@ import {Tabs} from "shared/ui/Tabs/ui/Tabs/Tabs";
 import CalendarWeek from "entities/Calendar/ui/CalendarWeek/ui/CalendarWeek/CalendarWeek";
 import Tab from "shared/ui/Tabs/ui/Tab/Tab";
 import CalendarMonth from "entities/Calendar/ui/CalendarMonth/CalendarMonth";
-import {TaskSchema} from "entities/TaskItem";
+import {TaskSchema} from "entities/TaskList/type/Task";
 
 import styles from './CalendarPage.module.scss'
+import React, {useMemo} from "react";
+
 
 const tempTaskItems: TaskSchema[] = [
     {
-        time: {startDate: 0, endDate: 210},
+        time: {startDate: 0, endDate: 150},
         completed: false,
         title: "Good morning",
         userId: 1,
@@ -30,7 +32,7 @@ const tempTaskItems: TaskSchema[] = [
     {
         time: {startDate: 820, endDate: 1300},
         completed: false,
-        title: "Lorem some taks",
+        title: "LEEEEEEE",
         userId: 1,
     },
 ]
@@ -41,9 +43,12 @@ const CalendarPage = () => {
 
     }
 
+    const headerComponent = useMemo(() =>
+        <PageHeader text={'Today'} notification={9}/>, [])
+
     return (
-        <Page classname={styles.calendarPage}>
-            <PageHeader text={"Calendar"}/>
+        <Page className={styles.calendarPage}
+              header={headerComponent}>
             <Tabs onChange={handleTabChange}
                   defaultValue={'day'}
                   className={styles.calendarContent}

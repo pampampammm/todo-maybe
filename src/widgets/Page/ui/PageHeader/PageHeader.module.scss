@@ -1,6 +1,7 @@
 .pageHeader {
   padding: var(--padding-primary);
   font-size: var(--font-line-xl);
+  font-weight: var(--font-weight-xl);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,7 +10,7 @@
 }
 
 .notification {
-  padding: var(--padding-primary);
+  padding: var(--padding-secondary);
   font-size: var(--font-size-xl);
 
   border: var(--border);

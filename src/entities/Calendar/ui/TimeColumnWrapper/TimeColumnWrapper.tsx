@@ -1,9 +1,9 @@
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useLayoutEffect, useMemo, useRef, useState} from "react";
 
-import {ColoredLine} from "shared/ui/ColoredLine/ColoredLine";
 
 import styles from './TimeColumnWrapper.module.scss'
 import classNames from "classnames";
+import {getPercentPlacement} from "shared/helpers/getPercentPlacement";
 
 const tempTime = [
     "09:00 AM",
@@ -13,9 +13,6 @@ const tempTime = [
     "01:00 PM",
     "02:00 PM",
 ]
-
-const minuteInAllDay = 1440
-
 
 interface TimeColumnProps {
     className?: string
@@ -27,46 +24,37 @@ function toInteger(number: number) {
     return Math.round(Number(number));
 }
 
-export const TimeColumnWrapper = (props: TimeColumnProps) => {
-    const {line = false, className, children} = props
-
-    const [columnHeight, setColumnHeight] = useState(0)
-    const [linePosition, setLinePosition] = useState(0)
-    const [currentTime] = useState(0)
+const TimeColumnWrapper = (props: TimeColumnProps) => {
+    const {
+        line = false,
+        className,
+        children
+    } = props
 
     const columnRef = useRef(null)
+    const [columnHeight, setColumnHeight] = useState(0)
+    const [currentTime] = useState(330)
 
+    const {position} = getPercentPlacement(columnHeight, currentTime, 1440)
 
     useLayoutEffect(() => {
         setColumnHeight(columnRef.current.clientHeight)
-
-        if (columnRef) {
-            const convertedCurrentTimePercent = currentTime / (minuteInAllDay / 100)
-            const newPosition = (columnHeight / 100) * convertedCurrentTimePercent
-
-            setLinePosition(toInteger(newPosition))
-        }
     }, [columnHeight])
 
 
-    const columnToRender = () => {
+    const columnToRender = useMemo(() => {
         return tempTime.map((value) =>
             <div key={value} className={styles.timeBlock}>
                 <span className={styles.time}>{value}</span>
             </div>
         )
-    }
+    }, [])
 
     return (
         <div className={classNames(styles.wrapper, className)}>
-            <div ref={columnRef}
-                 className={styles.column}
-            >
-                {columnToRender()}
-                {line &&
-                    <hr className={styles.line}
-                        style={{top: linePosition}}
-                    />}
+            <div ref={columnRef} className={styles.column}>
+                {line && <hr className={styles.line} style={{top: position}}/>}
+                {columnToRender}
             </div>
             <div className={styles.content}>
                 {children}
@@ -74,3 +62,5 @@ export const TimeColumnWrapper = (props: TimeColumnProps) => {
         </div>
     )
 }
+
+export default TimeColumnWrapper;

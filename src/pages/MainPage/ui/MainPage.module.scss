@@ -1,20 +1,33 @@
-.pageSection {
 
+.section {
+  display: grid;
 }
 
 .content {
   display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 14px;
+}
+
+.detailsActive {
+  grid-template-columns: 1fr;
+}
+
+.lists {
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 2em;
-  grid-row-gap: 2em;
+  grid-column-gap: 14px;
+  grid-row-gap: 14px;
 
   grid-auto-rows: minmax(300px, auto);
 }
 
 .simpleList {
-
 }
 
 .bigList {
   grid-column: 1/3;
+}
+
+.details {
 }

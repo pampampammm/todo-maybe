@@ -20,7 +20,7 @@ interface InputProps extends HTMLInputProps {
     type?: string,
 }
 
-const InputField = (props : InputProps) => {
+const InputField = (props: InputProps) => {
     const {
         className,
         id,
@@ -50,17 +50,15 @@ const InputField = (props : InputProps) => {
 
 
     return (
-        <div className={style.wrapper}>
-            <input
-                className={cn(style.input, className)}
-                name={name}
-                id={props.id}
-                type={props.type}
-                placeholder={placeholder}
-                onChange={onChangeHandler}
-                {...rest}
-            />
-        </div>
+        <input
+            className={cn(style.input, className)}
+            name={name}
+            id={props.id}
+            type={props.type}
+            placeholder={placeholder}
+            onChange={onChangeHandler}
+            {...rest}
+        />
     )
 }
 

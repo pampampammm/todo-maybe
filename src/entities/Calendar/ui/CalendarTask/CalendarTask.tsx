@@ -1,23 +1,42 @@
 import React from 'react';
 
-import styles from './CalendarTask.module.scss'
-import {TaskSchema} from "entities/TaskItem";
+import {TaskSchema} from "entities/TaskList/type/Task";
+import {getPercentPlacement} from "shared/helpers/getPercentPlacement";
+
 import classNames from "classnames";
+import styles from './CalendarTask.module.scss'
 
 interface TaskProps {
-    top: number | string,
-    height: number | string,
+    time: number,
     task: TaskSchema,
-    className?: string
+    className?: string,
+    columnHeight: number
 }
 
+function toInteger(number: number) {
+    return Math.round(Number(number));
+}
+
+const minutes = 1440
+const timePercent = toInteger(minutes / 100)
+
 const CalendarTask = (props: TaskProps) => {
-    const {height, top, task, className} = props
+    const {
+        time,
+        task,
+        className,
+        columnHeight
+    } = props
+
+    const {position} = getPercentPlacement(columnHeight, time, 1440)
+
+    const taskHeightPercent = toInteger((task.time.endDate - task.time.startDate) / timePercent)
+    const taskHeight = (columnHeight / 100) * taskHeightPercent
 
     return (
         <div
             className={classNames(styles.task, [className])}
-            style={{top: top, height: height}}
+            style={{top: position, height: taskHeight}}
         >
             {task.title}
         </div>
