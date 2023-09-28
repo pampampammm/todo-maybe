@@ -1,18 +1,14 @@
-import React, {useMemo, useState} from "react";
+import React, {useMemo} from "react";
 
-import Input from "../../../../shared/Input/Input";
 import {ColoredLine} from "shared/ui/ColoredLine/ColoredLine";
 import {AppBarItem} from "../AppBarItem/AppBarItem";
+import Input, {InputSize, InputTheme} from "shared/ui/Input/Input";
+import {ListAppBarItemsList, MainAppBarItemsList} from "widgets/AppBar/model/AppBarItems";
 import {AppBarList} from "../AppBarList/AppBarList";
 
 import styles from './AppBar.module.scss'
 
-import {ListAppBarItemsList, MainAppBarItemsList} from "widgets/AppBar/model/AppBarItems";
-
 const AppBar = () => {
-    const changeHandler = () => {
-
-    };
 
     const mainBarItems = useMemo(() => {
         return (
@@ -49,8 +45,8 @@ const AppBar = () => {
                     <h2>Menu</h2>
                     <Input
                         placeholder={"Search"}
-                        onChange={changeHandler}
                         className={styles.headerInput}
+                        theme={InputTheme.OUTLINE}
                     />
                 </div>
                 <div className={styles.categoryList}>

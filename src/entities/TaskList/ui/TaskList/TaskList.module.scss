@@ -18,10 +18,6 @@
   height: 200px;
 }
 
-.item {
-  margin-bottom: 14px;
-}
-
 .input {
   border: var(--border);
   border-radius: var(--border-radius);
@@ -31,7 +27,7 @@
   outline: white;
 
   &:focus {
-    background-color: var(--secondary-bg-color);
+    background-color: var(--inverted-primary-bg-color);
   }
 }
 

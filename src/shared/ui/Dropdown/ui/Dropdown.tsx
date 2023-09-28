@@ -1,60 +1,63 @@
-"use client";
+import {useEffect, useRef, useState} from "react";
 
-import { useEffect, useRef, useState } from "react";
 import useOutsideClick from "../../../helpers/useOutsideClick";
 import {IList} from "../types/types";
 
+import styles from './Dropdown.module.css'
+import {Button} from "shared/ui/Button/Button";
+
 
 export interface IPropsDropdownList {
-  menu: IList,
+    items: IList,
+    className?: string
 }
 
-const Dropdown = ({ menu }: IPropsDropdownList) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+const Dropdown = ({items, className}: IPropsDropdownList) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useOutsideClick({
-    elementRef: buttonRef,
-    triggerRef: buttonRef,
-    onOutsideClick: onClose,
-    enabled: isOpen
-  })
+    useOutsideClick({
+        elementRef: buttonRef,
+        triggerRef: buttonRef,
+        onOutsideClick: onClose,
+        enabled: isOpen
+    })
 
-  function onClose() {
-    console.log('outside click')
-    setIsOpen(prevState => !prevState)
-  }
+    function onClose() {
+        console.log('outside click')
+        setIsOpen(prevState => !prevState)
+    }
 
-  const onClickHandler = () => {
-    setIsOpen(prevState => !prevState);
-  };
+    const onClickHandler = () => {
+        setIsOpen(prevState => !prevState);
+    };
 
-  const onItemClick = () => {
-    console.log('dropdown item selected')
-  };
+    const onItemClick = () => {
+        console.log('dropdown item selected')
+    };
 
-  return (
-    <button className={'dropdown-button'}
-      ref={buttonRef}
-      onClick={() => onClickHandler()}
-    >
-      {menu.title}
-      {isOpen
-        &&
-        <ul className='dropdown-list'>
-          {menu.list.map((item) =>
-            <li
-              key={item.id}
-              className={`dropdown-list-item`}
-              onClick={onItemClick}
-            >
-              {item.label}
-            </li>
-          )}
-        </ul>
-      }
-    </button>
-  );
+    return (
+        <Button className={styles.dropdown}
+                ref={buttonRef}
+                onClick={() => onClickHandler()}
+        >
+            {items.title}
+            {isOpen
+                &&
+                <ul className={styles.list}>
+                    {items.list.map((item) =>
+                        <li
+                            key={item.id}
+                            className={styles.listItem}
+                            onClick={onItemClick}
+                        >
+                            {item.label}
+                        </li>
+                    )}
+                </ul>
+            }
+        </Button>
+    );
 };
 
-export const DropdownOld = Dropdown;
+export default Dropdown;

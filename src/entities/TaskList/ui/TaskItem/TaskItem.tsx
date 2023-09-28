@@ -4,17 +4,22 @@ import {TaskSchema} from "entities/TaskList/type/Task";
 
 import styles from './TaskItem.module.scss'
 import classNames from "classnames";
+import {StyledProps} from "shared/types/types";
 
 
-interface TaskItemProps {
+interface TaskItemProps extends StyledProps {
     item?: TaskSchema
-    isLoading: boolean,
-    className?: string
-
+    isLoading?: boolean,
+    onClick?: (item: TaskSchema) => void;
 }
 
 const TaskItem = (props: TaskItemProps) => {
-    const {item, isLoading, className} = props
+    const {
+        item,
+        isLoading = false,
+        className,
+        onClick,
+    } = props
     const [moreOptions, setOptions] = useState<boolean>(false)
 
 
@@ -30,8 +35,13 @@ const TaskItem = (props: TaskItemProps) => {
         setOptions(moreOptions => !moreOptions)
     };
 
+    const handleDetailsClick = () => {
+        if (moreOptions)
+            onClick(item)
+    };
+
     return (
-        <li className={classNames(styles.wrapper, [className])}>
+        <li onClick={handleDetailsClick} className={classNames(styles.wrapper, [className])}>
             <div className={styles.taskContent}>
                 <div className={styles.header}>
                     <div className={styles.task}>
@@ -39,7 +49,7 @@ const TaskItem = (props: TaskItemProps) => {
                             type={"checkbox"}
                             className={styles.checkbox}
                         />
-                        <span className={styles.title}>Items fucking text</span>
+                        <span className={styles.title}>{item.title}</span>
                     </div>
                     <button
                         onClick={handleToggleClick}
@@ -50,7 +60,8 @@ const TaskItem = (props: TaskItemProps) => {
                 </div>
                 {moreOptions &&
                     <div className={styles.more}>
-                        {"22-02-23 | 1 Suad | Primary"}
+                        {item.time.startDate} - {item.time.endDate}
+                        {" | 1 Suad | Primary"}
                     </div>
                 }
             </div>

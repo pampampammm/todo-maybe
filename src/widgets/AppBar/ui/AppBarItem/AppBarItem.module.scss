@@ -1,16 +1,16 @@
 .link {
   border-radius: var(--border-radius);
   display: flex;
-  text-decoration: none;
   flex-direction: row;
+  text-decoration: none;
   justify-content: space-between;
   align-items: center;
   padding: 7px;
 
   font-weight: var(--font-weight-m);
   font-size: var(--font-size-l);
-  &:hover {
 
+  &:hover {
     .text {
         opacity: 0.7;
     }
@@ -18,11 +18,11 @@
 }
 
 .active {
-  background: var(--inverted-secondary-color);
+  background: var(--secondary-color);
   font-weight: var(--font-weight-xl);
 
   .notification {
-    background: var(--primary-bg-color);
+    background: var(--inverted-secondary-color);
   }
 }
 
@@ -38,11 +38,6 @@
   display: flex;
   justify-content: center;
   color: var(--primary-color);
-
-  &:hover {
-    opacity: 0.6;
-    color: var(--inverted-primary-color);
-  }
 }
 
 .notification {
@@ -50,11 +45,12 @@
   align-items: center;
   justify-content: center;
   width: 42px;
-  background: var(--inverted-secondary-color);
   padding: 3px;
+
+  background: var(--secondary-color);
   border: var(--border);
   border-radius: var(--border-radius);
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
 }
 
 

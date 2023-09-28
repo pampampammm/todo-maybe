@@ -1,20 +1,27 @@
 import React, {useEffect} from "react";
 
-import Input from "shared/Input/Input";
+
+import TaskItem from "entities/TaskList/ui/TaskItem/TaskItem";
+import Input, {InputTheme} from "shared/ui/Input/Input";
 
 import classNames from "classnames"
 import styles from "./TaskList.module.scss";
-import TaskItem from "entities/TaskList/ui/TaskItem/TaskItem";
 
 
 interface ListProps {
     text?: string
     className?: string
     border?: boolean
+    children: React.ReactNode | React.ReactElement
 }
 
 const TaskList = (props: ListProps) => {
-    const {text, className, border = false} = props
+    const {
+        text,
+        className,
+        border = false,
+        children
+    } = props
 
     useEffect(() => {
 
@@ -24,27 +31,20 @@ const TaskList = (props: ListProps) => {
         [styles.border]: border,
     };
 
-    const handleChange = (value: string) => {
-
-    }
-
     return (
         <div className={classNames(styles.wrapper, mods, [className])}>
             {text && <h2 className={styles.listHeader}>
-                        {text}
-                    </h2>}
+                {text}
+            </h2>}
 
             <div className={styles.body}>
                 <Input
                     placeholder={'Add New Task...'}
-                    onChange={handleChange}
                     className={styles.input}
+                    theme={InputTheme.CLEAR}
                 />
                 <ul className={styles.list}>
-                    <TaskItem isLoading={false} className={styles.item}/>
-                    <TaskItem isLoading={false} className={styles.item}/>
-                    <TaskItem isLoading={false} className={styles.item}/>
-                    <TaskItem isLoading={false} className={styles.item}/>
+                    {children}
                 </ul>
             </div>
         </div>

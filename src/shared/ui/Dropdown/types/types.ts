@@ -4,8 +4,7 @@ export interface IList {
 }
 
 interface ListItem {
-    id: number,
+    id?: number,
     value: string,
     label: string,
-    path: string
 }

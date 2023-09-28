@@ -1,8 +1,17 @@
 import React, {ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef} from "react";
 
-import style from "./InputFiled.module.scss"
-import cn from "classnames";
+import {ButtonSize} from "shared/ui/Button/Button";
 
+import styles from "./Input.module.scss"
+import classNames from "classnames";
+
+export enum InputTheme {
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    OUTLINE_INVERTED = 'outlineInverted',
+    BACKGROUND = 'background',
+}
 
 export enum InputSize {
     M = 'size_m',
@@ -13,11 +22,11 @@ export enum InputSize {
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
 interface InputProps extends HTMLInputProps {
-    onChange: (value: string) => void,
     className?: string,
-    id?: string,
     name?: string,
     type?: string,
+    inputSize?: InputSize,
+    theme?: InputTheme,
 }
 
 const InputField = (props: InputProps) => {
@@ -28,19 +37,13 @@ const InputField = (props: InputProps) => {
         name,
         placeholder,
         autoFocus,
-        onChange,
+        theme = InputTheme.BACKGROUND,
+        inputSize = InputSize.L,
+        disabled,
         ...rest
     } = props
 
     const ref = useRef(null)
-
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
-        const newValue = e.target.value
-
-        if (newValue || newValue.length !== 0)
-            onChange?.(e.target.value);
-    };
 
     useEffect(() => {
         if (autoFocus) {
@@ -48,15 +51,20 @@ const InputField = (props: InputProps) => {
         }
     }, [autoFocus]);
 
+    const mods: Record<string, | string | boolean> = {
+        [styles[theme]]: true,
+        [styles[inputSize]]: true,
+        [styles.disabled]: disabled,
+    }
 
     return (
         <input
-            className={cn(style.input, className)}
+            className={classNames(styles.input, mods, className)}
             name={name}
             id={props.id}
             type={props.type}
             placeholder={placeholder}
-            onChange={onChangeHandler}
+            disabled={disabled}
             {...rest}
         />
     )

@@ -30,7 +30,7 @@ const CalendarWeek = (props: MonthCalendarProps) => {
     }, [])
 
     return (
-        <TimeColumnWrapper className={styles.wrapper} line={true}>
+        <TimeColumnWrapper className={styles.wrapper}>
             <div className={styles.gridWrapper}>
                 {renderColumns}
             </div>

@@ -1,0 +1,68 @@
+.input {
+  cursor: pointer;
+  padding: 6px 15px;
+
+  border: var(--border);
+  border-radius: var(--border-radius);
+
+  &:hover {
+    opacity: 0.8;
+    fill-opacity: 0.8;
+    stroke-opacity: 0.8;
+  }
+}
+
+.clear {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+
+  color: var(--primary-color);
+}
+
+.clearInverted {
+  padding: 0;
+  background: var(--inverted-primary-bg-color);;
+  outline: none;
+  color: var(--primary-color);
+}
+
+.outline {
+  border: var(--border);
+  color: var(--primary-color);
+  background: none;
+}
+
+.outlineInverted {
+  border: var(--border);
+  color: var(--primary-color);
+  background: var(--inverted-primary-bg-color);
+}
+
+.background {
+  background: var(--primary-bg-color);
+  color: var(--primary-color);
+}
+
+.backgroundInverted {
+  background: var(--inverted-primary-bg-color);
+  color: var(--primary-color);
+}
+
+
+.size_m {
+  font: var(--font-size-m);
+}
+
+.size_l {
+  font: var(--font-size-l);
+}
+
+.size_xl {
+  font: var(--font-size-xl);
+}
+
+.disabled {
+  opacity: 0.5;
+}

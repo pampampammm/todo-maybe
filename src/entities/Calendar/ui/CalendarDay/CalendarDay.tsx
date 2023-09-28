@@ -12,7 +12,7 @@ const CalendarDay = (props: CalendarProps) => {
     const {items} = props
 
     return (
-        <TimeColumnWrapper className={styles.wrapper} line={true}>
+        <TimeColumnWrapper className={styles.wrapper}>
             <CalendarColumn
                 items={items}
                 name={"Wednesday".toUpperCase()}

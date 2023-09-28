@@ -25,9 +25,7 @@ export const AppBarItem: FC<ItemProps> = ({item, className, active}) => {
     return (
         <AppLink
             to={item.path}
-            className={classNames(styles.link,
-                {[styles.active]: pathname === item.path},
-                [className])}
+            className={classNames(styles.link, {[styles.active]: pathname === item.path}, [className])}
         >
             {/*<item.Icon className={styles.icon}/>*/}
             <span className={styles.text}>
