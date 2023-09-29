@@ -1,5 +1,5 @@
-import TaskList from "./ui/TaskList/TaskList"
+import TaskList from './ui/TaskList/TaskList';
 
 export {
-    TaskList
-}
+    TaskList,
+};

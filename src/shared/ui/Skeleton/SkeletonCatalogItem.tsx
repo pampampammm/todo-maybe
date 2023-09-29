@@ -1,16 +1,13 @@
+import styles from './SkeletonCatalogItem.module.css';
 
-import styles from "./SkeletonCatalogItem.module.css"
-
-export const SkeletonCatalogItem = () => {
-  return (
+export const SkeletonCatalogItem = () => (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
-          <div className={styles.avatar}></div>
-          <div className={styles.typographyBlock}>
-            <div className={styles.lineSmall}></div>
-            <div className={styles.lineLong}></div>
-          </div>
-      </div>
+        <div className={styles.container}>
+            <div className={styles.avatar} />
+            <div className={styles.typographyBlock}>
+                <div className={styles.lineSmall} />
+                <div className={styles.lineLong} />
+            </div>
+        </div>
     </div>
-  );
-};
+);

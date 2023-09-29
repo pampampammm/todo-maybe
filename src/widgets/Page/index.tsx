@@ -1,7 +1,7 @@
-import Page from "widgets/Page/ui/Page/Page";
-import PageHeader from './ui/PageHeader/PageHeader'
+import Page from 'widgets/Page/ui/Page/Page';
+import PageHeader from './ui/PageHeader/PageHeader';
 
-export  {
+export {
     Page,
-    PageHeader
-}
+    PageHeader,
+};

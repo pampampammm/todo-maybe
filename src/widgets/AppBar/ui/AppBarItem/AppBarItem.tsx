@@ -1,12 +1,11 @@
-import React, {FC} from "react";
+import React, { FC } from 'react';
 
-
-import styles from "./AppBarItem.module.scss"
-import {AppLink} from "shared/ui/AppLink/AppLink";
-import classNames from "classnames";
-import {StyledProps} from "shared/types/types";
-import {useLocation} from "react-router-dom";
-import {common} from "@mui/material/colors";
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import classNames from 'classnames';
+import { StyledProps } from 'shared/types/types';
+import { useLocation } from 'react-router-dom';
+import { common } from '@mui/material/colors';
+import styles from './AppBarItem.module.scss';
 
 // import {AppBarItemType} from "entities/AppBar/model/AppBarItems";
 
@@ -18,16 +17,20 @@ interface ItemProps extends StyledProps {
     }
 }
 
-export const AppBarItem: FC<ItemProps> = ({item, className, active}) => {
-    const {pathname} = useLocation()
+export const AppBarItem: FC<ItemProps> = ({ item, className, active }) => {
+    const { pathname } = useLocation();
 
-// TODO: 'рефактор иконки'
+    // TODO: 'рефактор иконки'
     return (
         <AppLink
             to={item.path}
-            className={classNames(styles.link, {[styles.active]: pathname === item.path}, [className])}
+            className={classNames(
+                styles.link,
+                { [styles.active]: pathname === item.path },
+                [className],
+            )}
         >
-            {/*<item.Icon className={styles.icon}/>*/}
+            {/* <item.Icon className={styles.icon}/> */}
             <span className={styles.text}>
                 {item.text}
             </span>
@@ -35,8 +38,5 @@ export const AppBarItem: FC<ItemProps> = ({item, className, active}) => {
                 {5}
             </div>
         </AppLink>
-    )
-}
-
-
-
+    );
+};

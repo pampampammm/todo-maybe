@@ -1,12 +1,11 @@
-import React from "react";
-import {RoutePath} from "shared/config/routeConfig";
+import React from 'react';
+import { RoutePath } from 'shared/config/routeConfig';
 
-
-import AddIcon from './AddButton.svg'
-import ListIcon from 'shared/assets/icons/ListIcon.svg'
-import CalendarIcon from './CalendarIcon.svg'
-import DoubleArrowIcon from './DoubleArrowIcon.svg'
-import StickerIcon from 'src/shared/assets/icons/StickerIcon.svg'
+import ListIcon from 'shared/assets/icons/ListIcon.svg';
+import StickerIcon from 'src/shared/assets/icons/StickerIcon.svg';
+import AddIcon from './AddButton.svg';
+import CalendarIcon from './CalendarIcon.svg';
+import DoubleArrowIcon from './DoubleArrowIcon.svg';
 
 export interface AppBarItemType {
     path: string;

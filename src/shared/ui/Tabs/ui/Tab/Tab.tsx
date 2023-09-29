@@ -1,5 +1,4 @@
-import styles from './Tab.module.scss'
-import React from "react";
+import React from 'react';
 
 export interface TabProps {
     value?: string
@@ -9,14 +8,13 @@ export interface TabProps {
 }
 
 const Tab = (props : TabProps) => {
-    const {className, value, children} = props
+    const { className, value, children } = props;
 
     return (
-        <div className={styles.tabWrapper}>
+        <div>
             {children}
         </div>
-    )
-}
+    );
+};
 
-export default Tab
-
+export default Tab;

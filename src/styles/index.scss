@@ -5,17 +5,13 @@
 
 .app {
     font: var(--font-m);
-
     background: var(--bg-color);
     color: var(--primary-color);
-
     min-height: 100vh;
 }
 
 .content-page {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    grid-column-gap: 30px;
-
-    padding: 30px;
+    display: flex;
+    padding: 35px;
 }
+

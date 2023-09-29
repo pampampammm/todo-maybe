@@ -1,41 +1,37 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 20% 80%;
+    display: grid;
+    grid-template-columns: 20% 80%;
 }
 
 .column {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  align-content: flex-start;
-
-  height: 660px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-content: flex-start;
+    height: 660px;
 }
 
 .timeBlock {
-  padding: 7px;
-  border-top: 1px solid #ccc;
-  width: 50%;
+    padding: 7px;
+    border-top: 1px solid #ccc;
+    width: 50%;
 }
 
 .line {
-  position: absolute;
-  width: 100%;
-  color: black;
-  background-color: black;
-  height: 1px;
-  border-radius: 10px;
-  opacity: 0.5;
-
-  left: 95px;
-
-  z-index: 1;
+    position: absolute;
+    width: 100%;
+    color: black;
+    background-color: black;
+    height: 1px;
+    border-radius: 10px;
+    opacity: 0.5;
+    left: 95px;
+    z-index: 1;
 }
 
 .content {
-  height: 100%;
+    height: 100%;
 }
 

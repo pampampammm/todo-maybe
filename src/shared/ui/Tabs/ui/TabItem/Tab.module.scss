@@ -1,22 +1,20 @@
 .btn {
-  border: none;
-  font-size: var(--font-size-l);
-  font-weight: var(--font-weight-xl);
+    border: none;
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-m);
+    padding: 0.5em 1.4em;
+    border-radius: var(--border-radius);
+    background: var(--bg-color);
+    color: var(--primary-color);
 
 
-  padding: 0.5em 1.4em;
-  border-radius: var(--border-radius);
-  background: var(--bg-color);
-  color: var(--primary-color);
-
-
-  &:hover {
-    background-color: var(--secondary-color);
-  }
+    &:hover {
+        background-color: var(--secondary-color);
+    }
 }
 
 .active {
-  background: var(--inverted-secondary-color);
-  font-weight: var(--font-weight-xl);
-  color: var(--inverted-primary-color);
+    background: var(--inverted-secondary-color);
+    font-weight: var(--font-weight-xl);
+    color: var(--primary-color);
 }

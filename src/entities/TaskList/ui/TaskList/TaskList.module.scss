@@ -1,42 +1,37 @@
 .wrapper {
-  padding: var(--padding-primary);
+    padding: var(--padding-primary);
 }
 
 .border {
-  border: var(--border);
-  border-radius: var(--border-radius);
+    border: var(--border);
+    border-radius: var(--border-radius);
 }
 
 .list {
-  margin-top: 14px;
-  margin-left: 14px;
+    margin-top: 14px;
+    margin-left: 14px;
 
-  //overflow-y: scroll;
-  scroll-behavior: smooth;
-  gap: 14px;
-
-  height: 200px;
+    //overflow-y: scroll;
+    scroll-behavior: smooth;
+    gap: 14px;
+    height: 200px;
 }
 
 .input {
-  border: var(--border);
-  border-radius: var(--border-radius);
+    width: 100%;
+    padding: var(--padding-secondary);
 
-  width: 100%;
-  padding: var(--padding-secondary);
-  outline: white;
-
-  &:focus {
-    background-color: var(--inverted-primary-bg-color);
-  }
+    &:focus {
+        background-color: var(--inverted-primary-bg-color);
+    }
 }
 
 .body {
-  padding: var(--padding-primary);
+    padding: var(--padding-primary);
 }
 
 .listHeader {
-  padding: 15px;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-m);
+    padding: 15px;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-m);
 }

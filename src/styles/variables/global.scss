@@ -1,6 +1,5 @@
 :root {
     --font-family-main: consolas, "Times New Roman", serif;
-
     --font-size-m: 12px;
     --font-line-m: 12px;
     --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -10,7 +9,6 @@
     --font-size-xl: 32px;
     --font-line-xl: 32px;
     --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
-
     --font-weight-xl: bolder;
     --font-weight-l: bold;
     --font-weight-m: normal;
@@ -23,7 +21,6 @@
     --border: 1px solid #e8e8e8;
     --padding-primary: 7px;
     --padding-secondary: 14px;
-
     --navbar-height: 50px;
     --sidebar-width: 400px;
     --sidebar-height: 900px;

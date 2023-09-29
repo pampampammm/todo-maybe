@@ -1,52 +1,53 @@
-import { useEffect } from "react";
-import {useEvent} from "./useEvent";
+import { RefObject, useEffect } from 'react';
+import { useEvent } from './useEvent';
 
 interface UseOutsideClickOptions {
-  elementRef: React.RefObject<HTMLElement>;
-  triggerRef?: React.RefObject<HTMLElement>;
+  elementRef: RefObject<HTMLElement>;
+  triggerRef?: RefObject<HTMLElement>;
   enabled?: boolean;
 
   onOutsideClick(e: MouseEvent | TouchEvent): void;
 }
 
 export default function useOutsideClick({
-                           elementRef,
-                           triggerRef,
-                           enabled = true,
-                           onOutsideClick,
-                         }: UseOutsideClickOptions) {
-  const handleOutsideClick = useEvent(onOutsideClick);
+    elementRef,
+    triggerRef,
+    enabled = true,
+    onOutsideClick,
+}: UseOutsideClickOptions) {
+    const handleOutsideClick = useEvent(onOutsideClick);
 
-  useEffect(() => {
-    if (!enabled) {
-      return;
-    }
-    console.log("attach event listener");
-    const handleClick = (e: MouseEvent | TouchEvent) => {
-      const target = e.target;
-      if (!(target instanceof Node)) {
-        return;
-      }
+    useEffect(() => {
+        if (!enabled) {
+            return;
+        }
+        console.log('attach event listener');
+        const handleClick = (e: MouseEvent | TouchEvent) => {
+            const { target } = e;
+            if (!(target instanceof Node)) {
+                return;
+            }
 
-      if (!elementRef.current) {
-        return;
-      }
+            if (!elementRef.current) {
+                return;
+            }
 
-      const ignoreElements = [elementRef.current];
+            const ignoreElements = [elementRef.current];
 
-      if (triggerRef?.current) {
-        ignoreElements.push(triggerRef.current);
-      }
+            if (triggerRef?.current) {
+                ignoreElements.push(triggerRef.current);
+            }
 
-      if (!ignoreElements.some((element) => element.contains(target))) {
-        handleOutsideClick(e);
-      }
-    };
+            if (!ignoreElements.some((element) => element.contains(target))) {
+                handleOutsideClick(e);
+            }
+        };
 
-    document.addEventListener("mousedown", handleClick);
+        document.addEventListener('mousedown', handleClick);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, [enabled, elementRef, triggerRef, handleOutsideClick]);
+        // eslint-disable-next-line consistent-return
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+        };
+    }, [enabled, elementRef, triggerRef, handleOutsideClick]);
 }

@@ -1,22 +1,18 @@
-import React, {ReactNode} from "react";
+import React from 'react';
 
-import {StyledProps} from "shared/types/types";
+import { StyledProps } from 'shared/types/types';
 
-import styles from "./Page.module.scss"
-import classNames from "classnames";
+import classNames from 'classnames';
+import styles from './Page.module.scss';
 
 interface PageProps extends StyledProps{
     children: React.ReactNode
-    header?: React.ReactNode
 }
 
-const Page = ({className, children, header}: PageProps) => {
-    return (
-        <main className={classNames(styles.page, [className])}>
-            {header && header}
-            {children}
-        </main>
-    )
-}
+const Page = ({ className, children }: PageProps) => (
+    <main className={classNames(styles.page, [className])}>
+        {children}
+    </main>
+);
 
 export default Page;

@@ -1,5 +1,5 @@
-import {CalendarPageAsync} from "pages/CalendarPage/ui/CalendarPage.async";
+import { CalendarPageAsync } from 'pages/CalendarPage/ui/CalendarPage.async';
 
 export {
-    CalendarPageAsync as CalendarPage
-}
+    CalendarPageAsync as CalendarPage,
+};

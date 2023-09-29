@@ -1,7 +1,8 @@
-import {TabItemType} from "shared/ui/Tabs/types/types";
+import { TabItemType } from 'shared/ui/Tabs/types/types';
 
-import styles from './Tab.module.scss'
-import classNames from "classnames";
+import classNames from 'classnames';
+import { Button } from 'shared/ui/Button/Button';
+import styles from './Tab.module.scss';
 
 interface TabProps {
     active?: boolean,
@@ -15,8 +16,8 @@ export const TabItem = (props: TabProps) => {
         active = false,
         value,
         onClick,
-        label = "Tab"
-    } = props
+        label = 'Tab',
+    } = props;
 
     const mods: Record<string, boolean> = {
         [styles.active]: active,
@@ -29,12 +30,12 @@ export const TabItem = (props: TabProps) => {
     };
 
     return (
-        <button
+        <Button
             value={value}
             className={classNames(styles.btn, mods)}
             onClick={onClickHandler}
         >
             <span>{label}</span>
-        </button>
-    )
-}
+        </Button>
+    );
+};

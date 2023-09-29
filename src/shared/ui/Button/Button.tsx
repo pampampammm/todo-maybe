@@ -1,10 +1,10 @@
-import React, {ButtonHTMLAttributes, forwardRef, memo} from 'react';
+import React, { ButtonHTMLAttributes, forwardRef, memo } from 'react';
 
-import {StyledProps} from "shared/types/types";
+import { StyledProps } from 'shared/types/types';
 
-import classNames from "classnames";
-import styles from './Button.module.scss'
-import {Dropdown} from "shared/ui/Dropdown";
+import classNames from 'classnames';
+import { Dropdown } from 'shared/ui/Dropdown';
+import styles from './Button.module.scss';
 
 export enum ButtonTheme {
     CLEAR = 'clear',
@@ -24,7 +24,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     onClick?: () => void,
     children?: React.ReactNode | boolean;
-    type?: "button" | "submit" | "reset";
+    type?: 'button' | 'submit' | 'reset';
     className?: string;
     size?: ButtonSize;
     theme?: ButtonTheme;
@@ -57,4 +57,3 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
         </button>
     );
 });
-

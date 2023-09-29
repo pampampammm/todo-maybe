@@ -1,12 +1,5 @@
+import styles from './DateTime.module.scss';
 
-import styles from './DateTime.module.scss'
-
-
-
-const DateTime = () => {
-    return (
-        <div className={styles.dateTime}>
-
-        </div>
-    )
-}
+const DateTime = () => (
+    <div className={styles.dateTime} />
+);

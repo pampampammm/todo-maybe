@@ -1,9 +1,7 @@
 .page {
-  height: var(--page-height);
-
-  border-radius: var(--border-radius);
-  padding: var(--padding-secondary);
-
-  //display: grid;
-  //grid-template-rows: 10% 80%;
+    height: var(--page-height);
+    border-radius: var(--border-radius);
+    width: 100%;
+    flex-grow: 1;
+    padding: 20px;
 }

@@ -1,21 +1,18 @@
 .pageHeader {
-  padding: var(--padding-primary);
-  font-size: var(--font-line-xl);
-  font-weight: var(--font-weight-xl);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: var(--primary-color);
-
-  margin-bottom: 14px;
+    padding: var(--padding-primary);
+    font-size: var(--font-line-xl);
+    font-weight: var(--font-weight-xl);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--primary-color);
+    margin-bottom: 14px;
 }
 
 .notification {
-  margin-left: 14px;
-
-  padding: var(--padding-secondary);
-  font-size: var(--font-size-xl);
-
-  border: var(--border);
-  border-radius: var(--border-radius);
+    margin-left: 14px;
+    padding: var(--padding-secondary);
+    font-size: var(--font-size-xl);
+    border: var(--border);
+    border-radius: var(--border-radius);
 }

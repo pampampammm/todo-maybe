@@ -1,5 +1,5 @@
-import AppBar from "./ui/AppBar/AppBar";
+import AppBar from './ui/AppBar/AppBar';
 
 export {
-    AppBar
-}
+    AppBar,
+};

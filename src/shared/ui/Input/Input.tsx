@@ -1,9 +1,11 @@
-import React, {ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef} from "react";
+import React, {
+    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef,
+} from 'react';
 
-import {ButtonSize} from "shared/ui/Button/Button";
+import { ButtonSize } from 'shared/ui/Button/Button';
 
-import styles from "./Input.module.scss"
-import classNames from "classnames";
+import classNames from 'classnames';
+import styles from './Input.module.scss';
 
 export enum InputTheme {
     CLEAR = 'clear',
@@ -39,11 +41,11 @@ const InputField = (props: InputProps) => {
         autoFocus,
         theme = InputTheme.BACKGROUND,
         inputSize = InputSize.L,
-        disabled,
+        disabled = false,
         ...rest
-    } = props
+    } = props;
 
-    const ref = useRef(null)
+    const ref = useRef(null);
 
     useEffect(() => {
         if (autoFocus) {
@@ -55,20 +57,20 @@ const InputField = (props: InputProps) => {
         [styles[theme]]: true,
         [styles[inputSize]]: true,
         [styles.disabled]: disabled,
-    }
+    };
 
     return (
         <input
             className={classNames(styles.input, mods, className)}
             name={name}
-            id={props.id}
-            type={props.type}
+            id={id}
+            type={type}
             placeholder={placeholder}
             disabled={disabled}
             {...rest}
         />
-    )
-}
+    );
+};
 
 const Input = memo(InputField);
 export default Input;

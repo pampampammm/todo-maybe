@@ -1,7 +1,7 @@
-import {lazy} from "react";
-import {temp_pageLoading} from "shared/temp/temp_Tasks";
+import { lazy } from 'react';
+import { tempPageLoading } from 'shared/temp/temp_tasks';
 
-export const CalendarPageAsync = lazy(() => new Promise(resolve => {
+export const CalendarPageAsync = lazy(() => new Promise((resolve) => {
     // @ts-ignore
-    setTimeout(() => resolve(import('./CalendarPage')), temp_pageLoading)
+    setTimeout(() => resolve(import('./CalendarPage')), tempPageLoading);
 }));

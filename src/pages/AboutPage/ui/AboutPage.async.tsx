@@ -1,7 +1,7 @@
-import {lazy} from "react";
-import {temp_pageLoading} from "shared/temp/temp_Tasks";
+import { lazy } from 'react';
+import { tempPageLoading } from 'shared/temp/temp_tasks';
 
-export const AboutPageAsync = lazy(() => new Promise(resolve => {
+export const AboutPageAsync = lazy(() => new Promise((resolve) => {
     // @ts-ignore
-    setTimeout(() => resolve(import('./AboutPage')), temp_pageLoading)
+    setTimeout(() => resolve(import('./AboutPage')), tempPageLoading);
 }));

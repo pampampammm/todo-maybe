@@ -1,83 +1,87 @@
-import React, {ChangeEvent} from 'react';
+import React, { ChangeEvent, useId } from 'react';
 
-import {Button, ButtonSize, ButtonTheme} from "shared/ui/Button/Button";
-import {StyledProps} from "shared/types/types";
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { StyledProps } from 'shared/types/types';
 
-import Input, {InputTheme} from "shared/ui/Input/Input";
-import {TaskSchema} from "entities/TaskList/type/Task";
+import Input, { InputTheme } from 'shared/ui/Input/Input';
+import { TaskSchema } from 'entities/TaskList/type/Task';
 
-import styles from './TaskDetails.module.scss'
-import classNames from "classnames";
-import {Dropdown} from "shared/ui/Dropdown";
-import {TaskList} from "entities/TaskList";
-import TaskItem from "entities/TaskList/ui/TaskItem/TaskItem";
-import {temp_Tasks} from "shared/temp/temp_Tasks";
-
+import classNames from 'classnames';
+import { Dropdown } from 'shared/ui/Dropdown';
+import { TaskList } from 'entities/TaskList';
+import TaskItem from 'entities/TaskList/ui/TaskItem/TaskItem';
+import { tempTasks } from 'shared/temp/temp_tasks';
+import styles from './TaskDetails.module.scss';
 
 interface DetailsProps extends StyledProps {
     onClose?: () => void,
     item: TaskSchema
 }
 
-const dropdownItem = {title: 'time', list: [{label: 'shit', value: 'gay', id: 1}]}
+const dropdownItem = { title: 'time', list: [{ label: 'shit', value: 'gay', id: 1 }] };
 
 const TaskDetails = (props: DetailsProps) => {
     const {
         className,
         onClose,
-        item
-    } = props
+        item,
+    } = props;
+
+    const listId = useId();
+    const dateId = useId();
 
     const handleClose = () => {
-        onClose()
+        onClose();
     };
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
-        const newValue = e.target.value
+        e.preventDefault();
+        const newValue = e.target.value;
 
-        if (newValue || newValue.length !== 0)
-            console.log('bruh')
+        if (newValue || newValue.length !== 0) { console.log('bruh'); }
     };
 
     if (item === undefined) {
-        return
+        return;
     }
 
     return (
         <div className={classNames(styles.section, [className])}>
-            <h2 className={styles.header}>
+            <h1 className={styles.header}>
                 <span>Task:</span>
-                <Button theme={ButtonTheme.CLEAR}
-                        size={ButtonSize.M}
-                        onClick={handleClose}
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    size={ButtonSize.M}
+                    onClick={handleClose}
                 >
-                    {"X"}
+                    X
                 </Button>
-            </h2>
+            </h1>
             <form>
                 <Input
                     type="text"
                     className={styles.titleInput}
                     theme={InputTheme.OUTLINE}
-                    placeholder={item.title}/>
+                    placeholder={item.title}
+                />
                 <Input
                     type="text"
                     className={styles.descriptionInput}
                     theme={InputTheme.OUTLINE}
-                    placeholder={item.description}/>
+                    placeholder={item.description}
+                />
                 <div className={styles.other}>
-                    <label htmlFor={'list'}>List</label>
-                    <Input id={'list'} type="text"/>
-                    <label htmlFor={"date"}>Date </label>
-                    <Dropdown items={dropdownItem}/>
-                    <label>Tags</label>
+                    <label htmlFor={listId}>List</label>
+                    <Input id={listId} type="text" />
+                    <label htmlFor={dateId}>Date </label>
+                    <Dropdown items={dropdownItem} />
+                    {/* <label>Tags</label> */}
                 </div>
                 <label className={styles.subtasks}>
-                    <h2>Subtask: </h2>
-                    <TaskList>
-                        <TaskItem item={temp_Tasks[2]}/>
-                        <TaskItem item={temp_Tasks[1]}/>
+                    <h1>Subtask: </h1>
+                    <TaskList inputTheme={InputTheme.CLEAR} className={styles.list}>
+                        <TaskItem item={tempTasks[2]} optionsButton={false} />
+                        <TaskItem item={tempTasks[1]} optionsButton={false} />
                     </TaskList>
                 </label>
             </form>

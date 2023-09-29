@@ -1,5 +1,5 @@
-import Dropdown from "shared/ui/Dropdown/ui/Dropdown";
+import Dropdown from 'shared/ui/Dropdown/ui/Dropdown';
 
 export {
-    Dropdown
-}
+    Dropdown,
+};

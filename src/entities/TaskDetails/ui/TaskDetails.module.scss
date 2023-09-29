@@ -1,44 +1,45 @@
 .section {
-  background: var(--inverted-primary-bg-color);
-
-  border-radius: var(--border-radius);
-  padding: var(--padding-secondary);
+    background: var(--inverted-primary-bg-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-secondary);
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
 }
 
 .close {
-  border: none;
+    border: none;
 }
 
 .titleInput {
-  height: 36px;
-  width: 100%;
-  margin-bottom: 14px;
+    height: 36px;
+    width: 100%;
+    margin-bottom: 14px;
 }
 
 .descriptionInput {
-  width: 100%;
-  height: 72px;
-  margin-bottom: 14px;
+    width: 100%;
+    height: 72px;
+    margin-bottom: 48px;
 }
 
+.list {
+    width: 50%;
+}
 
 .subtasks {
 
 }
 
 .other {
-//display: flex;
-//  flex-direction: column;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  margin-bottom: 14px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-left: 7px;
+    margin-bottom: 48px;
 }

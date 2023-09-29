@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 
-import {TabItem} from "shared/ui/Tabs/ui/TabItem/TabItem";
-import {TabProps} from "shared/ui/Tabs/ui/Tab/Tab";
+import { TabItem } from 'shared/ui/Tabs/ui/TabItem/TabItem';
+import { TabProps } from 'shared/ui/Tabs/ui/Tab/Tab';
 
-import styles from './Tabs.module.scss'
-import classNames from "classnames";
+import classNames from 'classnames';
+import styles from './Tabs.module.scss';
 
 interface TabsProps {
     onChange: (value: string) => void,
@@ -13,40 +13,39 @@ interface TabsProps {
     children?: React.ReactElement<TabProps>[];
 }
 
-
 export const Tabs = (props: TabsProps) => {
     const {
         onChange,
         defaultValue,
         children,
-        className
-    } = props
+        className,
+    } = props;
 
-    const [activeTab, setActiveTab] = useState<string>(defaultValue)
+    const [activeTab, setActiveTab] = useState<string>(defaultValue);
 
     const handleTabClick = (value: string) => {
-        console.log(value)
-        setActiveTab(value)
-        onChange(value)
+        setActiveTab(value);
+        onChange(value);
     };
 
-    const itemsToRender = () => {
-        return children.map((item) => {
-            const props = item.props
+    const itemsToRender = () => children.map((item) => {
+        const { value, label } = item.props;
 
-            return <TabItem value={props.value}
-                            label={props.label}
-                            active={activeTab === props.value}
-                            key={props.value}
-                            onClick={handleTabClick}
+        return (
+            <TabItem
+                value={value}
+                label={label}
+                active={activeTab === value}
+                key={value}
+                onClick={handleTabClick}
             />
-        })
-    }
+        );
+    });
 
+    // eslint-disable-next-line consistent-return
     const renderComponent = () => {
-        if (children)
-            return children.find((item) => item.props.value === activeTab)
-    }
+        if (children) { return children.find((item) => item.props.value === activeTab); }
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -57,5 +56,5 @@ export const Tabs = (props: TabsProps) => {
                 {renderComponent()}
             </div>
         </div>
-    )
-}
+    );
+};
