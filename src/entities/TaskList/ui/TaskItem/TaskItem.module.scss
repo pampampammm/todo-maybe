@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 .moreDescToggleButton {
@@ -42,14 +43,10 @@
         background: var(--inverted-primary-color);
     }
 }
+
 input[type="checkbox"] {
     width: 14px;
     height: 14px;
-}
-
-.task {
-    display: flex;
-    justify-content: space-between;
 }
 
 .title {

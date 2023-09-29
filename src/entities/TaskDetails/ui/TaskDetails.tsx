@@ -45,6 +45,7 @@ const TaskDetails = (props: DetailsProps) => {
         return;
     }
 
+    // eslint-disable-next-line consistent-return
     return (
         <div className={classNames(styles.section, [className])}>
             <h1 className={styles.header}>
