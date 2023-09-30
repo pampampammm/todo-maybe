@@ -2,7 +2,7 @@ import {
     useEffect, useLayoutEffect, useMemo, useRef, useState,
 } from 'react';
 
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
 import CalendarTask from 'entities/Calendar/ui/CalendarTask/CalendarTask';
 
 import classNames from 'classnames';

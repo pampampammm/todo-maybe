@@ -2,15 +2,14 @@ import React, { ChangeEvent, useId } from 'react';
 
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { StyledProps } from 'shared/types/types';
-
 import Input, { InputTheme } from 'shared/ui/Input/Input';
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { Dropdown } from 'shared/ui/Dropdown';
+import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
+import { tempTasks } from 'shared/temp/temp_tasks';
+import { TaskList } from 'entities/Tasks';
 
 import classNames from 'classnames';
-import { Dropdown } from 'shared/ui/Dropdown';
-import { TaskList } from 'entities/TaskList';
-import TaskItem from 'entities/TaskList/ui/TaskItem/TaskItem';
-import { tempTasks } from 'shared/temp/temp_tasks';
 import styles from './TaskDetails.module.scss';
 
 interface DetailsProps extends StyledProps {

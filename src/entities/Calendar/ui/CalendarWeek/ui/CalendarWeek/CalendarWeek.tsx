@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import TimeColumnWrapper from 'entities/Calendar/ui/TimeColumnWrapper/TimeColumnWrapper';
 import CalendarColumn from 'entities/Calendar/ui/CalendarColumn/CalendarColumn';
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
 
 import styles from './CalendarWeek.module.scss';
 

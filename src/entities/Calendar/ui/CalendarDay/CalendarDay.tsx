@@ -1,5 +1,5 @@
 import CalendarColumn from 'entities/Calendar/ui/CalendarColumn/CalendarColumn';
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
 import TimeColumnWrapper from 'entities/Calendar/ui/TimeColumnWrapper/TimeColumnWrapper';
 
 import styles from './CalendarDay.module.scss';

@@ -1,9 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { CircularProgress } from '@mui/material';
 import OutletLayout from 'app/router/ui/OutletLayout/OutletLayout';
-import { Page } from 'widgets/Page';
 import { routeConfig } from '../../../shared/config/routeConfig';
 
 const AppRouter = () => (
@@ -14,7 +12,7 @@ const AppRouter = () => (
                     key={path}
                     path={path}
                     element={(
-                        <Suspense fallback={<CircularProgress />}>
+                        <Suspense fallback={<h1>...</h1>}>
                             {element}
 
                         </Suspense>

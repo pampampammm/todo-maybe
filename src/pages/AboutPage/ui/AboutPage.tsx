@@ -10,7 +10,7 @@ const AboutPage = () => {
     const header = useMemo(() => <PageHeader text="Components" />, []);
 
     return (
-        <Page className={styles.page}>
+        <Page className={styles.page} headerText="Components">
             About Page
             <Button theme={ButtonTheme.BACKGROUND}>ButtonTheme.BACKGROUND</Button>
             <Button theme={ButtonTheme.OUTLINE}>ButtonTheme.OUTLINE</Button>

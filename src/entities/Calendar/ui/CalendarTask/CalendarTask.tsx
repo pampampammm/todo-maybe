@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
 import { getPercentPlacement } from 'shared/helpers/getPercentPlacement';
 
 import classNames from 'classnames';

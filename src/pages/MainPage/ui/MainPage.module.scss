@@ -19,10 +19,12 @@
 .content {
     display: flex;
     flex-direction: row;
+    gap: 14px;
+    height: 100%;
 }
 
 .details {
-    flex-grow: 2;
+    flex-grow: 1;
 }
 
 .item {
@@ -36,6 +38,7 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 14px;
     grid-auto-rows: minmax(300px, auto);
+    flex-grow: 4;
 }
 
 .bigList {

@@ -11,8 +11,8 @@ const PageHeader = (props: HeaderProps) => {
     const { className, text, notification } = props;
 
     return (
-        <div className={styles.pageHeader}>
-            <h2>{text}</h2>
+        <h2 className={styles.pageHeader}>
+            {text}
             {notification
                 && (
                     <div className={styles.notification}>
@@ -20,7 +20,7 @@ const PageHeader = (props: HeaderProps) => {
                     </div>
                 )}
 
-        </div>
+        </h2>
     );
 };
 

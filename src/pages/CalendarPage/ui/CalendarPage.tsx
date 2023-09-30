@@ -15,12 +15,8 @@ const CalendarPage = () => {
 
     }
 
-    const headerComponent = useMemo(() => <PageHeader text="Today" notification={9} />, []);
-
     return (
-        <Page
-            className={styles.calendarPage}
-        >
+        <Page className={styles.calendarPage} headerText="Calendar">
             <Tabs
                 onChange={handleTabChange}
                 defaultValue="day"

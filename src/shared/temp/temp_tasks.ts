@@ -1,4 +1,4 @@
-import { TaskSchema } from 'entities/TaskList/type/Task';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
 
 export const tempTasks: TaskSchema[] = [
     {

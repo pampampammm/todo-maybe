@@ -1,12 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-import { TaskList } from 'entities/TaskList';
 import { Page, PageHeader } from 'widgets/Page';
 import TaskDetails from 'entities/TaskDetails/ui/TaskDetails';
-import TaskItem from 'entities/TaskList/ui/TaskItem/TaskItem';
-import { TaskSchema } from 'entities/TaskList/type/Task';
 import { tempTasks } from 'shared/temp/temp_tasks';
+import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
+import { TaskList } from 'entities/Tasks';
 
 import classNames from 'classnames';
 import styles from './MainPage.module.scss';
@@ -14,8 +13,6 @@ import styles from './MainPage.module.scss';
 const MainPage = () => {
     const [details, setDetails] = useState<boolean>(false);
     const [detailsItem, setDetailsItem] = useState<TaskSchema | undefined>(tempTasks[2]);
-
-    const headerComponent = useMemo(() => <PageHeader text="Main" notification={19} />, []);
 
     const handleClose = () => {
         setDetails((prevState) => !prevState);
@@ -37,7 +34,7 @@ const MainPage = () => {
     ));
 
     return (
-        <Page className={styles.section}>
+        <Page className={styles.section} headerText="Main">
             <div className={classNames(styles.content, { [styles.details]: details })}>
                 <div className={styles.lists}>
                     <TaskList

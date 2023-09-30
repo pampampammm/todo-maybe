@@ -7,18 +7,21 @@ import ThemeProvider from './app/Providers/ThemeProvider/ui/ThemeProvider';
 
 import App from './App';
 import './styles/index.scss';
+import { StoreProvider } from 'app/StoreProvider';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <ErrorBoundary>
-                <ThemeProvider>
-                    <App />
-                </ThemeProvider>
-            </ErrorBoundary>
-        </BrowserRouter>
+        <StoreProvider>
+            <BrowserRouter>
+                <ErrorBoundary>
+                    <ThemeProvider>
+                        <App />
+                    </ThemeProvider>
+                </ErrorBoundary>
+            </BrowserRouter>
+        </StoreProvider>
     </React.StrictMode>,
 );
