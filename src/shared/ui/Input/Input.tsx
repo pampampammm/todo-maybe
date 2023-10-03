@@ -21,9 +21,9 @@ export enum InputSize {
     XL = 'size_xl',
 }
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = InputHTMLAttributes<HTMLInputElement>
 
-interface InputProps extends HTMLInputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string,
     name?: string,
     type?: string,
@@ -39,6 +39,7 @@ const InputField = (props: InputProps) => {
         name,
         placeholder,
         autoFocus,
+        onChange,
         theme = InputTheme.BACKGROUND,
         inputSize = InputSize.L,
         disabled = false,
@@ -67,6 +68,7 @@ const InputField = (props: InputProps) => {
             type={type}
             placeholder={placeholder}
             disabled={disabled}
+            onChange={onChange}
             {...rest}
         />
     );

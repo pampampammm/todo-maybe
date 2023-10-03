@@ -4,6 +4,7 @@ import { useTheme } from 'app/Providers/ThemeProvider';
 
 import { AppBar } from 'widgets/AppBar';
 import classNames from 'classnames';
+import { Header } from 'widgets/Header';
 import { AppRouter } from './app/router';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
     return (
         <div className={`app ${theme}`}>
             <Suspense fallback="">
-                {/* <Header/> */}
+                <Header />
                 <div className="content-page">
                     <AppBar />
                     <AppRouter />

@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 import classNames from 'classnames';
-import { getPercentPlacement } from 'shared/helpers/getPercentPlacement';
+import { getPercentPlacement } from 'shared/lib/helpers/getPercentPlacement';
 import styles from './TimeColumnWrapper.module.scss';
 
 const tempTime = [

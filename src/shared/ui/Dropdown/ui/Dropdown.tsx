@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Button } from 'shared/ui/Button/Button';
-import useOutsideClick from '../../../helpers/useOutsideClick';
+import useOutsideClick from 'shared/lib/hooks/useOutsideClick';
 import { IList } from '../types/types';
 
 import styles from './Dropdown.module.css';
