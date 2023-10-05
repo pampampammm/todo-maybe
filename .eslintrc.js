@@ -41,6 +41,8 @@ module.exports = {
         'jsx-a11y/label-has-associated-control': 'off',
         'jsx-a11y/label-has-for': 'off',
         'no-param-reassign': ['error', { props: false }],
+        'no-return-assign': ['error', 'always'],
+
     },
     globals: {
         __IS_DEV__: true,

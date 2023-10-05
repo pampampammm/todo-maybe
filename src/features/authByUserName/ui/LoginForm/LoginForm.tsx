@@ -1,9 +1,13 @@
-import { Modal } from 'shared/ui/Modal/Modal';
+import {
+    ChangeEvent, useCallback, useId,
+} from 'react';
+import { useSelector } from 'react-redux';
+
 import Input, { InputTheme } from 'shared/ui/Input/Input';
-import { ChangeEvent, FormEventHandler, useId } from 'react';
 import { Button } from 'shared/ui/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'features/authByUserName';
+import { useAppDispatch } from 'app/StoreProvider';
+import { loginByUsername } from '../../model/services/loginByUsername';
 import { selectLoginUsername } from '../../model/selectors/selectLoginState/selectLoginUsername';
 import { selectLoginPassword } from '../../model/selectors/selectLoginState/selectLoginPassword';
 import { selectLoginLoading } from '../../model/selectors/selectLoginState/selectLoginLoading';
@@ -12,11 +16,10 @@ import { selectLoginError } from '../../model/selectors/selectLoginState/selectL
 import styles from './LoginForm.module.scss';
 
 interface ModalProps {
-    isOpen: boolean
     onSuccess?: () => void
 }
 
-export const LoginForm = ({ isOpen, onSuccess }: ModalProps) => {
+const LoginForm = ({ onSuccess }: ModalProps) => {
     const userId = useId();
     const passwordId = useId();
 
@@ -25,47 +28,51 @@ export const LoginForm = ({ isOpen, onSuccess }: ModalProps) => {
     const isLoading = useSelector(selectLoginLoading);
     const error = useSelector(selectLoginError);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const handleUserChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleUserChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         dispatch(loginActions.setUsername(e.target.value));
-    };
+    }, [dispatch]);
 
-    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handlePasswordChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         dispatch(loginActions.setPassword(e.target.value));
-    };
+    }, [dispatch]);
 
-    const handleFormLoginSubmit = () => {
-        console.log('suck nigga dick');
+    const handleFormLoginSubmit = useCallback(() => {
+        dispatch(loginByUsername({ username, password }));
         onSuccess();
-    };
+    }, [dispatch, password, username]);
 
     return (
-        <Modal isOpen={isOpen} className={styles.modalWindow}>
-            <form onSubmit={handleFormLoginSubmit} className={styles.form}>
-                <label htmlFor={userId}>User:</label>
-                <Input
-                    id={userId}
-                    autoFocus
-                    type="text"
-                    placeholder="Type username...."
-                    value={username && username}
-                    onChange={handleUserChange}
-                    theme={InputTheme.OUTLINE}
-                />
-                <label htmlFor={passwordId}>Password:</label>
-                <Input
-                    id={passwordId}
-                    autoFocus
-                    type="text"
-                    placeholder="Type password...."
-                    value={password}
-                    onChange={handlePasswordChange}
-                    theme={InputTheme.OUTLINE}
-                />
-                <Button className={styles.submit} type="submit">Submit</Button>
-            </form>
-        </Modal>
+        <div className={styles.form}>
+            <label htmlFor={userId}>User:</label>
+            <Input
+                id={userId}
+                autoFocus
+                type="text"
+                placeholder="Type username...."
+                value={username && username}
+                onChange={handleUserChange}
+                theme={InputTheme.OUTLINE}
+            />
+            <label htmlFor={passwordId}>Password:</label>
+            <Input
+                id={passwordId}
+                type="text"
+                placeholder="Type password...."
+                value={password}
+                onChange={handlePasswordChange}
+                theme={InputTheme.OUTLINE}
+            />
+            <Button
+                disabled={isLoading}
+                className={styles.submit}
+                type="submit"
+                onClick={handleFormLoginSubmit}
+            >
+                Submit
+            </Button>
+        </div>
     );
 };
 

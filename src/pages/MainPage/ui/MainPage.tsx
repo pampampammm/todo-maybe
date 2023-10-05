@@ -1,66 +1,75 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 
 import { Page, PageHeader } from 'widgets/Page';
-import TaskDetails from 'entities/TaskDetails/ui/TaskDetails';
-import { tempTasks } from 'shared/temp/temp_tasks';
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { shiftTasks, tempTasks } from 'shared/temp/temp_tasks';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
-import { TaskList } from 'entities/Tasks';
+import { TaskEditForm, TaskList, tasksActions } from 'entities/Tasks';
 
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask';
+import { useAppDispatch } from 'app/StoreProvider';
 import styles from './MainPage.module.scss';
 
 const MainPage = () => {
-    const [details, setDetails] = useState<boolean>(false);
-    const [detailsItem, setDetailsItem] = useState<TaskSchema | undefined>(tempTasks[2]);
+    const detailTask = useSelector(selectTask);
+    const dispatch = useAppDispatch();
 
     const handleClose = () => {
-        setDetails((prevState) => !prevState);
+        dispatch(tasksActions.removeTask());
     };
 
-    const handleClickDetails = (item: TaskSchema) => {
-        if (details) { setDetails((prevState) => !prevState); }
-
-        setDetailsItem(item);
+    const handleClickDetails = (item: TaskEntity) => {
+        dispatch(tasksActions.setTask(item));
     };
 
-    const renderItems = () => tempTasks.map((item) => (
+    const renderItems = useMemo(() => tempTasks?.map((item) => (
         <TaskItem
             item={item}
             key={item.title}
             className={styles.item}
             onClick={handleClickDetails}
         />
-    ));
+    )), []);
+
+    const renderTempItems = useMemo(() => shiftTasks.map((item) => (
+        <TaskItem
+            item={item}
+            key={item.title}
+            className={styles.item}
+            onClick={handleClickDetails}
+        />
+    )), []);
 
     return (
         <Page className={styles.section} headerText="Main">
-            <div className={classNames(styles.content, { [styles.details]: details })}>
+            <div className={classNames(styles.content, { [styles.details]: detailTask })}>
                 <div className={styles.lists}>
                     <TaskList
                         border
                         text="Today"
                         className={styles.bigList}
                     >
-                        {renderItems()}
+                        {renderItems}
                     </TaskList>
                     <TaskList
                         border
                         text="Tomorrow"
                     >
-                        {renderItems()}
+                        {renderTempItems}
                     </TaskList>
                     <TaskList
                         border
                         text="This week"
                     >
-                        {renderItems()}
+                        {renderTempItems}
                     </TaskList>
                 </div>
-                {!details
+                {detailTask
                     && (
-                        <TaskDetails
-                            item={detailsItem}
+                        <TaskEditForm
+                            item={detailTask}
                             onClose={handleClose}
                         />
                     )}

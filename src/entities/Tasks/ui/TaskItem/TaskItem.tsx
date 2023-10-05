@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import { StyledProps } from 'shared/types/types';
 import { Button } from 'shared/ui/Button/Button';
 
@@ -8,9 +8,9 @@ import classNames from 'classnames';
 import styles from './TaskItem.module.scss';
 
 interface TaskItemProps extends StyledProps {
-    item?: TaskSchema
+    item?: TaskEntity
     isLoading?: boolean,
-    onClick?: (item: TaskSchema) => void;
+    onClick?: (item: TaskEntity) => void;
     optionsButton?: boolean
 }
 
@@ -31,14 +31,12 @@ const TaskItem = (props: TaskItemProps) => {
         );
     }
 
-    const handleToggleClick = () => {
+    const handleOptionsToggle = () => {
         setOptions((moreOptions) => !moreOptions);
     };
 
-    const handleDetailsClick = () => {
-        if (moreOptions) {
-            onClick(item);
-        }
+    const handleClick = () => {
+        if (moreOptions) onClick(item);
     };
 
     return (
@@ -50,12 +48,20 @@ const TaskItem = (props: TaskItemProps) => {
                             type="checkbox"
                             className={styles.checkbox}
                         />
-                        <span className={styles.title}>{item.title}</span>
+                        <p
+                            onClick={handleClick}
+                            className={classNames(
+                                styles.title,
+                                { [styles.options]: moreOptions },
+                            )}
+                        >
+                            {item.title}
+                        </p>
                     </div>
                     {optionsButton
                         ? (
                             <Button
-                                onClick={handleToggleClick}
+                                onClick={handleOptionsToggle}
                                 className={styles.moreDescToggleButton}
                             >
                                 {'>'}

@@ -1,15 +1,21 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 import { useTheme } from 'app/Providers/ThemeProvider';
 
 import { AppBar } from 'widgets/AppBar';
 import classNames from 'classnames';
 import { Header } from 'widgets/Header';
+import { useAppDispatch } from 'app/StoreProvider';
+import { userActions } from 'entities/User';
 import { AppRouter } from './app/router';
 
 const App = () => {
     const { theme } = useTheme();
-    const [details, setDetails] = useState<boolean>(true);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData());
+    }, [dispatch]);
 
     return (
         <div className={`app ${theme}`}>

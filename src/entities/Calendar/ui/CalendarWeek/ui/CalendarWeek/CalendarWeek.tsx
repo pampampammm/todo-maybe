@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import TimeColumnWrapper from 'entities/Calendar/ui/TimeColumnWrapper/TimeColumnWrapper';
 import CalendarColumn from 'entities/Calendar/ui/CalendarColumn/CalendarColumn';
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 
 import styles from './CalendarWeek.module.scss';
 
@@ -10,7 +10,7 @@ const days = ['Mon', 'Tues', 'Wed', 'Thu',
     'Fri', 'Sat', 'Sun'];
 
 interface MonthCalendarProps {
-    items: TaskSchema[]
+    items: TaskEntity[]
 }
 
 const CalendarWeek = (props: MonthCalendarProps) => {

@@ -1,11 +1,11 @@
 import CalendarColumn from 'entities/Calendar/ui/CalendarColumn/CalendarColumn';
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import TimeColumnWrapper from 'entities/Calendar/ui/TimeColumnWrapper/TimeColumnWrapper';
 
 import styles from './CalendarDay.module.scss';
 
 interface CalendarProps {
-    items: TaskSchema[]
+    items: TaskEntity[]
 }
 
 const CalendarDay = (props: CalendarProps) => {

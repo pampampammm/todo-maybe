@@ -1,7 +1,7 @@
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 
 interface MonthCalendarProps {
-    items: TaskSchema[]
+    items: TaskEntity[]
 }
 
 const CalendarMonth = (props: MonthCalendarProps) => {

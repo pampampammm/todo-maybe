@@ -15,7 +15,7 @@
         background: var(--inverted-primary-bg-color);
 
         .moreDescToggleButton {
-            background: var(--inverted-primary-color);
+            background: var(--secondary-color);
         }
     }
 }
@@ -40,7 +40,7 @@
     width: 32px;
 
     &:hover {
-        background: var(--inverted-primary-color);
+        background: var(--secondary-color);
     }
 }
 
@@ -51,7 +51,18 @@ input[type="checkbox"] {
 
 .title {
     margin-left: 7px;
+    padding: 7px;
 }
+
+.options {
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--secondary-color);
+        border-radius: var(--border-radius);
+    }
+}
+
 
 .checkbox {
     background: none;
@@ -60,6 +71,5 @@ input[type="checkbox"] {
 
 .more {
     margin: 14px 0 0 21px;
-
 }
 

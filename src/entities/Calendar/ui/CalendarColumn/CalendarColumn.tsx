@@ -2,14 +2,14 @@ import {
     useEffect, useLayoutEffect, useMemo, useRef, useState,
 } from 'react';
 
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import CalendarTask from 'entities/Calendar/ui/CalendarTask/CalendarTask';
 
 import classNames from 'classnames';
 import styles from './CalendarColumn.module.scss';
 
 interface CalendarProps {
-    items?: TaskSchema[],
+    items?: TaskEntity[],
     name?: string,
     className?: string
     isActive?: boolean

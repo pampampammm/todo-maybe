@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 
 import classNames from 'classnames';
 import { getPercentPlacement } from 'shared/lib/helpers/getPercentPlacement';
@@ -8,7 +8,7 @@ import styles from './CalendarTask.module.scss';
 
 interface TaskProps {
     time: number,
-    task: TaskSchema,
+    task: TaskEntity,
     className?: string,
     columnHeight: number
 }

@@ -1,25 +1,28 @@
-import React, { ChangeEvent, useId } from 'react';
+import React, { ChangeEvent, useEffect, useId } from 'react';
 
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { StyledProps } from 'shared/types/types';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
+import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import { Dropdown } from 'shared/ui/Dropdown';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
 import { tempTasks } from 'shared/temp/temp_tasks';
-import { TaskList } from 'entities/Tasks';
+import { TaskList, tasksActions } from 'entities/Tasks';
 
 import classNames from 'classnames';
-import styles from './TaskDetails.module.scss';
+import { useSelector } from 'react-redux';
+import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask';
+import { useAppDispatch } from 'app/StoreProvider';
+import styles from './TaskEditFrom.module.scss';
 
 interface DetailsProps extends StyledProps {
     onClose?: () => void,
-    item: TaskSchema
+    item: TaskEntity
 }
 
 const dropdownItem = { title: 'time', list: [{ label: 'shit', value: 'gay', id: 1 }] };
 
-const TaskDetails = (props: DetailsProps) => {
+const TaskEditForm = (props: DetailsProps) => {
     const {
         className,
         onClose,
@@ -29,20 +32,23 @@ const TaskDetails = (props: DetailsProps) => {
     const listId = useId();
     const dateId = useId();
 
+    const dispatch = useAppDispatch();
+
+    useEffect(() => () => {
+        // dispatch(tasksActions.)
+    }, []);
+
     const handleClose = () => {
         onClose();
     };
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        const newValue = e.target.value;
-
-        if (newValue || newValue.length !== 0) { console.log('bruh'); }
+    const handleTitleChange = () => {
+        dispatch(tasksActions.editTaskTitle());
     };
 
-    if (item === undefined) {
-        return;
-    }
+    const handleDescriptionChange = () => {
+        dispatch(tasksActions.editTaskDescription());
+    };
 
     // eslint-disable-next-line consistent-return
     return (
@@ -63,17 +69,19 @@ const TaskDetails = (props: DetailsProps) => {
                     className={styles.titleInput}
                     theme={InputTheme.OUTLINE}
                     placeholder={item.title}
+                    onChange={handleTitleChange}
                 />
                 <Input
                     type="text"
                     className={styles.descriptionInput}
                     theme={InputTheme.OUTLINE}
                     placeholder={item.description}
+                    onChange={handleDescriptionChange}
                 />
                 <div className={styles.other}>
-                    <label htmlFor={listId}>List</label>
+                    <label htmlFor={listId}>Tags</label>
                     <Input id={listId} type="text" />
-                    <label htmlFor={dateId}>Date </label>
+                    <label htmlFor={dateId}>List </label>
                     <Dropdown items={dropdownItem} />
                     {/* <label>Tags</label> */}
                 </div>
@@ -89,4 +97,4 @@ const TaskDetails = (props: DetailsProps) => {
     );
 };
 
-export default TaskDetails;
+export default TaskEditForm;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { userSlice } from 'entities/User/model/slice/userSlice';
+import { loginByUsername } from 'features/authByUserName/model/services/loginByUsername';
 import { LoginSchema } from '../type/types';
 
 const initialState: LoginSchema = {
@@ -21,6 +21,20 @@ export const loginSlice = createSlice({
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loginByUsername.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(loginByUsername.fulfilled, (state, action) => {
+                state.isLoading = false;
+            })
+            .addCase(loginByUsername.rejected, (state, action) => {
+                state.isLoading = false;
+                // state.error = action.error;
+            });
     },
 });
 

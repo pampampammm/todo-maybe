@@ -4,15 +4,26 @@ export enum TaskProcess {
     TASK_READY = 'ready'
 }
 
-export interface TaskSchema {
-    userId: number;
+export interface SubTask {
+    id: number
     title: string,
-    description?: string,
+    complete: boolean
+}
+
+export interface TaskEntity {
+    id: number;
+    title: string,
     completed: boolean,
+    description?: string,
     time: {
         startDate: number,
-        endDate: number,
+        endDate?: number,
     },
     tags?: string[],
     type?: TaskProcess,
+    subtasks?: SubTask[]
+}
+
+export interface TaskSchema {
+    task: TaskEntity
 }

@@ -3,7 +3,11 @@ const jsonServer = require('json-server');
 const path = require('path');
 
 const server = jsonServer.create();
-const routerJson = jsonServer.router(path.resolve(__dirname, 'db.json'));
+
+const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
+
+server.use(jsonServer.defaults({}));
+server.use(jsonServer.bodyParser);
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {
@@ -13,6 +17,7 @@ server.use(async (req, res, next) => {
     next();
 });
 
+// Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
@@ -34,7 +39,8 @@ server.post('/login', (req, res) => {
     }
 });
 
-// eslint-disable-next-line consistent-return
+// проверяем, авторизован ли пользователь
+// eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
         return res.status(403).json({ message: 'AUTH ERROR' });
@@ -43,7 +49,7 @@ server.use((req, res, next) => {
     next();
 });
 
-server.use(routerJson);
+server.use(router);
 
 // запуск сервера
 server.listen(8000, () => {
