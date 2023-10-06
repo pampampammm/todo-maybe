@@ -6,6 +6,9 @@ interface PortalProps {
     element?: HTMLElement
 }
 
-const ReactPortal = ({ children, element = document.body } : PortalProps) => createPortal(children, element);
+const ReactPortal = ({
+    children,
+    element = document.body,
+} : PortalProps) => createPortal(children, element);
 
 export default ReactPortal;

@@ -2,6 +2,8 @@
     background: var(--inverted-primary-bg-color);
     border-radius: var(--border-radius);
     padding: var(--padding-secondary);
+
+    width: 400px;
 }
 
 .header {
@@ -15,20 +17,22 @@
     border: none;
 }
 
-.titleInput {
-    height: 36px;
-    width: 100%;
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
     margin-bottom: 14px;
 }
 
+.titleInput {
+    height: 36px;
+}
+
 .descriptionInput {
-    width: 100%;
     height: 72px;
-    margin-bottom: 48px;
 }
 
 .list {
-    width: 50%;
 }
 
 .subtasks {
@@ -36,11 +40,14 @@
 }
 
 .other {
-    width: 70%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50px 1fr;
     grid-row-gap: 7px;
     align-items: center;
     margin-left: 7px;
     margin-bottom: 48px;
+}
+
+.tags {
+
 }

@@ -1,0 +1,33 @@
+.tagsRow {
+  display: flex;
+  gap: 7px;
+
+  background: var(--bg-color);
+  list-style: none;
+}
+
+.item {
+  width: fit-content;
+  align-items: center;
+
+  border-radius: var(--border-radius);
+  padding: 7px;
+
+  height: 2em;
+  background: var(--primary-bg-color);
+
+  &:last-child {
+    display: flex;
+    flex-direction: row;
+    background: var(--border-color)
+  }
+}
+
+.tagInput {
+  width: 90px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.submitAddBtn {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}

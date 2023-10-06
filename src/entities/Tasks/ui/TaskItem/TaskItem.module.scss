@@ -15,7 +15,7 @@
         background: var(--inverted-primary-bg-color);
 
         .moreDescToggleButton {
-            background: var(--secondary-color);
+            background: var(--border-color);
         }
     }
 }
@@ -40,7 +40,7 @@
     width: 32px;
 
     &:hover {
-        background: var(--secondary-color);
+        background: var(--border-color);
     }
 }
 
@@ -58,7 +58,7 @@ input[type="checkbox"] {
     cursor: pointer;
 
     &:hover {
-        background-color: var(--secondary-color);
+        background-color: var(--border-color);
         border-radius: var(--border-radius);
     }
 }

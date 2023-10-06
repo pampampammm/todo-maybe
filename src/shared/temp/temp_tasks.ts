@@ -8,6 +8,7 @@ export const tempTasks: TaskEntity[] = [
         time: { startDate: 0, endDate: 150 },
         completed: false,
         id: 1,
+        tags: [{ id: 1, text: 'Low' }],
     },
     {
         title: 'Задача',

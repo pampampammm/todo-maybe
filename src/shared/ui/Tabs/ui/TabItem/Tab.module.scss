@@ -9,12 +9,12 @@
 
 
     &:hover {
-        background-color: var(--secondary-color);
+        background-color: var(--border-color);
     }
 }
 
 .active {
-    background: var(--inverted-secondary-color);
+    background: var(--inverted-border-color);
     font-weight: var(--font-weight-xl);
     color: var(--primary-color);
 }

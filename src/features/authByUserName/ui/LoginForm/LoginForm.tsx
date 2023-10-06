@@ -58,7 +58,7 @@ const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
                 <label htmlFor={passwordId}>Password:</label>
                 <Input
                     id={passwordId}
-                    type="text"
+                    type="password"
                     placeholder="Type password...."
                     value={password}
                     onChange={handlePasswordChange}
@@ -74,7 +74,6 @@ const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
                 </Button>
             </div>
         </DynamicStoreReducerWrapper>
-
     );
 });
 

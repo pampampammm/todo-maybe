@@ -7,6 +7,7 @@ import ThemeProvider from './app/Providers/ThemeProvider/ui/ThemeProvider';
 
 import App from './App';
 import './styles/index.scss';
+// eslint-disable-next-line import/order
 import { StoreProvider } from 'app/StoreProvider';
 
 const rootElement = document.getElementById('root');

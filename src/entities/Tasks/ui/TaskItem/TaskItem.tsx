@@ -36,7 +36,8 @@ const TaskItem = (props: TaskItemProps) => {
     };
 
     const handleClick = () => {
-        if (moreOptions) onClick(item);
+        setOptions((moreOptions) => !moreOptions);
+        onClick(item);
     };
 
     return (
@@ -50,10 +51,7 @@ const TaskItem = (props: TaskItemProps) => {
                         />
                         <p
                             onClick={handleClick}
-                            className={classNames(
-                                styles.title,
-                                { [styles.options]: moreOptions },
-                            )}
+                            className={classNames(styles.title, styles.options)}
                         >
                             {item.title}
                         </p>

@@ -12,7 +12,7 @@
     justify-content: center;
     width: 42px;
     padding: 3px;
-    background: var(--secondary-color);
+    background: var(--border-color);
     border: var(--border);
     border-radius: var(--border-radius);
     color: var(--primary-color);
@@ -37,11 +37,11 @@
 }
 
 .active {
-    background: var(--secondary-color);
+    background: var(--border-color);
     font-weight: var(--font-weight-xl);
 
     .notification {
-        background: var(--inverted-secondary-color);
+        background: var(--inverted-border-color);
     }
 }
 

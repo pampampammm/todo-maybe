@@ -39,7 +39,6 @@ const InputField = (props: InputProps) => {
         name,
         placeholder,
         autoFocus,
-        onChange,
         theme = InputTheme.BACKGROUND,
         inputSize = InputSize.L,
         disabled = false,
@@ -68,7 +67,6 @@ const InputField = (props: InputProps) => {
             type={type}
             placeholder={placeholder}
             disabled={disabled}
-            onChange={onChange}
             {...rest}
         />
     );

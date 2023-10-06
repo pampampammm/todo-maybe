@@ -1,3 +1,5 @@
+import { Tag } from 'shared/ui/TagsArray/types/Chip';
+
 export enum TaskProcess {
     TASK_COMPLETED = 'complete',
     TASK_PROCESSED = 'process',
@@ -19,7 +21,7 @@ export interface TaskEntity {
         startDate: number,
         endDate?: number,
     },
-    tags?: string[],
+    tags?: Tag[],
     type?: TaskProcess,
     subtasks?: SubTask[]
 }
