@@ -4,7 +4,6 @@ import { LoginSchema } from './model/type/types';
 
 export {
     LoginSchema,
-    loginReducer,
     loginActions,
     LoginModal,
 };

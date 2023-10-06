@@ -13,7 +13,7 @@ interface ItemProps extends StyledProps {
     item: {
         path: string;
         text: string;
-        // Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
+        Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
     }
 }
 
@@ -30,7 +30,7 @@ export const AppBarItem: FC<ItemProps> = ({ item, className, active }) => {
                 [className],
             )}
         >
-            {/* <item.Icon className={styles.icon}/> */}
+            {/* <item.Icon className={styles.icon} /> */}
             <span className={styles.text}>
                 {item.text}
             </span>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
-import LoginForm from 'features/authByUserName/ui/LoginForm/LoginForm';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 import styles from './LoginModal.module.scss';
 
@@ -17,7 +17,9 @@ const LoginModal = (props: ModalProps) => {
 
     return (
         <Modal className={styles.modalWindow} isOpen={isOpen}>
-            <LoginForm onSuccess={onSuccess} />
+            <Suspense>
+                <LoginFormAsync onSuccess={onSuccess} />
+            </Suspense>
         </Modal>
     );
 };

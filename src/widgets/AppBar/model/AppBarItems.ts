@@ -10,13 +10,14 @@ import DoubleArrowIcon from './DoubleArrowIcon.svg';
 export interface AppBarItemType {
     path: string;
     text: string;
-    // Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
+    Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
 export const MainAppBarItemsList: AppBarItemType[] = [
     {
         path: RoutePath.main,
         text: 'Tasks',
+        Icon: ListIcon,
     },
     {
         path: RoutePath.today,

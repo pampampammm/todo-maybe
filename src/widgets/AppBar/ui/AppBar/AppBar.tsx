@@ -1,23 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 
 import { ColoredLine } from 'shared/ui/ColoredLine/ColoredLine';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { ListAppBarItemsList, MainAppBarItemsList } from 'widgets/AppBar/model/AppBarItems';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'app/StoreProvider';
 import { selectAuthUserData, userActions } from 'entities/User';
 import { useSelector } from 'react-redux';
-import { LoginModal } from 'features/authByUserName';
+import { selectLoginLoading } from 'features/authByUserName/model/selectors/selectLoginState/selectLoginLoading';
 import { AppBarItem } from '../AppBarItem/AppBarItem';
 import { AppBarList } from '../AppBarList/AppBarList';
 
 import styles from './AppBar.module.scss';
 
-const AppBar = () => {
+const AppBar = memo(() => {
     const [modal, setModal] = useState(false);
 
     const dispath = useAppDispatch();
     const authData = useSelector(selectAuthUserData);
+    const isLoading = useSelector(selectLoginLoading);
 
     const mainBarItems = useMemo(() => (
         <AppBarList placeHolder="TASKS">
@@ -68,20 +68,10 @@ const AppBar = () => {
                     {listBarItems}
                     <ColoredLine />
                 </div>
-                <div className={styles.footer}>
-                    {!authData && (
-                        <Button theme={ButtonTheme.OUTLINE} onClick={() => setModal(true)}>
-                            Login
-                        </Button>
-                    )}
-                    <LoginModal
-                        isOpen={modal}
-                        onSuccess={onCloseModal}
-                    />
-                </div>
+                <div className={styles.footer} />
             </div>
         </div>
     );
-};
+});
 
 export default AppBar;

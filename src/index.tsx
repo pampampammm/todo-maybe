@@ -13,15 +13,13 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-    <React.StrictMode>
-        <StoreProvider>
-            <BrowserRouter>
-                <ErrorBoundary>
-                    <ThemeProvider>
-                        <App />
-                    </ThemeProvider>
-                </ErrorBoundary>
-            </BrowserRouter>
-        </StoreProvider>
-    </React.StrictMode>,
+    <StoreProvider>
+        <BrowserRouter>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </ErrorBoundary>
+        </BrowserRouter>
+    </StoreProvider>,
 );

@@ -12,7 +12,7 @@ import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask'
 import { useAppDispatch } from 'app/StoreProvider';
 import styles from './MainPage.module.scss';
 
-const MainPage = () => {
+const MainPage = memo(() => {
     const detailTask = useSelector(selectTask);
     const dispatch = useAppDispatch();
 
@@ -76,6 +76,6 @@ const MainPage = () => {
             </div>
         </Page>
     );
-};
+});
 
 export default MainPage;

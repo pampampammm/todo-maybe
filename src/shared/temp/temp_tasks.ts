@@ -54,4 +54,4 @@ export const shiftTasks: TaskEntity[] = [
     },
 ];
 
-export const tempPageLoading = 700;
+export const tempPageLoading = 100;
