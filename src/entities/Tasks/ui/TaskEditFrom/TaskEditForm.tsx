@@ -17,6 +17,8 @@ import { List, Tag } from 'shared/ui/TagsArray/types/Tag';
 import { selectTaskTags } from 'entities/Tasks/model/selector/selectTaskTags/selectTaskTags';
 import { selectTaskList } from 'entities/Tasks/model/selector/selectTaskList/selectTaskList';
 import { Dropdown } from 'shared/ui/Dropdown';
+import SubtaskItem from 'entities/Tasks/ui/TaskEditFrom/SubtaskItem/SubtaskItem';
+import { AddTaskInputField } from 'features/addTaskInputField';
 import styles from './TaskEditFrom.module.scss';
 
 interface DetailsProps extends StyledProps {
@@ -115,19 +117,14 @@ const TaskEditForm = (props: DetailsProps) => {
                         </label>
 
                     </div>
-                    <label className={styles.subtasks}>
+                    <div className={styles.subtasks}>
                         <h1>Subtask: </h1>
-                        <TaskList inputTheme={InputTheme.CLEAR} className={styles.list}>
-                            <TaskItem
-                                item={tempTasks[2]}
-                                optionsButton={false}
-                            />
-                            <TaskItem
-                                item={tempTasks[1]}
-                                optionsButton={false}
-                            />
+                        <TaskList inputTheme={InputTheme.OUTLINE} className={styles.list}>
+                            {item.subtasks && item.subtasks.map((subTask) => (
+                                <SubtaskItem item={subTask} />
+                            ))}
                         </TaskList>
-                    </label>
+                    </div>
                     <div className={styles.editButtons}>
                         <Button
                             className={styles.applyBtn}

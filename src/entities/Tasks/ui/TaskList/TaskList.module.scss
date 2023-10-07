@@ -10,16 +10,11 @@
 .list {
     margin-top: 14px;
     margin-left: 14px;
-
-    //overflow-y: scroll;
-    scroll-behavior: smooth;
     gap: 14px;
     height: 200px;
 }
 
 .input {
-    width: 100%;
-
     &:focus {
         background-color: var(--inverted-primary-bg-color);
     }

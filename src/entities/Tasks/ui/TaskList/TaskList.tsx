@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 
 import classNames from 'classnames';
+import { AddTaskInputField } from 'features/addTaskInputField';
 import styles from './TaskList.module.scss';
 
 interface ListProps {
@@ -19,7 +20,6 @@ const TaskList = (props: ListProps) => {
         className,
         border = false,
         children,
-        inputTheme,
     } = props;
 
     useEffect(() => {
@@ -28,6 +28,14 @@ const TaskList = (props: ListProps) => {
 
     const mods: Record<string, boolean> = {
         [styles.border]: border,
+    };
+
+    const handleTaskCreate = () => {
+
+    };
+
+    const handleInputChange = () => {
+
     };
 
     return (
@@ -39,10 +47,9 @@ const TaskList = (props: ListProps) => {
             )}
 
             <div className={styles.body}>
-                <Input
-                    placeholder="Add New Task..."
+                <AddTaskInputField
+                    onTaskAdd={handleTaskCreate}
                     className={styles.input}
-                    theme={inputTheme && inputTheme}
                 />
                 <ul className={styles.list}>
                     {children}

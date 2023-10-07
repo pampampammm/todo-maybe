@@ -1,11 +1,17 @@
-.page {
-
+.section {
 }
 
-.taskList {
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
     height: 100%;
 }
 
-.item {
-    margin-bottom: 14px;
+.details {
+    flex-grow: 1;
+}
+
+.taskList {
+    flex-grow: 3;
 }

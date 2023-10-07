@@ -36,7 +36,7 @@ const TaskItem = (props: TaskItemProps) => {
     };
 
     const handleClick = () => {
-        setOptions((moreOptions) => !moreOptions);
+        // setOptions((moreOptions) => !moreOptions);
         onClick(item);
     };
 

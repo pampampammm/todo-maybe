@@ -1,8 +1,8 @@
 .section {
     background: var(--inverted-primary-bg-color);
     border-radius: var(--border-radius);
-    padding: 28px;
-    width: 600px;
+    padding: 14px 28px;
+    min-width: 400px;
 }
 
 .header {
@@ -38,6 +38,14 @@
     gap: 7px;
     margin-bottom: 82px;
 }
+
+.subtasks {
+    background: var(--primary-bg-color);
+    padding: var(--padding-secondary);
+    border-radius: var(--border-radius);
+    margin-bottom: 14px;
+}
+
 
 .editButtons {
     display: flex;

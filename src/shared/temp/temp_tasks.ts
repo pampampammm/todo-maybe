@@ -2,8 +2,11 @@ import { TaskEntity } from 'entities/Tasks/model/type/Task';
 
 export const tempPageLoading = 100;
 
-export const tempLists = [{ id: 1, value: 'list 1' }, { id: 1, value: 'list 3' },
-    { id: 1, value: 'list 2' }, { id: 1, value: 'list 4' }];
+export const tempLists = [
+    { id: 1, value: 'list 1' },
+    { id: 1, value: 'list 3' },
+    { id: 1, value: 'list 2' },
+    { id: 1, value: 'list 4' }];
 
 export const tempTasks: TaskEntity[] = [
     {
@@ -15,7 +18,9 @@ export const tempTasks: TaskEntity[] = [
         id: 1,
         tags: [],
         list: tempLists[1],
-        subtasks: [],
+        subtasks: [{ id: 14, title: 'First Subtask', complete: true },
+            { id: 14, title: 'Second Subtask', complete: true },
+            { id: 14, title: 'Third Subtask', complete: false }],
     },
     {
         title: 'Задача',

@@ -32,18 +32,6 @@
     justify-content: space-between;
 }
 
-.moreDescToggleButton {
-    border: none;
-    background: none;
-    border-radius: var(--border-radius);
-    padding: var(--padding-primary);
-    width: 32px;
-
-    &:hover {
-        background: var(--border-color);
-    }
-}
-
 input[type="checkbox"] {
     width: 14px;
     height: 14px;
@@ -54,22 +42,8 @@ input[type="checkbox"] {
     padding: 7px;
 }
 
-.options {
-    cursor: pointer;
-
-    &:hover {
-        background-color: var(--border-color);
-        border-radius: var(--border-radius);
-    }
-}
-
-
 .checkbox {
     background: none;
 }
 
-
-.more {
-    margin: 14px 0 0 21px;
-}
 
