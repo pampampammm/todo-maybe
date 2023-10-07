@@ -1,5 +1,10 @@
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 
+export const tempPageLoading = 100;
+
+export const tempLists = [{ id: 1, value: 'list 1' }, { id: 1, value: 'list 3' },
+    { id: 1, value: 'list 2' }, { id: 1, value: 'list 4' }];
+
 export const tempTasks: TaskEntity[] = [
     {
         title: 'Какая-то задача',
@@ -8,7 +13,9 @@ export const tempTasks: TaskEntity[] = [
         time: { startDate: 0, endDate: 150 },
         completed: false,
         id: 1,
-        tags: [{ id: 1, text: 'Low' }],
+        tags: [],
+        list: tempLists[1],
+        subtasks: [],
     },
     {
         title: 'Задача',
@@ -17,6 +24,8 @@ export const tempTasks: TaskEntity[] = [
         time: { startDate: 220, endDate: 320 },
         completed: false,
         id: 1,
+        tags: [],
+        subtasks: [],
     },
     {
         title: 'Дело',
@@ -25,6 +34,8 @@ export const tempTasks: TaskEntity[] = [
         time: { startDate: 400, endDate: 680 },
         completed: false,
         id: 1,
+        tags: [],
+        subtasks: [],
     },
     {
         title: 'Кто такой?',
@@ -33,6 +44,8 @@ export const tempTasks: TaskEntity[] = [
         time: { startDate: 820, endDate: 1300 },
         completed: false,
         id: 1,
+        tags: [],
+        subtasks: [],
     },
 ];
 
@@ -54,5 +67,3 @@ export const shiftTasks: TaskEntity[] = [
         id: 1,
     },
 ];
-
-export const tempPageLoading = 100;

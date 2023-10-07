@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Chip } from '../../types/Chip';
+import { Tag } from '../../types/Tag';
 
 import styles from './Chip.module.scss';
 
@@ -11,8 +11,8 @@ export enum ChipButtonType {
 }
 
 interface ChipProps {
-    item: Chip,
-    onChange?: (items: Chip) => void,
+    item: Tag,
+    onChange?: (items: Tag) => void,
     className?: string,
     haveButton?: boolean
 }
@@ -24,7 +24,7 @@ const ChipComponent = (props: ChipProps) => {
         className,
         haveButton,
     } = props;
-    const { color, id, text } = item;
+    const { id, value } = item;
 
     const handleButtonClick = () => {
 
@@ -33,9 +33,8 @@ const ChipComponent = (props: ChipProps) => {
     return (
         <div
             className={styles.item}
-            style={{ backgroundColor: color }}
         >
-            {text}
+            {value}
             {haveButton
                 && (
                     <Button

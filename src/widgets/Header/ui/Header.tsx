@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 
-import styles from 'widgets/AppBar/ui/AppBar/AppBar.module.scss';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';
 import { useTheme } from 'app/Providers/ThemeProvider';
@@ -8,6 +7,8 @@ import { selectAuthUserData, userActions } from 'entities/User';
 import { selectLoginLoading } from 'features/authByUserName/model/selectors/selectLoginState/selectLoginLoading';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/authByUserName';
+
+import styles from './Header.module.scss';
 
 const TheHeader = () => {
     const { theme, toggleTheme } = useTheme();
@@ -30,7 +31,7 @@ const TheHeader = () => {
     };
 
     return (
-        <header className="header">
+        <header className={styles.header}>
             {authData ? (
                 <Button
                     theme={ButtonTheme.OUTLINE_INVERTED}

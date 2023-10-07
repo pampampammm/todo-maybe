@@ -1,7 +1,7 @@
 import ChipsArray from './ui/ChipsArray/ChipsArray';
-import { Chip } from './types/Chip';
+import { Tag } from './types/Tag';
 
 export {
     ChipsArray,
-    Chip,
+    Tag,
 };

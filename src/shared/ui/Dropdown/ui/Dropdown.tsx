@@ -1,19 +1,47 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Button } from 'shared/ui/Button/Button';
 import useOutsideClick from 'shared/lib/hooks/useOutsideClick';
-import { IList } from '../types/types';
+import { List } from 'shared/ui/TagsArray/types/Tag';
 
-import styles from './Dropdown.module.css';
+import classNames from 'classnames';
+import styles from './Dropdown.module.scss';
 
-export interface IPropsDropdownList {
-    items: IList,
-    className?: string
+export enum DropDownTheme {
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    OUTLINE_INVERTED = 'outlineInverted',
+    BACKGROUND = 'background',
 }
 
-const Dropdown = ({ items, className }: IPropsDropdownList) => {
+export enum DropdownSize {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl',
+}
+
+export interface IPropsDropdownList {
+    label: string
+    items: List[],
+    className?: string
+        onChange?: (value: List) => void
+}
+
+const Dropdown = (props: IPropsDropdownList) => {
+    const {
+        label,
+        className,
+        items,
+        onChange,
+    } = props;
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
+
+    function onClose() {
+        setIsOpen((prevState) => !prevState);
+    }
 
     useOutsideClick({
         elementRef: buttonRef,
@@ -22,36 +50,31 @@ const Dropdown = ({ items, className }: IPropsDropdownList) => {
         enabled: isOpen,
     });
 
-    function onClose() {
-        console.log('outside click');
-        setIsOpen((prevState) => !prevState);
-    }
-
     const onClickHandler = () => {
         setIsOpen((prevState) => !prevState);
     };
 
-    const onItemClick = () => {
-        console.log('dropdown item selected');
+    const onItemClick = (value: List) => {
+        onChange(value);
     };
 
     return (
         <Button
-            className={styles.dropdown}
+            className={classNames(styles.dropdown, [className])}
             ref={buttonRef}
             onClick={() => onClickHandler()}
         >
-            {items.title}
+            {label}
             {isOpen
                 && (
                     <ul className={styles.list}>
-                        {items.list.map((item) => (
+                        {items?.map((item) => (
                             <li
                                 key={item.id}
                                 className={styles.listItem}
-                                onClick={onItemClick}
+                                onClick={() => onItemClick(item)}
                             >
-                                {item.label}
+                                {item.value}
                             </li>
                         ))}
                     </ul>
