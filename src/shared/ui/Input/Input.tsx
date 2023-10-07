@@ -1,8 +1,6 @@
 import React, {
-    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef,
+    InputHTMLAttributes, memo, useEffect, useRef,
 } from 'react';
-
-import { ButtonSize } from 'shared/ui/Button/Button';
 
 import classNames from 'classnames';
 import styles from './Input.module.scss';
@@ -40,7 +38,7 @@ const InputField = (props: InputProps) => {
         placeholder,
         autoFocus,
         theme = InputTheme.BACKGROUND,
-        inputSize = InputSize.L,
+        inputSize = InputSize.XL,
         disabled = false,
         ...rest
     } = props;
@@ -67,6 +65,7 @@ const InputField = (props: InputProps) => {
             type={type}
             placeholder={placeholder}
             disabled={disabled}
+            ref={ref}
             {...rest}
         />
     );

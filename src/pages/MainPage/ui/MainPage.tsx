@@ -5,11 +5,11 @@ import { shiftTasks, tempTasks } from 'shared/temp/temp_tasks';
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
 import { TaskEditForm, TaskList, tasksActions } from 'entities/Tasks';
-
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask';
 import { useAppDispatch } from 'app/StoreProvider';
+
+import classNames from 'classnames';
 import styles from './MainPage.module.scss';
 
 const MainPage = memo(() => {

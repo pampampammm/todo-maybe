@@ -1,10 +1,10 @@
 import React, { memo, useMemo, useState } from 'react';
 
 import { ColoredLine } from 'shared/ui/ColoredLine/ColoredLine';
-import Input, { InputTheme } from 'shared/ui/Input/Input';
+import Input, { InputSize, InputTheme } from 'shared/ui/Input/Input';
 import { ListAppBarItemsList, MainAppBarItemsList } from 'widgets/AppBar/model/AppBarItems';
 import { useAppDispatch } from 'app/StoreProvider';
-import { selectAuthUserData, userActions } from 'entities/User';
+import { selectAuthUserData } from 'entities/User';
 import { useSelector } from 'react-redux';
 import { selectLoginLoading } from 'features/authByUserName/model/selectors/selectLoginState/selectLoginLoading';
 import { AppBarItem } from '../AppBarItem/AppBarItem';
@@ -42,14 +42,6 @@ const AppBar = memo(() => {
             ))}
         </AppBarList>
     ), []);
-
-    const handleLogoutClick = () => {
-        if (authData) dispath(userActions.logout());
-    };
-
-    const onCloseModal = () => {
-        setModal(false);
-    };
 
     return (
         <div className={styles.wrapper}>

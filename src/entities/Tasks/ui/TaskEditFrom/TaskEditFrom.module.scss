@@ -1,9 +1,8 @@
 .section {
     background: var(--inverted-primary-bg-color);
     border-radius: var(--border-radius);
-    padding: var(--padding-secondary);
-
-    width: 400px;
+    padding: 28px;
+    width: 600px;
 }
 
 .header {
@@ -25,29 +24,43 @@
 }
 
 .titleInput {
-    height: 36px;
+    line-height: 21px;
 }
 
-.descriptionInput {
-    height: 72px;
+.descriptionInput{
+    line-height: 72px;
+    align-content: flex-start;
 }
 
-.list {
+.chipsRow {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 82px;
 }
 
-.subtasks {
+.editButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 14px;
 
+    .applyBtn {
+        background-color: #ffbd71;
+        flex-grow: 1;
+    }
+
+    .revertButton {
+        background-color: var(--inverted-primary-color);
+        flex-grow: 1;
+    }
 }
 
-.other {
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    grid-row-gap: 7px;
+
+.label {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    margin-left: 7px;
-    margin-bottom: 48px;
+    gap: 14px;
 }
 
-.tags {
-
-}

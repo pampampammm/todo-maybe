@@ -1,22 +1,25 @@
 import React, { ChangeEvent, useMemo, useState } from 'react';
 
-import { Chip } from 'shared/ui/TagsArray/types/Chip';
+import { Tag, List } from 'shared/ui/TagsArray/types/Tag';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import classNames from 'classnames';
 
 import styles from './ChipArray.module.scss';
 
-interface ArrayProps {
-    tags: Chip[]
-    onChange?: (items: Chip) => void
-    className?: string
+interface ChipsProps {
+    items: Tag[]
+    onChange?: (items: Tag) => void
+    className?: string,
+    id?: string
 }
 
-const ChipsArray = (props: ArrayProps) => {
+const ChipsArray = (props: ChipsProps) => {
     const {
         onChange,
-        className, tags,
+        className,
+        items,
+        id,
     } = props;
 
     const [createTagMode, setCreateTagMode] = useState<boolean>(false);
@@ -34,9 +37,9 @@ const ChipsArray = (props: ArrayProps) => {
         if (newTagValue === '') {
             setCreateTagMode(false);
         } else {
-            const newTag: Chip = {
-                id: tags.length + 1,
-                text: newTagValue,
+            const newTag: Tag = {
+                id: items.length + 1,
+                value: newTagValue,
             };
 
             setTagValue('');
@@ -46,48 +49,59 @@ const ChipsArray = (props: ArrayProps) => {
         }
     };
 
-    const renderItems = useMemo(() => tags.map((value, index) => (
+    const renderItems = useMemo(() => items.map((value, index) => (
         <li
             className={styles.item}
             key={value.id}
         >
-            {value.text}
-            {(index === tags.length - 1 && !createTagMode)
-                && (
-                    <Button
-                        type="button"
-                        theme={ButtonTheme.CLEAR}
-                        onClick={handleCreateNewChip}
-                    >
-                        +
-                    </Button>
-                )}
-
+            {value.value}
         </li>
-    )), [tags, createTagMode]);
+    )), [items, createTagMode]);
+
+    if ((items.length === 0)) {
+        return (
+            <div className={styles.item}>
+                <Input
+                    id={id}
+                    theme={InputTheme.CLEAR}
+                    className={styles.tagInput}
+                    value={newTagValue}
+                    onChange={handleValueChange}
+                    placeholder="Add item..."
+                />
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={styles.submitAddBtn}
+                    onClick={onTagsChangeSubmit}
+                >
+                    +
+                </Button>
+            </div>
+        );
+    }
 
     return (
-        <ul className={classNames(styles.tagsRow, [className])}>
+        <div className={classNames(styles.tagsRow, [className])}>
             {renderItems}
-            {createTagMode && (
-                <li className={styles.item}>
-                    <Input
-                        theme={InputTheme.CLEAR}
-                        className={styles.tagInput}
-                        value={newTagValue}
-                        onChange={handleValueChange}
-                    />
-                    <Button
-                        theme={ButtonTheme.CLEAR}
-                        className={styles.submitAddBtn}
-                        onClick={onTagsChangeSubmit}
-                    >
-                        +
-                    </Button>
-                </li>
-            )}
+            <div className={styles.item}>
+                <Input
+                    id={id}
+                    theme={InputTheme.CLEAR}
+                    className={styles.tagInput}
+                    value={newTagValue}
+                    onChange={handleValueChange}
+                    placeholder="Add item..."
+                />
+                <Button
+                    theme={ButtonTheme.CLEAR}
+                    className={styles.submitAddBtn}
+                    onClick={onTagsChangeSubmit}
+                >
+                    +
+                </Button>
+            </div>
 
-        </ul>
+        </div>
     );
 };
 
