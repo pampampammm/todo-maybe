@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { List, Tag } from 'shared/ui/TagsArray/types/Tag';
+import { fetchTask } from 'entities/Tasks/model/services/fetchTask';
 import { SubTask, TaskEntity, TaskSchema } from '../type/Task';
 
 const initialState: TaskSchema = {
     task: undefined,
+    isLoading: true,
+    error: false,
 };
 
-export const tasksSlice = createSlice({
+export const taskFormSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
@@ -35,7 +38,18 @@ export const tasksSlice = createSlice({
             state.task = undefined;
         },
     },
+    extraReducers: (builder) => builder
+        .addCase(fetchTask.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchTask.rejected, (state) => {
+            state.isLoading = false;
+            state.error = true;
+        })
+        .addCase(fetchTask.fulfilled, (state) => {
+            state.isLoading = false;
+        }),
 });
 
-export const { actions: tasksActions } = tasksSlice;
-export const { reducer: tasksReducer } = tasksSlice;
+export const { actions: tasksActions } = taskFormSlice;
+export const { reducer: tasksReducer } = taskFormSlice;

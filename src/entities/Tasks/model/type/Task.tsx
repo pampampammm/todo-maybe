@@ -9,7 +9,7 @@ export enum TaskProcess {
 export interface SubTask {
     id: number
     title: string,
-    complete: boolean
+    complete?: boolean
 }
 
 export interface TaskEntity {
@@ -29,4 +29,6 @@ export interface TaskEntity {
 
 export interface TaskSchema {
     task: TaskEntity
+    isLoading: boolean,
+    error?:boolean
 }

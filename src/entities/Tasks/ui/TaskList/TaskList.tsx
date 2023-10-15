@@ -11,7 +11,7 @@ interface ListProps {
     className?: string
     border?: boolean
     children: React.ReactNode | React.ReactElement
-    inputTheme?: InputTheme
+    isLoading?: boolean
 }
 
 const TaskList = (props: ListProps) => {
@@ -20,11 +20,8 @@ const TaskList = (props: ListProps) => {
         className,
         border = false,
         children,
+        isLoading,
     } = props;
-
-    useEffect(() => {
-
-    }, []);
 
     const mods: Record<string, boolean> = {
         [styles.border]: border,
@@ -34,9 +31,26 @@ const TaskList = (props: ListProps) => {
 
     };
 
-    const handleInputChange = () => {
-
-    };
+    if (isLoading) {
+        return (
+            <div className={classNames(styles.wrapper, mods, [className])}>
+                {text && (
+                    <h2 className={styles.listHeader}>
+                        {text}
+                    </h2>
+                )}
+                <div className={styles.body}>
+                    <AddTaskInputField
+                        onTaskAdd={handleTaskCreate}
+                        className={styles.input}
+                    />
+                    <ul className={styles.list}>
+                        {children}
+                    </ul>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(styles.wrapper, mods, [className])}>

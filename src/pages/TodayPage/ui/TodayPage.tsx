@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 
-import { Page, PageHeader } from 'widgets/Page';
+import { Page } from 'widgets/Page';
 
 import { InputTheme } from 'shared/ui/Input/Input';
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
@@ -37,16 +37,15 @@ const TodayPage = () => {
     return (
         <Page className={styles.section} headerText="Today">
             <div className={styles.content}>
-                <TaskList className={styles.taskList} inputTheme={InputTheme.OUTLINE}>
+                <TaskList className={styles.taskList}>
                     {renderItems()}
                 </TaskList>
-                {detailTask
-                    && (
-                        <TaskEditForm
-                            item={detailTask}
-                            onClose={handleClose}
-                        />
-                    )}
+                {/* {detailTask */}
+                {/*    && ( */}
+                {/*        <TaskEditForm item={} */}
+                {/*            onClose={handleClose} */}
+                {/*        /> */}
+                {/*    )} */}
             </div>
         </Page>
     );

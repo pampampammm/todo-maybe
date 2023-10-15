@@ -1,12 +1,6 @@
 import React from 'react';
 import { RoutePath } from 'shared/config/routeConfig';
 
-import ListIcon from 'shared/assets/icons/ListIcon.svg';
-import StickerIcon from 'src/shared/assets/icons/StickerIcon.svg';
-import AddIcon from './AddButton.svg';
-import CalendarIcon from './CalendarIcon.svg';
-import DoubleArrowIcon from './DoubleArrowIcon.svg';
-
 export interface AppBarItemType {
     path: string;
     text: string;
@@ -17,7 +11,6 @@ export const MainAppBarItemsList: AppBarItemType[] = [
     {
         path: RoutePath.main,
         text: 'Tasks',
-        Icon: ListIcon,
     },
     {
         path: RoutePath.today,

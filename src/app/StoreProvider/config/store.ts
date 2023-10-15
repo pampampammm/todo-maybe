@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { StateSchema } from 'app/StoreProvider/config/StateSchema';
 import { userReducers } from 'entities/User';
 import { tasksReducer } from 'entities/Tasks';
+import { $api } from 'shared/api/api';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore() {
@@ -15,9 +16,16 @@ export function createReduxStore() {
 
     const reducerManager = createReducerManager(rootReducer);
 
-    const store = configureStore<StateSchema>({
+    const store = configureStore({
         reducer: reducerManager.reduce,
         devTools: true,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: $api,
+                },
+            },
+        }),
     });
 
     // @ts-ignore

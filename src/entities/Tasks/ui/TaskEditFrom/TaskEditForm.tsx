@@ -3,9 +3,7 @@ import React, { useEffect, useId } from 'react';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { StyledProps } from 'shared/types/types';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
-import { TaskEntity } from 'entities/Tasks/model/type/Task';
-import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
-import { tempLists, tempTasks } from 'shared/temp/temp_tasks';
+import { tempLists } from 'shared/temp/temp_tasks';
 import { TaskList, tasksActions, tasksReducer } from 'entities/Tasks';
 
 import classNames from 'classnames';
@@ -18,32 +16,49 @@ import { selectTaskTags } from 'entities/Tasks/model/selector/selectTaskTags/sel
 import { selectTaskList } from 'entities/Tasks/model/selector/selectTaskList/selectTaskList';
 import { Dropdown } from 'shared/ui/Dropdown';
 import SubtaskItem from 'entities/Tasks/ui/TaskEditFrom/SubtaskItem/SubtaskItem';
-import { AddTaskInputField } from 'features/addTaskInputField';
+import { fetchTask } from 'entities/Tasks/model/services/fetchTask';
+import { selectTaskLoading } from 'entities/Tasks/model/selector/selectTaskLoading/selectTaskLoading';
+import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask';
+import { selectTaskDescription } from 'entities/Tasks/model/selector/selectTaskDescription/selectTaskDescription';
+import { selectTaskError } from '../../model/selector/selectTaskeError/selectTaskError';
 import styles from './TaskEditFrom.module.scss';
 
 interface DetailsProps extends StyledProps {
     onClose?: () => void,
-    item: TaskEntity
+    id?: number
 }
 
 const TaskEditForm = (props: DetailsProps) => {
     const {
         className,
         onClose,
-        item,
+        id,
     } = props;
 
     const listId = useId();
     const dateId = useId();
 
+    const item = useSelector(selectTask);
+    const description = useSelector(selectTaskDescription);
     const list = useSelector(selectTaskList);
-    const dispatch = useAppDispatch();
     const tags = useSelector(selectTaskTags);
+    const isLoading = useSelector(selectTaskLoading);
+    const isError = useSelector(selectTaskError);
 
-    useEffect(() => () => {
-        // dispatch(tasksActions.)
-    }, []);
+    const dispatch = useAppDispatch();
 
+    // @ts-ignore
+    useEffect(() => {
+        dispatch(fetchTask({ id }));
+    }, [dispatch, id]);
+
+    if (isLoading) {
+        return (
+            <div className={styles.section}>
+                <p>Loading</p>
+            </div>
+        );
+    }
     const handleClose = () => {
         onClose();
     };
@@ -63,6 +78,14 @@ const TaskEditForm = (props: DetailsProps) => {
     const handleListChange = (item: List) => {
         dispatch(tasksActions.setTaskList(item));
     };
+
+    if (isError) {
+        return (
+            <div className={styles.section}>
+                <p>Error</p>
+            </div>
+        );
+    }
 
     // eslint-disable-next-line consistent-return
     return (
@@ -91,7 +114,7 @@ const TaskEditForm = (props: DetailsProps) => {
                             type="text"
                             className={styles.descriptionInput}
                             theme={InputTheme.OUTLINE}
-                            placeholder={item.description}
+                            placeholder={description}
                             onChange={handleDescriptionChange}
                         />
                     </div>
@@ -119,9 +142,12 @@ const TaskEditForm = (props: DetailsProps) => {
                     </div>
                     <div className={styles.subtasks}>
                         <h1>Subtask: </h1>
-                        <TaskList inputTheme={InputTheme.OUTLINE} className={styles.list}>
+                        <TaskList className={styles.list}>
                             {item.subtasks && item.subtasks.map((subTask) => (
-                                <SubtaskItem item={subTask} />
+                                <SubtaskItem
+                                    key={subTask.id}
+                                    item={subTask}
+                                />
                             ))}
                         </TaskList>
                     </div>

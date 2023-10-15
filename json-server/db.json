@@ -10,5 +10,134 @@
       "username": "suckanigadick",
       "password": "balls"
     }
-  ]
+  ],
+  "tasks": [{
+    "id": 123173,
+    "title": "Data base Task - 1",
+    "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
+    "time": {
+      "startDate": 400,
+      "endDate": 600
+    },
+    "tags": [{
+      "id": 13515152125152,
+      "value": "DataBase 1"
+    }, {
+      "id": 13515152125152,
+      "value": "DataBase 2"
+    }],
+    "list": {
+      "id": 658,
+      "value": "list 1"
+    },
+    "subtasks": [
+      {
+        "id": 1241244251124124,
+        "title": "subtask 1"
+      },
+      {
+        "id": 1241244234534524124,
+        "title": "subtask 2"
+      },{
+        "id": 1243523251124124,
+        "title": "subtask 3"
+      }
+    ]
+  },{
+    "id": 12393,
+    "title": "Data base Task - 1",
+    "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
+    "time": {
+      "startDate": 400,
+      "endDate": 600
+    },
+    "tags": [{
+      "id": 13515152125152,
+      "value": "DataBase 1"
+    }, {
+      "id": 13515152125152,
+      "value": "DataBase 2"
+    }],
+    "list": {
+      "id": 658,
+      "value": "list 1"
+    },
+    "subtasks": [
+      {
+        "id": 1241244251124124,
+        "title": "subtask 1"
+      },
+      {
+        "id": 1241244234534524124,
+        "title": "subtask 2"
+      },{
+        "id": 1243523251124124,
+        "title": "subtask 3"
+      }
+    ]
+  },{
+    "id": 12346123,
+    "title": "Data base Task - 1",
+    "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
+    "time": {
+      "startDate": 400,
+      "endDate": 600
+    },
+    "tags": [{
+      "id": 13515152125152,
+      "value": "DataBase 1"
+    }, {
+      "id": 13515152125152,
+      "value": "DataBase 2"
+    }],
+    "list": {
+      "id": 658,
+      "value": "list 1"
+    },
+    "subtasks": [
+      {
+        "id": 1241244251124124,
+        "title": "subtask 1"
+      },
+      {
+        "id": 1241244234534524124,
+        "title": "subtask 2"
+      },{
+        "id": 1243523251124124,
+        "title": "subtask 3"
+      }
+    ]
+  },{
+    "id": 12123,
+    "title": "Data base Task - 1",
+    "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
+    "time": {
+      "startDate": 400,
+      "endDate": 600
+    },
+    "tags": [{
+      "id": 13515152125152,
+      "value": "DataBase 1"
+    }, {
+      "id": 13515152125152,
+      "value": "DataBase 2"
+    }],
+    "list": {
+      "id": 658,
+      "value": "list 1"
+    },
+    "subtasks": [
+      {
+        "id": 1241244251124124,
+        "title": "subtask 1"
+      },
+      {
+        "id": 1241244234534524124,
+        "title": "subtask 2"
+      },{
+        "id": 1243523251124124,
+        "title": "subtask 3"
+      }
+    ]
+  }]
 }

@@ -1,5 +1,5 @@
 import TaskList from './ui/TaskList/TaskList';
-import { tasksActions, tasksReducer } from './model/slice/tasksSlice';
+import { tasksActions, tasksReducer } from './model/slice/taskFormSlice';
 import { TaskSchema, TaskEntity } from './model/type/Task';
 import TaskEditForm from './ui/TaskEditFrom/TaskEditForm';
 

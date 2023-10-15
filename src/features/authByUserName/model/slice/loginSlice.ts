@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginByUsername } from 'features/authByUserName/model/services/loginByUsername';
+import { fetchTask } from 'entities/Tasks/model/services/fetchTask';
 import { LoginSchema } from '../type/types';
 
 const initialState: LoginSchema = {
@@ -24,7 +25,7 @@ export const loginSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(loginByUsername.pending, (state) => {
+            .addCase(fetchTask.pending, (state) => {
                 state.error = undefined;
                 state.isLoading = true;
             })

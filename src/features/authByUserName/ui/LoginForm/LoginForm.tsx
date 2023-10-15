@@ -21,10 +21,11 @@ export interface LoginFormProps {
 }
 
 const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
+    const dispatch = useAppDispatch();
+
     const username = useSelector(selectLoginUsername);
     const password = useSelector(selectLoginPassword);
     const isLoading = useSelector(selectLoginLoading);
-    const dispatch = useAppDispatch();
 
     const userId = useId();
     const passwordId = useId();
@@ -37,9 +38,9 @@ const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
         dispatch(loginActions.setPassword(e.target.value));
     }, [dispatch]);
 
-    const handleFormLoginSubmit = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-        onSuccess();
+    const handleFormLoginSubmit = useCallback(async () => {
+        const loginResult = await dispatch(loginByUsername({ username, password }));
+        if (loginResult.meta.requestStatus === 'fulfilled') { onSuccess(); }
     }, [dispatch, password, username]);
 
     return (

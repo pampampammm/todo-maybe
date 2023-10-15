@@ -36,8 +36,10 @@ const AddTaskInputField = (props: FiledProps) => {
     }, [dispatch]);
 
     const onAddHandler = useCallback(() => {
-        onTaskAdd(text || '');
-        onTextChange('');
+        if (onTaskAdd) {
+            onTaskAdd(text || '');
+            onTextChange('');
+        }
     }, [onTextChange, onTaskAdd, text]);
 
     return (
