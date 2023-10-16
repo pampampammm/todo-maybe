@@ -1,12 +1,13 @@
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
+import { List } from 'shared/ui/TagsArray/types/Tag';
 
 export const tempPageLoading = 100;
 
-export const tempLists = [
-    { id: 1, value: 'list 1' },
-    { id: 1, value: 'list 3' },
-    { id: 1, value: 'list 2' },
-    { id: 1, value: 'list 4' }];
+export const tempLists: List[] = [
+    { id: 1, value: 'list 1', color: 'tomato' },
+    { id: 1, value: 'list 3', color: 'blue' },
+    { id: 1, value: 'list 2', color: 'red' },
+    { id: 1, value: 'list 4', color: 'yellow' }];
 
 export const tempTasks: TaskEntity[] = [
     {

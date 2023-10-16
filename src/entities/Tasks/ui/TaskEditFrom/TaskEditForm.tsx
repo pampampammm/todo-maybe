@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useId } from 'react';
+import React, {
+    memo, useCallback, useEffect, useId,
+} from 'react';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';
 
@@ -6,7 +8,7 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { StyledProps } from 'shared/types/types';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { tempLists } from 'shared/temp/temp_tasks';
-import { TaskList, taskFormActions, taskFormReducer } from 'entities/Tasks';
+import { TaskList, taskFormReducer, taskFormActions } from 'entities/Tasks';
 import DynamicStoreReducerWrapper from 'shared/components/StoreReducerWrapper/StoreReducerWrapper';
 import { ChipsArray } from 'shared/ui/TagsArray';
 
@@ -14,8 +16,10 @@ import { List, Tag } from 'shared/ui/TagsArray/types/Tag';
 import { Dropdown } from 'shared/ui/Dropdown';
 import classNames from 'classnames';
 
+import { getTaskForm } from 'entities/Tasks/model/selector/getTaskForm/getTaskForm';
+import { updateTaskData } from 'entities/Tasks/model/services/udpateTaskData';
+import { getTaskData } from '../../model/selector/getTaskData/getTaskData';
 import { getTaskLoading } from '../../model/selector/getTaskLoading/getTaskLoading';
-import { getTask } from '../../model/selector/getTask/getTask';
 import { getTaskDescription } from '../../model/selector/getTaskDescription/getTaskDescription';
 import { getTaskError } from '../../model/selector/getTaskError/getTaskError';
 import { fetchTaskData } from '../../model/services/fetchTaskData';
@@ -29,7 +33,7 @@ interface DetailsProps extends StyledProps {
     id?: number
 }
 
-const TaskEditForm = (props: DetailsProps) => {
+const TaskEditForm = memo((props: DetailsProps) => {
     const {
         className,
         onClose,
@@ -39,7 +43,8 @@ const TaskEditForm = (props: DetailsProps) => {
     const listId = useId();
     const dateId = useId();
 
-    const task = useSelector(getTask);
+    const form = useSelector(getTaskForm);
+    const data = useSelector(getTaskData);
     const description = useSelector(getTaskDescription);
     const list = useSelector(getTaskList);
     const tags = useSelector(getTaskTags);
@@ -69,31 +74,32 @@ const TaskEditForm = (props: DetailsProps) => {
     const handleClose = () => {
         if (onClose) onClose();
     };
-    const handleTitleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        // const newTitle = e.target.value;
-        // // @ts-ignore
-        // dispatch(taskFormActions.updateTask({ title: newTitle || '' }));
-    }, [dispatch]);
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newTitle = e.target.value;
+        dispatch(taskFormActions.updateTask({ title: newTitle }));
+    };
 
-    const handleDescriptionChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        // const newDescription = e.target.value;
-        // // @ts-ignore
-        // dispatch(taskFormActions.updateTask({ description: newDescription }));
-    }, [dispatch]);
+    const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newDescription = e.target.value;
+        dispatch(taskFormActions.updateTask({ description: newDescription }));
+    };
 
-    const handleTagsChange = useCallback((tag: Tag) => {
-        // // @ts-ignore
-        // dispatch(taskFormActions.updateTask({ tag }));
-    }, [dispatch]);
+    const handleTagsChange = (tag: Tag) => {
+        dispatch(taskFormActions.updateTask({ tags: [...tags, tag] }));
+    };
 
-    const handleListChange = useCallback((list: List) => {
-        // // @ts-ignore
-        // dispatch(taskFormActions.updateTask({ list }));
-    }, [dispatch]);
+    const handleListChange = (list: List) => {
+        dispatch(taskFormActions.updateTask({ list }));
+    };
 
-    const item = task;
+    const handleFormSubmit = () => {
+        dispatch(updateTaskData());
+    };
 
-    // eslint-disable-next-line consistent-return
+    const handleFormCancel = () => {
+        dispatch(taskFormActions.cancelTask());
+    };
+
     return (
         <DynamicStoreReducerWrapper reducerKey="taskForm" reducer={taskFormReducer}>
             <div className={classNames(styles.section, [className])}>
@@ -107,22 +113,24 @@ const TaskEditForm = (props: DetailsProps) => {
                         X
                     </Button>
                 </h1>
-                {item && (
+                {data && (
                     <form>
                         <div className={styles.input}>
                             <Input
                                 type="text"
                                 className={styles.titleInput}
                                 theme={InputTheme.OUTLINE}
-                                placeholder={item.title}
+                                placeholder={data.title}
                                 onChange={handleTitleChange}
+                                value={form.title}
                             />
                             <Input
                                 type="text"
                                 className={styles.descriptionInput}
                                 theme={InputTheme.OUTLINE}
-                                placeholder={description}
+                                placeholder={data.description}
                                 onChange={handleDescriptionChange}
+                                value={description}
                             />
                         </div>
                         <div className={styles.chipsRow}>
@@ -137,11 +145,14 @@ const TaskEditForm = (props: DetailsProps) => {
 
                             <label htmlFor={dateId} className={styles.label}>
                                 List
-                                <Dropdown
-                                    label={list.value}
-                                    items={tempLists}
-                                    onChange={handleListChange}
-                                />
+                                {list && (
+                                    <Dropdown
+                                        label={list.value}
+                                        items={tempLists}
+                                        onChange={handleListChange}
+                                    />
+                                )}
+
                             </label>
 
                         </div>
@@ -161,6 +172,7 @@ const TaskEditForm = (props: DetailsProps) => {
                                 className={styles.applyBtn}
                                 theme={ButtonTheme.BACKGROUND}
                                 size={ButtonSize.XL}
+                                onClick={handleFormSubmit}
                             >
                                 Apply Changes
                             </Button>
@@ -168,6 +180,7 @@ const TaskEditForm = (props: DetailsProps) => {
                                 theme={ButtonTheme.BACKGROUND}
                                 size={ButtonSize.XL}
                                 className={styles.revertButton}
+                                onClick={handleFormCancel}
                             >
                                 Reset Changes
                             </Button>
@@ -179,6 +192,6 @@ const TaskEditForm = (props: DetailsProps) => {
         </DynamicStoreReducerWrapper>
 
     );
-};
+});
 
 export default TaskEditForm;

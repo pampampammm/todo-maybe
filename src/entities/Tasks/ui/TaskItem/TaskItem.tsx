@@ -5,6 +5,7 @@ import { StyledProps } from 'shared/types/types';
 import { Button } from 'shared/ui/Button/Button';
 
 import classNames from 'classnames';
+import { ChipsArray } from 'shared/ui/TagsArray';
 import styles from './TaskItem.module.scss';
 
 interface TaskItemProps extends StyledProps {
@@ -36,7 +37,6 @@ const TaskItem = (props: TaskItemProps) => {
     };
 
     const handleClick = () => {
-        // setOptions((moreOptions) => !moreOptions);
         onClick(item);
     };
 
@@ -70,11 +70,13 @@ const TaskItem = (props: TaskItemProps) => {
                 {moreOptions
                     && (
                         <div className={styles.more}>
-                            {item.time.startDate}
-                            {' '}
-                            -
-                            {item.time.endDate}
-                            {' | 1 Suad | Primary'}
+                            <ChipsArray items={item.tags} className={styles.chips} />
+                            <div
+                                className={styles.list}
+                                style={{ backgroundColor: item.list.color }}
+                            >
+                                {item.list.value}
+                            </div>
                         </div>
                     )}
             </div>

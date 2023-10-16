@@ -35,7 +35,7 @@ const MainPage = memo(() => {
 
     useEffect(() => {
         dispatch(fetchTaskByDate());
-    }, [dispatch]);
+    }, [tasks]);
 
     const handleClickDetails = (item: TaskEntity) => {
         dispatch(mainPageActions.setFormView(true));

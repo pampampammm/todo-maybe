@@ -13,11 +13,11 @@ export interface SubTask {
 }
 
 export interface TaskEntity {
-    id: number;
-    title: string,
-    completed: boolean,
+    id?: number;
+    title?: string,
+    completed?: boolean,
     description?: string,
-    time: {
+    time?: {
         startDate: number,
         endDate?: number,
     },

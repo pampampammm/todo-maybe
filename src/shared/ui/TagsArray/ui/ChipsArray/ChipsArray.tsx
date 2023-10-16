@@ -12,6 +12,7 @@ interface ChipsProps {
     onChange?: (items: Tag) => void
     className?: string,
     id?: string
+    onlyRead?: boolean
 }
 
 const ChipsArray = (props: ChipsProps) => {
@@ -20,6 +21,7 @@ const ChipsArray = (props: ChipsProps) => {
         className,
         items,
         id,
+        onlyRead = false,
     } = props;
 
     const [createTagMode, setCreateTagMode] = useState<boolean>(false);
@@ -83,23 +85,25 @@ const ChipsArray = (props: ChipsProps) => {
     return (
         <div className={classNames(styles.tagsRow, [className])}>
             {renderItems}
-            <div className={styles.item}>
-                <Input
-                    id={id}
-                    theme={InputTheme.CLEAR}
-                    className={styles.tagInput}
-                    value={newTagValue}
-                    onChange={handleValueChange}
-                    placeholder="Add item..."
-                />
-                <Button
-                    theme={ButtonTheme.CLEAR}
-                    className={styles.submitAddBtn}
-                    onClick={onTagsChangeSubmit}
-                >
-                    +
-                </Button>
-            </div>
+            {onlyRead && (
+                <div className={styles.item}>
+                    <Input
+                        id={id}
+                        theme={InputTheme.CLEAR}
+                        className={styles.tagInput}
+                        value={newTagValue}
+                        onChange={handleValueChange}
+                        placeholder="Add item..."
+                    />
+                    <Button
+                        theme={ButtonTheme.CLEAR}
+                        className={styles.submitAddBtn}
+                        onClick={onTagsChangeSubmit}
+                    >
+                        +
+                    </Button>
+                </div>
+            )}
 
         </div>
     );

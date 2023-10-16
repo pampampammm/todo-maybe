@@ -9,12 +9,12 @@ import { TaskEditForm, TaskList, taskFormActions } from 'entities/Tasks';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
 
 import { useSelector } from 'react-redux';
-import { getTask } from 'entities/Tasks/model/selector/getTask/getTask';
+import { getTaskForm } from 'entities/Tasks/model/selector/getTaskForm/getTaskForm';
 import { useAppDispatch } from 'app/StoreProvider';
 import styles from './TodayPage.module.scss';
 
 const TodayPage = () => {
-    const detailTask = useSelector(getTask);
+    const detailTask = useSelector(getTaskForm);
     const dispatch = useAppDispatch();
     const handleClose = () => {
         // dispatch(taskFormActions.removeTask());
