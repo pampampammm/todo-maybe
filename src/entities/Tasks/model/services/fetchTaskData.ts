@@ -6,13 +6,13 @@ interface TaskParams {
     id: number,
 }
 
-export const fetchTask = createAsyncThunk<TaskEntity,
+export const fetchTaskData = createAsyncThunk<TaskEntity,
     TaskParams,
     { rejectValue: string, extra: ThunkExtraArg }>(
         'task/fetchTask',
         async ({ id }, { extra, rejectWithValue }) => {
             try {
-                const response = await extra.api.get<TaskEntity>('/tasks');
+                const response = await extra.api.get<TaskEntity>(`/tasks/${id}`);
 
                 return response.data;
             } catch (e) {

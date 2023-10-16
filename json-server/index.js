@@ -45,9 +45,9 @@ server.get('/tasks', (req, res) => {
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { tasks = [] } = db;
 
-        // const taskFromBd = tasks.find(
-        //     (task) => task.id === id,
-        // );
+        const taskFromBd = tasks.find(
+            (task) => task.id === id,
+        );
 
         if (tasks) {
             return res.json(tasks);

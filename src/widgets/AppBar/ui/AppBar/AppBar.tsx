@@ -1,27 +1,17 @@
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { ColoredLine } from 'shared/ui/ColoredLine/ColoredLine';
-import Input, { InputSize, InputTheme } from 'shared/ui/Input/Input';
-import { ListAppBarItemsList, MainAppBarItemsList } from 'widgets/AppBar/model/AppBarItems';
-import { useAppDispatch } from 'app/StoreProvider';
-import { selectAuthUserData } from 'entities/User';
-import { useSelector } from 'react-redux';
-import { selectLoginLoading } from 'features/authByUserName/model/selectors/selectLoginState/selectLoginLoading';
+import Input, { InputTheme } from 'shared/ui/Input/Input';
+import { listAppBarItemsList, mainAppBarItemsList } from '../../model/appBarConfig';
 import { AppBarItem } from '../AppBarItem/AppBarItem';
 import { AppBarList } from '../AppBarList/AppBarList';
 
 import styles from './AppBar.module.scss';
 
 const AppBar = memo(() => {
-    const [modal, setModal] = useState(false);
-
-    const dispath = useAppDispatch();
-    const authData = useSelector(selectAuthUserData);
-    const isLoading = useSelector(selectLoginLoading);
-
     const mainBarItems = useMemo(() => (
         <AppBarList placeHolder="TASKS">
-            {MainAppBarItemsList.map((value) => (
+            {mainAppBarItemsList.map((value) => (
                 <AppBarItem
                     item={value}
                     key={value.text}
@@ -33,7 +23,7 @@ const AppBar = memo(() => {
 
     const listBarItems = useMemo(() => (
         <AppBarList placeHolder="LISTS">
-            {ListAppBarItemsList.map((value) => (
+            {listAppBarItemsList.map((value) => (
                 <AppBarItem
                     item={value}
                     key={value.text}

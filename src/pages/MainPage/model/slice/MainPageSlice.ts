@@ -2,7 +2,7 @@ import { TaskEntity, TaskSchema } from 'entities/Tasks';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/StoreProvider';
 import { MainPageSchema } from 'pages/MainPage';
-import { fetchTask } from 'entities/Tasks/model/services/fetchTask';
+import { fetchTaskData } from 'entities/Tasks/model/services/fetchTaskData';
 import { fetchTaskByDate } from 'pages/MainPage/model/services/fetchTasksByDate';
 
 const mainPageAdapter = createEntityAdapter<TaskEntity>({

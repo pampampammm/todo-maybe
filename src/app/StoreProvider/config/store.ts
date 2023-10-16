@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { StateSchema } from 'app/StoreProvider/config/StateSchema';
 import { userReducers } from 'entities/User';
-import { tasksReducer } from 'entities/Tasks';
+import { taskFormReducer } from 'entities/Tasks';
 import { $api } from 'shared/api/api';
 import { createReducerManager } from './reducerManager';
 
@@ -11,7 +11,7 @@ export function createReduxStore() {
     // only static reducers
     const rootReducer: ReducersMapObject<StateSchema> = {
         user: userReducers,
-        task: tasksReducer,
+        taskForm: taskFormReducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);

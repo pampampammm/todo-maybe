@@ -28,7 +28,8 @@ export interface TaskEntity {
 }
 
 export interface TaskSchema {
-    task: TaskEntity
+    data?: TaskEntity
+    form?: TaskEntity,
     isLoading: boolean,
-    error?:boolean
+    error?:boolean | string
 }

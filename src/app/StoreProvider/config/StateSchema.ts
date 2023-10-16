@@ -9,7 +9,7 @@ import { ReducerManager } from './reducerManager';
 
 export interface StateSchema {
     user: UserSchema,
-    task: TaskSchema
+    taskForm: TaskSchema
 
     // async reducers, can be initialized in runtime component
     login?: LoginSchema,

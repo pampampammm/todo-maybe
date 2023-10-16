@@ -1,20 +1,19 @@
 import React from 'react';
 import { RoutePath } from 'shared/config/routeConfig';
 
+// eslint-disable-next-line import/no-absolute-path
+import CalendarIcon from '/shared/assets/icons/CalendarIcon.svg';
+
 export interface AppBarItemType {
     path: string;
     text: string;
     Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export const MainAppBarItemsList: AppBarItemType[] = [
+export const mainAppBarItemsList: AppBarItemType[] = [
     {
         path: RoutePath.main,
         text: 'Tasks',
-    },
-    {
-        path: RoutePath.today,
-        text: 'Today',
     },
     {
         path: RoutePath.calendar,
@@ -26,7 +25,7 @@ export const MainAppBarItemsList: AppBarItemType[] = [
     },
 ];
 
-export const ListAppBarItemsList: AppBarItemType[] = [
+export const listAppBarItemsList: AppBarItemType[] = [
     {
         path: RoutePath.not_found,
         text: 'List 1',

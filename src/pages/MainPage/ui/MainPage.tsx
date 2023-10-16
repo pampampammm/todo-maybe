@@ -5,7 +5,7 @@ import React, {
 import { Page } from 'widgets/Page';
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
-import { TaskEditForm, TaskList, tasksActions } from 'entities/Tasks';
+import { TaskEditForm, TaskList, taskFormActions } from 'entities/Tasks';
 import { useAppDispatch } from 'app/StoreProvider';
 import DynamicStoreReducerWrapper from 'shared/components/StoreReducerWrapper/StoreReducerWrapper';
 
@@ -30,7 +30,7 @@ const MainPage = memo(() => {
     const id = useSelector(getMainPageTaskFormId);
 
     const handleClose = () => {
-        dispatch(tasksActions.removeTask());
+        dispatch(mainPageActions.setFormView(false));
     };
 
     useEffect(() => {

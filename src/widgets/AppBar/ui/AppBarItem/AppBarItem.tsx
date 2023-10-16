@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import classNames from 'classnames';
 import { StyledProps } from 'shared/types/types';
-import { useLocation } from 'react-router-dom';
-import { common } from '@mui/material/colors';
+import icon from 'shared/assets/icons/CalendarIcon.svg';
+
+import classNames from 'classnames';
+import Icon from 'shared/assets/icons/AddButton.svg';
 import styles from './AppBarItem.module.scss';
 
 // import {AppBarItemType} from "entities/AppBar/model/AppBarItems";
@@ -32,6 +34,7 @@ export const AppBarItem: FC<ItemProps> = ({ item, className, active }) => {
         >
             {/* <item.Icon className={styles.icon} /> */}
             <span className={styles.text}>
+                <Icon className={styles.icon} />
                 {item.text}
             </span>
             <div className={styles.notification}>

@@ -5,23 +5,23 @@ import { Page } from 'widgets/Page';
 import { InputTheme } from 'shared/ui/Input/Input';
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import { tempTasks } from 'shared/temp/temp_tasks';
-import { TaskEditForm, TaskList, tasksActions } from 'entities/Tasks';
+import { TaskEditForm, TaskList, taskFormActions } from 'entities/Tasks';
 import TaskItem from 'entities/Tasks/ui/TaskItem/TaskItem';
 
 import { useSelector } from 'react-redux';
-import { selectTask } from 'entities/Tasks/model/selector/selectTask/selectTask';
+import { getTask } from 'entities/Tasks/model/selector/getTask/getTask';
 import { useAppDispatch } from 'app/StoreProvider';
 import styles from './TodayPage.module.scss';
 
 const TodayPage = () => {
-    const detailTask = useSelector(selectTask);
+    const detailTask = useSelector(getTask);
     const dispatch = useAppDispatch();
     const handleClose = () => {
-        dispatch(tasksActions.removeTask());
+        // dispatch(taskFormActions.removeTask());
     };
 
     const handleClickDetails = (item: TaskEntity) => {
-        dispatch(tasksActions.setTask(item));
+        // dispatch(taskFormActions.setTask(item));
     };
 
     const renderItems = () => tempTasks.map((item) => (
