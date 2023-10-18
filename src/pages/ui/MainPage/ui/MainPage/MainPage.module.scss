@@ -1,0 +1,12 @@
+
+.section {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    height: 100%;
+}
+
+
+.details {
+    flex-grow: 1;
+}

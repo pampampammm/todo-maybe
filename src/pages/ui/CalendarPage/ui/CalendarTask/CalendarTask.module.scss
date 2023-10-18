@@ -1,0 +1,9 @@
+.task {
+    position: absolute;
+    width: inherit;
+    background-color: #cdedff;
+    border-radius: var(--border-radius);
+    padding: var(--padding-primary);
+    font-weight: var(--font-weight-xl);
+    white-space: normal;
+}
