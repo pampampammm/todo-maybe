@@ -14,11 +14,11 @@
   "tasks": [
     {
       "id": 123173,
-      "title": "Самая первая таск",
-      "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
+      "title": "Сдлеать дasfasfasfasasfgafafs",
+      "description": "Описание какое-тоasassfagf",
       "time": {
-        "startDate": 400,
-        "endDate": 600
+        "startDate": 100,
+        "endDate": 220
       },
       "tags": [
         {
@@ -32,6 +32,18 @@
         {
           "id": 3,
           "value": "еще один айтем хыхых"
+        },
+        {
+          "id": 4,
+          "value": "dasgagas"
+        },
+        {
+          "id": 5,
+          "value": "asgasgas"
+        },
+        {
+          "id": 6,
+          "value": "dghjdjsfd"
         }
       ],
       "list": {
@@ -56,11 +68,11 @@
     },
     {
       "id": 12393,
-      "title": "нига ю гай",
+      "title": "sssssssaasdas",
       "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
       "time": {
-        "startDate": 400,
-        "endDate": 600
+        "startDate": 300,
+        "endDate": 390
       },
       "tags": [
         {
@@ -93,7 +105,7 @@
     },
     {
       "id": 12346123,
-      "title": "Data base Task - 3",
+      "title": "ytityityoity",
       "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
       "time": {
         "startDate": 400,
@@ -130,11 +142,11 @@
     },
     {
       "id": 12123,
-      "title": "Data base Task - 4",
+      "title": "779078",
       "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
       "time": {
-        "startDate": 400,
-        "endDate": 600
+        "startDate": 800,
+        "endDate": 1200
       },
       "tags": [
         {

@@ -11,7 +11,7 @@ import styles from './TaskItem.module.scss';
 interface TaskItemProps extends StyledProps {
     item?: TaskEntity
     isLoading?: boolean,
-    onClick?: (item: TaskEntity) => void;
+    onClick?: (id: number) => void;
     optionsButton?: boolean
 }
 
@@ -37,7 +37,7 @@ const TaskItem = (props: TaskItemProps) => {
     };
 
     const handleClick = () => {
-        onClick(item);
+        onClick(item.id);
     };
 
     return (
@@ -73,9 +73,9 @@ const TaskItem = (props: TaskItemProps) => {
                             <ChipsArray items={item.tags} className={styles.chips} />
                             <div
                                 className={styles.list}
-                                style={{ backgroundColor: item.list.color }}
+                                style={{ color: item.list.color }}
                             >
-                                {item.list.value}
+                                {item.list.value.toUpperCase()}
                             </div>
                         </div>
                     )}

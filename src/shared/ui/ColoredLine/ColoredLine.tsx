@@ -11,6 +11,7 @@ export const ColoredLine = ({ color = 'gray' }: LineProps) => (
             borderRadius: 10,
             opacity: 0.2,
             marginBottom: 10,
+            marginTop: 10,
         }}
     />
 );

@@ -3,15 +3,16 @@ import { useDispatch } from 'react-redux';
 
 import { StateSchema } from 'app/StoreProvider/config/StateSchema';
 import { userReducers } from 'entities/User';
-import { taskFormReducer } from 'entities/Tasks';
 import { $api } from 'shared/api/api';
+import { taskFormReducer } from 'features/editTaskForm/model/slice/taskFormSlice';
+import { rtkAPI } from 'shared/api/RTKapi';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore() {
-    // only static reducers
     const rootReducer: ReducersMapObject<StateSchema> = {
         user: userReducers,
         taskForm: taskFormReducer,
+        [rtkAPI.reducerPath]: rtkAPI.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);
@@ -25,7 +26,7 @@ export function createReduxStore() {
                     api: $api,
                 },
             },
-        }),
+        }).concat(rtkAPI.middleware),
     });
 
     // @ts-ignore

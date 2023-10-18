@@ -12,7 +12,7 @@ interface ChipsProps {
     onChange?: (items: Tag) => void
     className?: string,
     id?: string
-    onlyRead?: boolean
+    editable?: boolean
 }
 
 const ChipsArray = (props: ChipsProps) => {
@@ -21,7 +21,7 @@ const ChipsArray = (props: ChipsProps) => {
         className,
         items,
         id,
-        onlyRead = false,
+        editable,
     } = props;
 
     const [createTagMode, setCreateTagMode] = useState<boolean>(false);
@@ -85,7 +85,7 @@ const ChipsArray = (props: ChipsProps) => {
     return (
         <div className={classNames(styles.tagsRow, [className])}>
             {renderItems}
-            {onlyRead && (
+            {editable && (
                 <div className={styles.item}>
                     <Input
                         id={id}

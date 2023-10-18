@@ -7,7 +7,7 @@ import { addTaskActions, addTaskReducer } from 'features/addTaskInputField';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import { selectAddTaskText } from '../model/selector/selectAddTaskText/selectAddTaskText';
+import { getAddTaskField } from 'features/addTaskInputField/model/selector/getAddTaskField/getAddTaskField';
 
 import styles from './AddTaskInputField.module.scss';
 
@@ -29,7 +29,7 @@ const AddTaskInputField = (props: FiledProps) => {
     } = props;
 
     const dispatch = useAppDispatch();
-    const text = useSelector(selectAddTaskText);
+    const text = useSelector(getAddTaskField);
 
     const onTextChange = useCallback((value: string) => {
         dispatch(addTaskActions.setText(value));

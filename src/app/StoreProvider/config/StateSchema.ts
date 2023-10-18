@@ -1,20 +1,22 @@
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/authByUserName';
-import { TaskSchema } from 'entities/Tasks/model/type/Task';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import { AddTaskSchema } from 'features/addTaskInputField/';
 import { AxiosInstance } from 'axios';
-import { MainPageSchema } from 'pages/MainPage';
+import { PageSchema } from 'pages';
+import { TaskSchema } from 'features/editTaskForm/model/type/Task';
+import { rtkAPI } from 'shared/api/RTKapi';
 import { ReducerManager } from './reducerManager';
 
 export interface StateSchema {
     user: UserSchema,
     taskForm: TaskSchema
+    [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>
 
     // async reducers, can be initialized in runtime component
     login?: LoginSchema,
     addTask?: AddTaskSchema,
-    mainPage?: MainPageSchema
+    page?: PageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

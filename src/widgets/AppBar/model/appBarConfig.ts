@@ -16,6 +16,10 @@ export const mainAppBarItemsList: AppBarItemType[] = [
         text: 'Tasks',
     },
     {
+        path: RoutePath.today,
+        text: 'Today',
+    },
+    {
         path: RoutePath.calendar,
         text: 'Calendar',
     },

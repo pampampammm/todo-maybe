@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';
 import { useTheme } from 'app/Providers/ThemeProvider';
-import { selectAuthUserData, userActions } from 'entities/User';
+import { getUserData, userActions } from 'entities/User';
 import { selectLoginLoading } from 'features/authByUserName/model/selectors/selectLoginState/selectLoginLoading';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/authByUserName';
@@ -15,7 +15,7 @@ const TheHeader = () => {
     const [modal, setModal] = useState(false);
 
     const dispatch = useAppDispatch();
-    const authData = useSelector(selectAuthUserData);
+    const authData = useSelector(getUserData);
     const isLoading = useSelector(selectLoginLoading);
 
     const handleLogoutClick = () => {

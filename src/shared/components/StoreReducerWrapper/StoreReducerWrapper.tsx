@@ -27,8 +27,10 @@ const DynamicStoreReducerWrapper = (props: WrapperProps) => {
         dispatch({ type: `INIT ${reducerKey} reducer` });
 
         return () => {
-            if (removeAfterUnmount) store.reducerManager.remove(reducerKey);
-            dispatch({ type: `DESTROY ${reducerKey} reducer` });
+            if (removeAfterUnmount) {
+                store.reducerManager.remove(reducerKey);
+                dispatch({ type: `DESTROY ${reducerKey} reducer` });
+            }
         };
     }, []);
 

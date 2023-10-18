@@ -33,7 +33,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         if (hasError) {
             return (
                 <Suspense>
-                    <h1>Ошибочка вышла :/</h1>
+                    <h1>ыыыы:/</h1>
                 </Suspense>
             );
         }

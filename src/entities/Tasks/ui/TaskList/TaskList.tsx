@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 
 import classNames from 'classnames';
-import { AddTaskInputField } from 'features/addTaskInputField';
+import { AddTaskField } from 'features/addTaskInputField';
 import styles from './TaskList.module.scss';
 
 interface ListProps {
@@ -40,7 +40,7 @@ const TaskList = (props: ListProps) => {
                     </h2>
                 )}
                 <div className={styles.body}>
-                    <AddTaskInputField
+                    <AddTaskField
                         onTaskAdd={handleTaskCreate}
                         className={styles.input}
                     />
@@ -61,7 +61,7 @@ const TaskList = (props: ListProps) => {
             )}
 
             <div className={styles.body}>
-                <AddTaskInputField
+                <AddTaskField
                     onTaskAdd={handleTaskCreate}
                     className={styles.input}
                 />

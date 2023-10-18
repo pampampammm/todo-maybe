@@ -63,7 +63,6 @@ input[type="checkbox"] {
     }
 }
 
-
 .checkbox {
     background: none;
 }
@@ -74,6 +73,7 @@ input[type="checkbox"] {
     margin: 14px 0 0 21px;
 
     .list {
+        font-weight: bolder;
         color: #92c5ff;
         margin-left: 14px;
         padding: var(--padding-primary);

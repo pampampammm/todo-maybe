@@ -1,0 +1,19 @@
+
+.lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 14px;
+    grid-auto-rows: minmax(300px, auto);
+    flex-grow: 4;
+    height: 800px;
+}
+
+.item {
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--inverted-primary-bg-color);
+}
+
+
+.bigList {
+    grid-column: 1/3;
+}

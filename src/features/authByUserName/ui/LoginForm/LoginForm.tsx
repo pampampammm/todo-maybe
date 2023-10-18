@@ -1,7 +1,7 @@
 import {
     ChangeEvent, memo, useCallback, useEffect, useId,
 } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { Button } from 'shared/ui/Button/Button';

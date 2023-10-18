@@ -1,10 +1,8 @@
+import {
+    AboutPage, CalendarPage, MainPage, NotFoundPage, TodayPage,
+} from 'pages';
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-import { TodayPage } from 'pages/TodayPage';
-import { CalendarPage } from 'pages/CalendarPage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import { AboutPage } from '../../pages/AboutPage';
-import { MainPage } from '../../pages/MainPage';
 
 export enum AppRoutes {
     MAIN = 'main',

@@ -26,10 +26,3 @@ export interface TaskEntity {
     type?: TaskProcess,
     subtasks?: SubTask[]
 }
-
-export interface TaskSchema {
-    data?: TaskEntity
-    form?: TaskEntity,
-    isLoading: boolean,
-    error?:boolean | string
-}
