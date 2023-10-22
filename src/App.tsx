@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { Header } from 'widgets/Header';
 import { useAppDispatch } from 'app/StoreProvider';
 import { userActions } from 'entities/User';
+import { MainLayout } from 'shared/layout/MainLayout/MainLayout';
 import { AppRouter } from './app/router';
 
 const App = () => {
@@ -20,11 +21,11 @@ const App = () => {
     return (
         <div className={`app ${theme}`}>
             <Suspense fallback="">
-                <Header />
-                <div className="content-page">
-                    <AppBar />
-                    <AppRouter />
-                </div>
+                <MainLayout
+                    header={<Header />}
+                    content={<AppRouter />}
+                    sidebar={<AppBar />}
+                />
             </Suspense>
         </div>
     );

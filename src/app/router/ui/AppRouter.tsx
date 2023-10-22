@@ -12,9 +12,8 @@ const AppRouter = () => (
                     key={path}
                     path={path}
                     element={(
-                        <Suspense fallback={<h1>...иди нахуй...</h1>}>
+                        <Suspense fallback={<h1>.</h1>}>
                             {element}
-
                         </Suspense>
                     )}
                 />

@@ -22,8 +22,6 @@ export const updateTaskData = createAsyncThunk<
                     .api
                     .put<TaskEntity>(`/tasks/${id}`, data);
 
-                // dispatch(fetchTaskByDate());
-
                 return response.data;
             } catch (e) {
                 console.log(e);

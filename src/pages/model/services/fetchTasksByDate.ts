@@ -2,11 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TaskEntity } from 'entities/Tasks';
 import { ThunkExtraArg } from 'app/StoreProvider';
 
-interface FetchProps {
-    date: number
-}
-
-export const fetchTaskByDate = createAsyncThunk<TaskEntity[], void,
+export const fetchTasks = createAsyncThunk<TaskEntity[], void,
     { rejectValue: string, extra: ThunkExtraArg }>(
         'task/fetchTaskByDate',
         async (_, { extra, rejectWithValue }) => {

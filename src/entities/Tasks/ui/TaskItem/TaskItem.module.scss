@@ -3,21 +3,26 @@
 
     list-style-type: none;
 
+    &:hover {
+        background: var(--inverted-primary-bg-color);
+    }
 }
 
 .taskContent {
     display: flex;
     flex-direction: column;
     padding: 7px;
+    border-radius: var(--border-radius);
 
     &:hover {
-        background: var(--inverted-primary-bg-color);
-        border: var(--border-radius);
-
         .moreDescToggleButton {
             background: var(--border-color);
         }
     }
+}
+
+.active {
+    background-color: var(--inverted-primary-bg-color);
 }
 
 .header {
@@ -72,12 +77,23 @@ input[type="checkbox"] {
     align-items: center;
     margin: 14px 0 0 21px;
 
+    .listItem {
+        gap: 7px;
+        list-style: none;
+        margin-right: 7px;
+        display: flex;
+        align-items: center;
+    }
+
+    .icon {
+        width: 14px;
+        height: 14px;
+        align-items: center;
+    }
+
     .list {
         font-weight: bolder;
         color: #92c5ff;
-        margin-left: 14px;
-        padding: var(--padding-primary);
-        border-radius: var(--border-radius);
     }
 }
 

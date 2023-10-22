@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
@@ -9,13 +9,13 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { getAddTaskField } from 'features/addTaskInputField/model/selector/getAddTaskField/getAddTaskField';
 
+import { addTaskFromField } from 'features/addTaskInputField/model/services/addTaskFromField';
 import styles from './AddTaskInputField.module.scss';
 
 interface FiledProps {
     buttonTheme?: ButtonTheme,
     inputTheme?: InputTheme,
     className?: string,
-    onTaskAdd: (value: string) => void,
     placeHolder?: string
 }
 
@@ -24,7 +24,6 @@ const AddTaskInputField = (props: FiledProps) => {
         buttonTheme = ButtonTheme.OUTLINE_INVERTED,
         inputTheme = InputTheme.OUTLINE_INVERTED,
         className,
-        onTaskAdd,
         placeHolder,
     } = props;
 
@@ -36,11 +35,9 @@ const AddTaskInputField = (props: FiledProps) => {
     }, [dispatch]);
 
     const onAddHandler = useCallback(() => {
-        if (onTaskAdd) {
-            onTaskAdd(text || '');
-            onTextChange('');
-        }
-    }, [onTextChange, onTaskAdd, text]);
+        dispatch(addTaskFromField());
+        onTextChange('');
+    }, [onTextChange, text]);
 
     return (
         <DynamicStoreReducerWrapper reducerKey="addTask" reducer={addTaskReducer}>

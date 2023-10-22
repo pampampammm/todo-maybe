@@ -12,7 +12,7 @@ server.use(jsonServer.bodyParser);
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {
     await new Promise((res) => {
-        setTimeout(res, 800);
+        setTimeout(res, 200);
     });
     next();
 });
@@ -39,26 +39,26 @@ server.post('/login', (req, res) => {
     }
 });
 
-server.get('/tasks', (req, res) => {
-    try {
-        const { id } = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-        const { tasks = [] } = db;
-
-        const taskFromBd = tasks.find(
-            (task) => task.id === id,
-        );
-
-        if (tasks) {
-            return res.json(tasks);
-        }
-
-        return res.status(403).json({ message: 'Task notfound' });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({ message: e.message });
-    }
-});
+// server.get('/tasks', (req, res) => {
+//     try {
+//         const { id } = req.body;
+//         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+//         const { tasks = [] } = db;
+//
+//         const taskFromBd = tasks.find(
+//             (task) => task.id === id,
+//         );
+//
+//         if (tasks) {
+//             return res.json(tasks);
+//         }
+//
+//         return res.status(403).json({ message: 'Task notfound' });
+//     } catch (e) {
+//         console.log(e);
+//         return res.status(500).json({ message: e.message });
+//     }
+// });
 
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line

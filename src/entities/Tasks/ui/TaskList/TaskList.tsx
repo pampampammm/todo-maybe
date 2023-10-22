@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react';
-
-import Input, { InputTheme } from 'shared/ui/Input/Input';
+import React, { useMemo, useState } from 'react';
 
 import classNames from 'classnames';
 import { AddTaskField } from 'features/addTaskInputField';
+import { TaskEntity } from 'entities/Tasks';
+import { Button } from 'shared/ui/Button/Button';
+import SkeletonList from './SkeletonList/SkeletonList';
+import TaskItem from '../TaskItem/TaskItem';
+
 import styles from './TaskList.module.scss';
 
 interface ListProps {
     text?: string
     className?: string
     border?: boolean
-    children: React.ReactNode | React.ReactElement
     isLoading?: boolean
+    items?: TaskEntity[]
+    onTaskClick?: (id: number | string) => void
+    overflow?: boolean
 }
 
 const TaskList = (props: ListProps) => {
@@ -19,54 +24,52 @@ const TaskList = (props: ListProps) => {
         text,
         className,
         border = false,
-        children,
         isLoading,
+        items,
+        onTaskClick,
+        overflow = false,
     } = props;
 
-    const mods: Record<string, boolean> = {
-        [styles.border]: border,
-    };
+    const [selectedTask, setSelectedTask] = useState<string>('');
 
-    const handleTaskCreate = () => {
+    function handleClickTask(id: string) {
+        if (onTaskClick) {
+            onTaskClick(id);
+        }
+        setSelectedTask(id);
+    }
+    const renderItems = useMemo(() => items?.map((item) => (
+        <li key={item.id}>
+            <TaskItem
+                item={item}
+                className={styles.item}
+                active={selectedTask === item.id}
+                onClick={handleClickTask}
+            />
+        </li>
 
-    };
+    )), [items, selectedTask]);
 
     if (isLoading) {
-        return (
-            <div className={classNames(styles.wrapper, mods, [className])}>
-                {text && (
-                    <h2 className={styles.listHeader}>
-                        {text}
-                    </h2>
-                )}
-                <div className={styles.body}>
-                    <AddTaskField
-                        onTaskAdd={handleTaskCreate}
-                        className={styles.input}
-                    />
-                    <ul className={styles.list}>
-                        {children}
-                    </ul>
-                </div>
-            </div>
-        );
+        return <SkeletonList />;
     }
 
     return (
-        <div className={classNames(styles.wrapper, mods, [className])}>
+        <div className={classNames(styles.wrapper, { [styles.border]: border }, [className])}>
             {text && (
                 <h2 className={styles.listHeader}>
                     {text}
                 </h2>
             )}
-
             <div className={styles.body}>
-                <AddTaskField
-                    onTaskAdd={handleTaskCreate}
-                    className={styles.input}
-                />
-                <ul className={styles.list}>
-                    {children}
+                <div className={styles.listHeader}>
+                    <AddTaskField className={styles.input} />
+                    <Button>Filter</Button>
+                </div>
+                <ul className={classNames(styles.list, { [styles.listOverflow]: overflow })}>
+                    {items.length !== 0
+                        ? renderItems
+                        : (<h1>No tasks...</h1>)}
                 </ul>
             </div>
         </div>

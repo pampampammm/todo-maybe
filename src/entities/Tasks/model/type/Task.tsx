@@ -1,4 +1,5 @@
-import { List, Tag } from 'shared/ui/TagsArray/types/Tag';
+import { List } from 'entities/List';
+import { Tag } from 'entities/Tags';
 
 export enum TaskProcess {
     TASK_COMPLETED = 'complete',
@@ -13,13 +14,13 @@ export interface SubTask {
 }
 
 export interface TaskEntity {
-    id?: number;
+    id?: string;
     title?: string,
     completed?: boolean,
     description?: string,
     time?: {
-        startDate: number,
-        endDate?: number,
+        startDate: string,
+        endDate?: string,
     },
     tags?: Tag[],
     list?: List,

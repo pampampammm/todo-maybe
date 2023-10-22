@@ -6,12 +6,14 @@ import { userReducers } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { taskFormReducer } from 'features/editTaskForm/model/slice/taskFormSlice';
 import { rtkAPI } from 'shared/api/RTKapi';
+import { pageReducer } from 'pages/model/slice/pageSlice';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore() {
     const rootReducer: ReducersMapObject<StateSchema> = {
         user: userReducers,
         taskForm: taskFormReducer,
+        page: pageReducer,
         [rtkAPI.reducerPath]: rtkAPI.reducer,
     };
 

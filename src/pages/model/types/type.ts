@@ -5,5 +5,5 @@ export interface PageSchema extends EntityState<TaskEntity>{
     error?: boolean,
     isLoading?: boolean
     editFormView: boolean
-    editTaskId?: number
+    editTaskId?: string
 }

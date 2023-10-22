@@ -1,4 +1,5 @@
 export interface AddTaskSchema {
     text?: string;
-    error?: string;
+    error?: boolean;
+    isLoading?: boolean
 }

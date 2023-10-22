@@ -1,5 +1,5 @@
 import {
-    useEffect, useLayoutEffect, useMemo, useRef, useState,
+    useLayoutEffect, useMemo, useRef, useState,
 } from 'react';
 
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
@@ -29,15 +29,24 @@ const CalendarColumn = (props: CalendarProps) => {
         }
     }, [columnHeight]);
 
-    const renderTask = useMemo(() => items.map((value) => (
-        <CalendarTask
-            key={value.time.startDate}
-            task={value}
-            className={styles.task}
-            time={value.time.startDate}
-            columnHeight={columnHeight}
-        />
-    )), [columnHeight]);
+    const renderTask = useMemo(() => items.map((task) => {
+        const { time } = task;
+        const { getMinutes, getHours } = new Date(time.startDate);
+        const convertedTime = getMinutes() * getHours();
+
+        console.log(convertedTime);
+
+        return (
+            <CalendarTask
+                key={time.startDate}
+                startTime={convertedTime}
+                endTime={400}
+                task={task}
+                className={styles.task}
+                columnHeight={columnHeight}
+            />
+        );
+    }), [columnHeight]);
 
     const mods: Record<string, boolean> = {
         [styles.active]: isActive,

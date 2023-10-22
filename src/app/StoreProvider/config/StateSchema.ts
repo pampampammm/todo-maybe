@@ -11,12 +11,12 @@ import { ReducerManager } from './reducerManager';
 export interface StateSchema {
     user: UserSchema,
     taskForm: TaskSchema
+    page: PageSchema
     [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>
 
     // async reducers, can be initialized in runtime component
     login?: LoginSchema,
     addTask?: AddTaskSchema,
-    page?: PageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

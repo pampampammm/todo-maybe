@@ -11,13 +11,13 @@
     margin-top: 14px;
     margin-left: 14px;
     gap: 14px;
-    height: 200px;
+    overflow: auto;
 }
 
-.input {
-    &:focus {
-        background-color: var(--inverted-primary-bg-color);
-    }
+.listOverflow {
+    height: 280px;
+    overflow-y: auto;
+
 }
 
 .body {
@@ -25,7 +25,19 @@
 }
 
 .listHeader {
+    display: flex;
+    flex-direction: row;
     padding: 15px;
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-m);
+    gap: 14px;
+
+    .input {
+        flex-grow: 1;
+        &:focus {
+            background-color: var(--inverted-primary-bg-color);
+        }
+    }
+}
+
+.item {
+    margin-bottom:  7px;
 }

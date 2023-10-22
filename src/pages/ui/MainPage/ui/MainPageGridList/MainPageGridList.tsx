@@ -8,7 +8,7 @@ import { getPageLoading } from 'pages/model/selectors/pageSelectors';
 import styles from './MainPageGridList.module.scss';
 
 interface ListProps {
-    onTaskClick: (id: number) => void
+    onTaskClick: (id: string) => void
 }
 
 const MainPageGridList = (props: ListProps) => {
@@ -19,30 +19,39 @@ const MainPageGridList = (props: ListProps) => {
     const tasks = useSelector(getTasks.selectAll);
     const isLoading = useSelector(getPageLoading);
 
-    const handleTaskClick = (id: number) => {
-        if (onTaskClick) onTaskClick(id);
+    const handleTaskClick = (id: string) => {
+        if (onTaskClick) {
+            onTaskClick(id);
+        }
     };
-
-    const renderItems = useMemo(() => tasks?.map((item) => (
-        <TaskItem
-            item={item}
-            key={item.title}
-            className={styles.item}
-            onClick={handleTaskClick}
-        />
-    )), [tasks]);
 
     return (
         <div className={styles.lists}>
-            <TaskList isLoading={isLoading} border text="Today" className={styles.bigList}>
-                {renderItems}
-            </TaskList>
-            <TaskList isLoading={isLoading} border text="Tomorrow">
-                {renderItems}
-            </TaskList>
-            <TaskList isLoading={isLoading} border text="This week">
-                {renderItems}
-            </TaskList>
+            <TaskList
+                isLoading={isLoading}
+                onTaskClick={handleTaskClick}
+                border
+                text="Today"
+                items={tasks}
+                className={styles.bigList}
+                overflow
+            />
+            <TaskList
+                isLoading={isLoading}
+                onTaskClick={handleTaskClick}
+                border
+                items={tasks}
+                text="Tomorrow"
+                overflow
+            />
+            <TaskList
+                isLoading={isLoading}
+                onTaskClick={handleTaskClick}
+                border
+                items={tasks}
+                text="This week"
+                overflow
+            />
         </div>
     );
 };

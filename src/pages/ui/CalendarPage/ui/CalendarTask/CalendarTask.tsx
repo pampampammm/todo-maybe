@@ -7,10 +7,11 @@ import { getPercentPlacement } from 'shared/lib/helpers/getPercentPlacement';
 import styles from './CalendarTask.module.scss';
 
 interface TaskProps {
-    time: number,
+    startTime: number,
+    endTime: number,
     task: TaskEntity,
-    className?: string,
     columnHeight: number
+    className?: string,
 }
 
 function toInteger(number: number) {
@@ -22,15 +23,16 @@ const timePercent = toInteger(minutes / 100);
 
 const CalendarTask = (props: TaskProps) => {
     const {
-        time,
+        startTime,
+        endTime,
         task,
         className,
         columnHeight,
     } = props;
 
-    const { position } = getPercentPlacement(columnHeight, time, 1440);
+    const { position } = getPercentPlacement(columnHeight, startTime, 1440);
 
-    const taskHeightPercent = toInteger((task.time.endDate - task.time.startDate) / timePercent);
+    const taskHeightPercent = toInteger((endTime - startTime) / timePercent);
     const taskHeight = (columnHeight / 100) * taskHeightPercent;
 
     return (

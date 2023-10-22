@@ -3,7 +3,7 @@ import { ThunkExtraArg } from 'app/StoreProvider';
 import { TaskEntity } from 'entities/Tasks';
 
 interface TaskParams {
-    id: number,
+    id: number | string,
 }
 
 export const fetchTaskData = createAsyncThunk<TaskEntity,

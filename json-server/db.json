@@ -11,171 +11,31 @@
       "password": "balls"
     }
   ],
+  "lists": [
+    {
+      "id": "db list 1",
+      "label": "list 1"
+    },
+    {
+      "id": "db list 2",
+      "label": "list 2"
+    },
+    {
+      "id": "db list 3",
+      "label": "list 3"
+    },
+    {
+      "id": "db list 4",
+      "label": "list 4"
+    }
+  ],
   "tasks": [
     {
-      "id": 123173,
-      "title": "Сдлеать дasfasfasfasasfgafafs",
-      "description": "Описание какое-тоasassfagf",
+      "id": "1697998482370",
+      "title": "cfghjjsfgjf",
       "time": {
-        "startDate": 100,
-        "endDate": 220
-      },
-      "tags": [
-        {
-          "id": 13515152125152,
-          "value": "DataBase 1"
-        },
-        {
-          "id": 13515152125152,
-          "value": "DataBase 2"
-        },
-        {
-          "id": 3,
-          "value": "еще один айтем хыхых"
-        },
-        {
-          "id": 4,
-          "value": "dasgagas"
-        },
-        {
-          "id": 5,
-          "value": "asgasgas"
-        },
-        {
-          "id": 6,
-          "value": "dghjdjsfd"
-        }
-      ],
-      "list": {
-        "id": 1,
-        "value": "list 4",
-        "color": "yellow"
-      },
-      "subtasks": [
-        {
-          "id": 1241244251124124,
-          "title": "subtask 1"
-        },
-        {
-          "id": 1241244234534524200,
-          "title": "subtask 2"
-        },
-        {
-          "id": 1243523251124124,
-          "title": "subtask 3"
-        }
-      ]
-    },
-    {
-      "id": 12393,
-      "title": "sssssssaasdas",
-      "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
-      "time": {
-        "startDate": 300,
-        "endDate": 390
-      },
-      "tags": [
-        {
-          "id": 13515152125152,
-          "value": "DataBase 1"
-        },
-        {
-          "id": 13515152125152,
-          "value": "DataBase 2"
-        }
-      ],
-      "list": {
-        "id": 658,
-        "value": "list 1"
-      },
-      "subtasks": [
-        {
-          "id": 1241244251124124,
-          "title": "subtask 1"
-        },
-        {
-          "id": 1241244234534524200,
-          "title": "subtask 2"
-        },
-        {
-          "id": 1243523251124124,
-          "title": "subtask 3"
-        }
-      ]
-    },
-    {
-      "id": 12346123,
-      "title": "ytityityoity",
-      "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
-      "time": {
-        "startDate": 400,
-        "endDate": 600
-      },
-      "tags": [
-        {
-          "id": 13515152125152,
-          "value": "DataBase 1"
-        },
-        {
-          "id": 13515152125152,
-          "value": "DataBase 2"
-        }
-      ],
-      "list": {
-        "id": 658,
-        "value": "list 1"
-      },
-      "subtasks": [
-        {
-          "id": 1241244251124124,
-          "title": "subtask 1"
-        },
-        {
-          "id": 1241244234534524200,
-          "title": "subtask 2"
-        },
-        {
-          "id": 1243523251124124,
-          "title": "subtask 3"
-        }
-      ]
-    },
-    {
-      "id": 12123,
-      "title": "779078",
-      "description": "Определение произвольных задач. Вы можете описать в файле tasks.vs.json произвольную задачу, которая предназначена для выполнения любого действия.",
-      "time": {
-        "startDate": 800,
-        "endDate": 1200
-      },
-      "tags": [
-        {
-          "id": 13515152125152,
-          "value": "DataBase 1"
-        },
-        {
-          "id": 13515152125152,
-          "value": "DataBase 2"
-        }
-      ],
-      "list": {
-        "id": 658,
-        "value": "list 1"
-      },
-      "subtasks": [
-        {
-          "id": 1241244251124124,
-          "title": "subtask 1"
-        },
-        {
-          "id": 1241244234534524200,
-          "title": "subtask 2"
-        },
-        {
-          "id": 1243523251124124,
-          "title": "subtask 3"
-        }
-      ]
+        "startDate": "2023-10-22T18:14:42"
+      }
     }
   ]
 }

@@ -3,28 +3,35 @@ import React, { useState } from 'react';
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import { StyledProps } from 'shared/types/types';
 import { Button } from 'shared/ui/Button/Button';
-
+import DateIcon from 'shared/assets/icons/CalendarIcon.svg';
 import classNames from 'classnames';
 import { ChipsArray } from 'shared/ui/TagsArray';
+import { DATE_TYPE, getFormatDate } from 'shared/lib/helpers/getFormatDate';
 import styles from './TaskItem.module.scss';
 
 interface TaskItemProps extends StyledProps {
     item?: TaskEntity
     isLoading?: boolean,
-    onClick?: (id: number) => void;
-    optionsButton?: boolean
+    onClick?: (id: string) => void;
+    active?: boolean
 }
 
 const TaskItem = (props: TaskItemProps) => {
     const {
         isLoading = false,
-        optionsButton = true,
         item,
         className,
         onClick,
+        active,
     } = props;
 
     const [moreOptions, setOptions] = useState<boolean>(false);
+    const {
+        tags,
+        title,
+        time,
+        list,
+    } = item;
 
     if (isLoading) {
         return (
@@ -33,54 +40,61 @@ const TaskItem = (props: TaskItemProps) => {
     }
 
     const handleOptionsToggle = () => {
-        setOptions((moreOptions) => !moreOptions);
+        setOptions((prevState) => !prevState);
     };
 
     const handleClick = () => {
-        onClick(item.id);
+        if (onClick) {
+            onClick(item.id);
+        }
+
+        setOptions((prevState) => !prevState);
     };
 
+    const mods: Record<string, boolean> = {
+        [styles.active]: active,
+    };
+
+    // @ts-ignore
     return (
-        <li className={classNames(styles.wrapper, [className])}>
-            <div className={styles.taskContent}>
+        <div className={classNames(styles.wrapper, [className])}>
+            <div className={classNames(styles.taskContent, mods)}>
                 <div className={styles.header}>
                     <div className={styles.task}>
                         <input
                             type="checkbox"
                             className={styles.checkbox}
                         />
+                        {/* eslint-disable-next-line max-len */}
+                        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                         <p
                             onClick={handleClick}
                             className={classNames(styles.title, styles.options)}
                         >
-                            {item.title}
+                            {title}
                         </p>
                     </div>
-                    {optionsButton
-                        ? (
-                            <Button
-                                onClick={handleOptionsToggle}
-                                className={styles.moreDescToggleButton}
-                            >
-                                {'>'}
-                            </Button>
-                        ) : null}
-
+                    <Button
+                        onClick={handleOptionsToggle}
+                        className={styles.moreDescToggleButton}
+                    >
+                        {'>'}
+                    </Button>
                 </div>
                 {moreOptions
                     && (
-                        <div className={styles.more}>
-                            <ChipsArray items={item.tags} className={styles.chips} />
-                            <div
-                                className={styles.list}
-                                style={{ color: item.list.color }}
-                            >
-                                {item.list.value.toUpperCase()}
-                            </div>
-                        </div>
+                        <ul className={styles.more}>
+                            <li className={styles.listItem}>
+                                <DateIcon className={styles.icon} />
+                                {time.startDate.slice(0, 10)}
+                            </li>
+                            <li className={styles.listItem}>
+                                <ChipsArray items={tags} maxLength={3} />
+                            </li>
+                        </ul>
                     )}
             </div>
-        </li>
+        </div>
     );
 };
 

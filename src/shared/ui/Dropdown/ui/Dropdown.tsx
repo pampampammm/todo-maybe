@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
-import { Button } from 'shared/ui/Button/Button';
 import useOutsideClick from 'shared/lib/hooks/useOutsideClick';
-import { List } from 'shared/ui/TagsArray/types/Tag';
+import { Button } from 'shared/ui/Button/Button';
+import { List } from 'entities/List';
 
 import classNames from 'classnames';
 import styles from './Dropdown.module.scss';
@@ -22,15 +22,15 @@ export enum DropdownSize {
 }
 
 export interface IPropsDropdownList {
-    label: string
     items: List[],
+    defaultValue?: string
     className?: string
-        onChange?: (value: List) => void
+    onChange?: (value: List) => void
 }
 
 const Dropdown = (props: IPropsDropdownList) => {
     const {
-        label,
+        defaultValue = 'Change List...',
         className,
         items,
         onChange,
@@ -39,9 +39,9 @@ const Dropdown = (props: IPropsDropdownList) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    function onClose() {
+    const onClose = () => {
         setIsOpen((prevState) => !prevState);
-    }
+    };
 
     useOutsideClick({
         elementRef: buttonRef,
@@ -55,8 +55,26 @@ const Dropdown = (props: IPropsDropdownList) => {
     };
 
     const onItemClick = (value: List) => {
-        onChange(value);
+        if (onChange) {
+            onChange(value);
+        }
     };
+
+    const renderItems = useMemo(() => (
+        <ul className={styles.list}>
+            {items && items.map((item) => (
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+                <li
+                    key={item.id}
+                    className={styles.listItem}
+                    onClick={() => onItemClick(item)}
+                >
+                    {item?.label}
+                </li>
+            ))}
+        </ul>
+    ), [items]);
 
     return (
         <Button
@@ -64,21 +82,8 @@ const Dropdown = (props: IPropsDropdownList) => {
             ref={buttonRef}
             onClick={() => onClickHandler()}
         >
-            {label}
-            {isOpen
-                && (
-                    <ul className={styles.list}>
-                        {items?.map((item) => (
-                            <li
-                                key={item.id}
-                                className={styles.listItem}
-                                onClick={() => onItemClick(item)}
-                            >
-                                {item.value}
-                            </li>
-                        ))}
-                    </ul>
-                )}
+            {defaultValue}
+            {isOpen && renderItems}
         </Button>
     );
 };

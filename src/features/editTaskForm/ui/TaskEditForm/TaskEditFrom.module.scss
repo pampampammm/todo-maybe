@@ -2,7 +2,10 @@
     background: var(--inverted-primary-bg-color);
     border-radius: var(--border-radius);
     padding: 14px 28px;
-    width: 500px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    position: relative;
 }
 
 .header {
@@ -10,6 +13,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 14px;
+}
+
+.formContent {
+
 }
 
 .close {
@@ -47,11 +54,20 @@
 }
 
 
+
+.label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
 .editButtons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 14px;
+    width: 100%;
 
     .applyBtn {
         background-color: #ffbd71;
@@ -64,11 +80,8 @@
     }
 }
 
-
-.label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
+.footer {
+    position: absolute;
+    bottom: 14px;
 }
 

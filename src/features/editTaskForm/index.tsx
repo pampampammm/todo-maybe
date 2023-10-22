@@ -1,4 +1,4 @@
-import TaskEditForm from './ui/TaskEditForm';
+import TaskEditForm from './ui/TaskEditForm/TaskEditForm';
 
 export {
     TaskEditForm,
