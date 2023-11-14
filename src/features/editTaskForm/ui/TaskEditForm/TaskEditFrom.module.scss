@@ -1,11 +1,14 @@
 .section {
+    display: inline-block;
     background: var(--inverted-primary-bg-color);
     border-radius: var(--border-radius);
     padding: 14px 28px;
     flex-direction: column;
     justify-content: space-between;
-    width: 400px;
     position: relative;
+    box-shadow: var(--box-shadow);
+    min-width: 350px;
+    max-width: 350px;
 }
 
 .header {
@@ -13,10 +16,6 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 14px;
-}
-
-.formContent {
-
 }
 
 .close {
@@ -46,14 +45,17 @@
     margin-bottom: 82px;
 }
 
+.date {
+    margin-bottom: 14px;
+    width: 100px;
+}
+
 .subtasks {
     background: var(--primary-bg-color);
     padding: var(--padding-secondary);
     border-radius: var(--border-radius);
     margin-bottom: 14px;
 }
-
-
 
 .label {
     display: flex;

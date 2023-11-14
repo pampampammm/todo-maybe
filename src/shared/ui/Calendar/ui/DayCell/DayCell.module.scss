@@ -1,0 +1,34 @@
+.cell {
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-primary);
+
+    &:hover {
+        background-color: var(--inverted-primary-bg-color);
+    }
+}
+
+.cellHeader {
+    display: flex;
+}
+
+.current {
+    color: #007c04;
+}
+
+.weekCell {
+    height: 40px;
+}
+
+.current {
+    opacity: 1;
+}
+
+.next {
+    background-color: var(--inverted-primary-bg-color);
+}
+
+.past {
+    background-color: var(--inverted-primary-bg-color);
+}

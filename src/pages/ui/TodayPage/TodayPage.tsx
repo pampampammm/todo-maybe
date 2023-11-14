@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Page } from 'widgets/Page';
+import { Page, PageHeader } from 'widgets/Page';
 import { TaskList } from 'entities/Tasks';
 import { useAppDispatch } from 'app/StoreProvider';
-import DynamicStoreReducerWrapper from 'shared/components/StoreReducerWrapper/StoreReducerWrapper';
-import { fetchTasks } from 'pages/model/services/fetchTasksByDate';
+import { fetchTasks } from 'pages/model/services/fetchTasks';
 import { getPageLoading, getPageTaskFormId, getPageView } from 'pages/model/selectors/pageSelectors';
 import { TaskEditForm } from 'features/editTaskForm';
+import { DynamicStoreReducerWrapper } from 'shared/components/DynamicStoreReducerWrapper';
 import { getTasks, pageActions, pageReducer } from '../../model/slice/pageSlice';
+import { useInitPageEffect } from '../../model/lib/useInitPageEffect';
 import styles from './TodayPage.module.scss';
 
 const TodayPage = () => {
@@ -19,9 +19,9 @@ const TodayPage = () => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
+    useInitPageEffect(() => {
         dispatch(fetchTasks());
-    }, [dispatch]);
+    });
 
     const handleClickDetails = (id: string) => {
         dispatch(pageActions.setFormView(true));
@@ -33,22 +33,28 @@ const TodayPage = () => {
     };
 
     return (
-        <Page className={styles.section}>
-            <TaskList
-                items={tasks}
-                className={styles.taskList}
-                isLoading={isLoading}
-                onTaskClick={handleClickDetails}
-            />
-            {view && id !== undefined
-                        && (
-                            <TaskEditForm
-                                className={styles.editForm}
-                                id={id}
-                                onClose={handleClose}
-                            />
-                        )}
-        </Page>
+        <DynamicStoreReducerWrapper reducerKey="page" reducer={pageReducer} removeAfterUnmount={false}>
+            <Page className={styles.section}>
+                <PageHeader>
+                    <h3>Today</h3>
+                </PageHeader>
+                <div className={styles.content}>
+                    <TaskList
+                        items={tasks}
+                        className={styles.taskList}
+                        isLoading={isLoading}
+                        onTaskClick={handleClickDetails}
+                    />
+                    {view && (
+                        <TaskEditForm
+                            className={styles.editForm}
+                            id={id}
+                            onClose={handleClose}
+                        />
+                    )}
+                </div>
+            </Page>
+        </DynamicStoreReducerWrapper>
     );
 };
 

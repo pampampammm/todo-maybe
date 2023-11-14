@@ -7,6 +7,7 @@ import { $api } from 'shared/api/api';
 import { taskFormReducer } from 'features/editTaskForm/model/slice/taskFormSlice';
 import { rtkAPI } from 'shared/api/RTKapi';
 import { pageReducer } from 'pages/model/slice/pageSlice';
+import { calendarPageReducer } from 'pages/ui/CalendarPage';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore() {
@@ -14,6 +15,7 @@ export function createReduxStore() {
         user: userReducers,
         taskForm: taskFormReducer,
         page: pageReducer,
+        calendarPage: calendarPageReducer,
         [rtkAPI.reducerPath]: rtkAPI.reducer,
     };
 
@@ -23,6 +25,7 @@ export function createReduxStore() {
         reducer: reducerManager.reduce,
         devTools: true,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            serializableCheck: false,
             thunk: {
                 extraArgument: {
                     api: $api,

@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { Page, PageHeader } from 'widgets/Page';
 
-import { Page } from 'widgets/Page';
+import { useAppDispatch } from 'app/StoreProvider';
 
+import { getParsedDate } from 'shared/lib/helpers/getFormattedDate';
+import DatePickerPopup from 'shared/ui/Calendar/ui/DatePickerPopup/DatePickerPopup';
+import { getWeekDatesNumbersInAMonth } from 'shared/lib/hooks/useCalendar/lib/helpers';
 import styles from './AboutPage.module.scss';
 
 const AboutPage = () => {
-    const [currentTime] = useState(new Date('2022-04-18T20:14:42'));
+    const dispatch = useAppDispatch();
+
 
     return (
-        <Page className={styles.page} headerText="Components">
-            {currentTime.getMonth()}
-            -
-            {currentTime.getUTCFullYear()}
-            -
-            {currentTime.getDate()}
+        <Page className={styles.page}>
+            <PageHeader className={styles.header}>
+                <h5>Test Page</h5>
+            </PageHeader>
         </Page>
     );
 };

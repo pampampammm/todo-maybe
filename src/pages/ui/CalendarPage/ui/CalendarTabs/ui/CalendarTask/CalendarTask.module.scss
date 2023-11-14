@@ -1,0 +1,10 @@
+.task {
+    background-color: #b1dfff;
+    border-radius: var(--border-radius);
+    padding: var(--padding-primary);
+    font-weight: var(--font-weight-xl);
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+}

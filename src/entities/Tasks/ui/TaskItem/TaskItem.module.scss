@@ -2,6 +2,7 @@
     --margin-input-left: 14px;
 
     list-style-type: none;
+    transition: var(--bg-transition);
 
     &:hover {
         background: var(--inverted-primary-bg-color);
@@ -16,6 +17,7 @@
 
     &:hover {
         .moreDescToggleButton {
+            transition: var(--bg-transition);
             background: var(--border-color);
         }
     }
@@ -93,7 +95,8 @@ input[type="checkbox"] {
 
     .list {
         font-weight: bolder;
-        color: #92c5ff;
+        padding: var(--padding-primary);
+        border-radius: var(--border-radius);
     }
 }
 

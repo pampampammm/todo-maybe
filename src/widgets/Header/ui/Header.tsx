@@ -49,12 +49,10 @@ const TheHeader = () => {
                     Login
                 </Button>
             )}
-            {modal && (
-                <LoginModal
-                    isOpen={modal}
-                    onSuccess={onCloseModal}
-                />
-            )}
+            <LoginModal
+                isOpen={modal}
+                onSuccess={onCloseModal}
+            />
             <Button onClick={() => toggleTheme()}>Toggle</Button>
         </header>
     );

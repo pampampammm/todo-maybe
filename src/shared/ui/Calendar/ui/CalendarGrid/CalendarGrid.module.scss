@@ -1,0 +1,32 @@
+.wrapper {
+
+}
+
+.header {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 14px;
+    padding: var(--padding-primary);
+    border-radius: var(--border-radius);
+    background: var(--inverted-primary-bg-color);
+    height: 30px;
+}
+
+.cellsHeader {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 7px;
+}
+
+.cells {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+}
+
+.weekCell {
+    height: 40px;
+}

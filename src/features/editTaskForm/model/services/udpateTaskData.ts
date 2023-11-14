@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TaskEntity } from 'entities/Tasks';
 import { ThunkExtraArg } from 'app/StoreProvider';
+import { fetchTasks } from 'pages/model/services/fetchTasks';
 import { getTaskForm } from '../selector/getTaskForm/getTaskForm';
 
 export const updateTaskData = createAsyncThunk<
@@ -21,6 +22,7 @@ export const updateTaskData = createAsyncThunk<
                 const response = await extra
                     .api
                     .put<TaskEntity>(`/tasks/${id}`, data);
+                dispatch(fetchTasks());
 
                 return response.data;
             } catch (e) {

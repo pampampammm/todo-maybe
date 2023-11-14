@@ -7,14 +7,12 @@ import { PageHeader } from 'widgets/Page';
 import styles from './Page.module.scss';
 
 interface PageProps extends StyledProps{
-    children: React.ReactNode,
-    headerText?: string
+    children?: React.ReactNode,
 }
 
-const Page = ({ className, children, headerText }: PageProps) => (
+const Page = ({ className, children }: PageProps) => (
     <main className={classNames(styles.page, [className])}>
-        <PageHeader text={headerText} />
-        {children}
+        {children && children}
     </main>
 );
 

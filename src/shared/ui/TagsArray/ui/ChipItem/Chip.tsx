@@ -39,7 +39,7 @@
 //                 && (
 //                     <Button
 //                         className={styles.itemAddBtn}
-//                         type="button"
+//                         types="button"
 //                         theme={ButtonTheme.CLEAR}
 //                         onClick={handleButtonClick}
 //                     >

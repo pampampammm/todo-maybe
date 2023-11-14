@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    transition: all 0.5s;
+}
+
+
+
+.calendar {
+    padding: 14px;
+}
+
+.input {
+    align-items: center;
+    align-content: center;
+
+}
+
+.invalidInput {
+    transition: var(--bg-transition);
+    background-color: #ffb0b0;
+}

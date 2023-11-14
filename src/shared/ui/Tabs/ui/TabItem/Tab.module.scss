@@ -1,4 +1,5 @@
 .btn {
+    display: inline-block;
     border: none;
     font-size: var(--font-size-l);
     font-weight: var(--font-weight-m);
@@ -7,9 +8,9 @@
     background: var(--bg-color);
     color: var(--primary-color);
 
-
     &:hover {
         background-color: var(--border-color);
+        transition: var(--bg-transition);
     }
 }
 

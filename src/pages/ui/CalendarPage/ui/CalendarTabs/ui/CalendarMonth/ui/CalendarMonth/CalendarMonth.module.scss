@@ -1,0 +1,36 @@
+.wrapper {
+    position: relative;
+
+    --cellHeight: calc((var(--page-height) - var(--page-header-height) + 28px) / 7)
+}
+
+.monthHeader {
+    position: absolute;
+    right: 0;
+    top: -50px;
+    display: flex;
+    gap: 14px;
+}
+
+.cellsHeader {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 7px;
+    height: 40px;
+}
+
+.cells {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-gap: 7px;
+    height: 600px;
+}
+
+.cell {
+    height: var(--cellHeight);
+}
+
+.weekCell {
+    height: 40px;
+}

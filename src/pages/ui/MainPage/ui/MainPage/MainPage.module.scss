@@ -1,14 +1,13 @@
 
 .section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 14px;
     height: 100%;
 }
 
-.editForm {
-}
-
-.details {
-    flex-grow: 1;
+.lists {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
 }

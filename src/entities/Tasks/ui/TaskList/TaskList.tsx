@@ -38,7 +38,7 @@ const TaskList = (props: ListProps) => {
         }
         setSelectedTask(id);
     }
-    const renderItems = useMemo(() => items?.map((item) => (
+    const renderTasks = useMemo(() => items?.map((item) => (
         <li key={item.id}>
             <TaskItem
                 item={item}
@@ -68,7 +68,7 @@ const TaskList = (props: ListProps) => {
                 </div>
                 <ul className={classNames(styles.list, { [styles.listOverflow]: overflow })}>
                     {items.length !== 0
-                        ? renderItems
+                        ? renderTasks
                         : (<h1>No tasks...</h1>)}
                 </ul>
             </div>

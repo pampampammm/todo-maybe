@@ -1,31 +1,31 @@
 .Modal {
+    font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    inset: 0;
     opacity: 0;
     pointer-events: none;
     z-index: -1;
     color: var(--primary-color);
+    display: inline-block;
 }
 
 .overlay {
     width: 100%;
     height: 100%;
-    background: var(--overlay-color);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content {
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--bg-color);
-    transition: 0.3s transform;
-    transform: scale(0.5);
+.overlay {
+    padding: 16px;
+    border-radius: var(--border-radius);
     max-width: 60%;
+    background: var(--bg-color);
+    background-color: var(--primary-bg-color);
+    border: var(--border);
 }
 
 .opened {
@@ -33,13 +33,8 @@
     opacity: 1;
     z-index: var(--modal-z-index);
 
-    .content {
+    .overlay {
         transform: scale(1);
     }
 }
 
-.isClosing {
-    .content {
-        transform: scale(0.2);
-    }
-}

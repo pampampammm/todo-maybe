@@ -6,6 +6,7 @@ import { AxiosInstance } from 'axios';
 import { PageSchema } from 'pages';
 import { TaskSchema } from 'features/editTaskForm/model/type/Task';
 import { rtkAPI } from 'shared/api/RTKapi';
+import { CalendarPageSchema } from 'pages/ui/CalendarPage';
 import { ReducerManager } from './reducerManager';
 
 export interface StateSchema {
@@ -13,8 +14,9 @@ export interface StateSchema {
     taskForm: TaskSchema
     page: PageSchema
     [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>
-
     // async reducers, can be initialized in runtime component
+
+    calendarPage?: CalendarPageSchema
     login?: LoginSchema,
     addTask?: AddTaskSchema,
 }

@@ -1,11 +1,17 @@
 .button {
     cursor: pointer;
     color: var(--primary-color);
-    padding: 6px 15px;
+    padding: 7px 14px;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
 
+.hover {
     &:hover {
         opacity: 0.8;
         fill-opacity: 0.8;
@@ -67,4 +73,5 @@
 
 .disabled {
     opacity: 0.5;
+    cursor: auto;
 }

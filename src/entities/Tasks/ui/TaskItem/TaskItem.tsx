@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import { TaskEntity } from 'entities/Tasks/model/type/Task';
 import { StyledProps } from 'shared/types/types';
-import { Button } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import DateIcon from 'shared/assets/icons/CalendarIcon.svg';
 import classNames from 'classnames';
 import { ChipsArray } from 'shared/ui/TagsArray';
-import { DATE_TYPE, getFormatDate } from 'shared/lib/helpers/getFormatDate';
+import { getFormattedDateValue, getParsedDate } from 'shared/lib/helpers/getFormattedDate';
 import styles from './TaskItem.module.scss';
 
 interface TaskItemProps extends StyledProps {
@@ -26,12 +26,21 @@ const TaskItem = (props: TaskItemProps) => {
     } = props;
 
     const [moreOptions, setOptions] = useState<boolean>(false);
-    const {
-        tags,
-        title,
-        time,
-        list,
-    } = item;
+    const { tags, title, time } = item;
+    const handleOptionsToggle = () => {
+        setOptions((prevState) => !prevState);
+    };
+    const handleClick = () => {
+        if (onClick) {
+            onClick(item.id);
+        }
+        setOptions((prevState) => !prevState);
+    };
+    const mods: Record<string, boolean> = {
+        [styles.active]: active,
+    };
+
+    const dateToShow = getParsedDate(time.start);
 
     if (isLoading) {
         return (
@@ -39,23 +48,6 @@ const TaskItem = (props: TaskItemProps) => {
         );
     }
 
-    const handleOptionsToggle = () => {
-        setOptions((prevState) => !prevState);
-    };
-
-    const handleClick = () => {
-        if (onClick) {
-            onClick(item.id);
-        }
-
-        setOptions((prevState) => !prevState);
-    };
-
-    const mods: Record<string, boolean> = {
-        [styles.active]: active,
-    };
-
-    // @ts-ignore
     return (
         <div className={classNames(styles.wrapper, [className])}>
             <div className={classNames(styles.taskContent, mods)}>
@@ -65,14 +57,14 @@ const TaskItem = (props: TaskItemProps) => {
                             type="checkbox"
                             className={styles.checkbox}
                         />
-                        {/* eslint-disable-next-line max-len */}
-                        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-                        <p
+
+                        <Button
+                            theme={ButtonTheme.CLEAR}
                             onClick={handleClick}
                             className={classNames(styles.title, styles.options)}
                         >
                             {title}
-                        </p>
+                        </Button>
                     </div>
                     <Button
                         onClick={handleOptionsToggle}
@@ -86,11 +78,19 @@ const TaskItem = (props: TaskItemProps) => {
                         <ul className={styles.more}>
                             <li className={styles.listItem}>
                                 <DateIcon className={styles.icon} />
-                                {time.startDate.slice(0, 10)}
+                                {time.start && getFormattedDateValue(dateToShow)}
                             </li>
                             <li className={styles.listItem}>
                                 <ChipsArray items={tags} maxLength={3} />
                             </li>
+                            {item.list && (
+                                <span
+                                    className={styles.list}
+                                    style={{ backgroundColor: item?.list.color }}
+                                >
+                                    {item.list.label}
+                                </span>
+                            )}
                         </ul>
                     )}
             </div>

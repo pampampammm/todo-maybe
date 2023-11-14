@@ -42,6 +42,7 @@ module.exports = {
         'jsx-a11y/label-has-for': 'off',
         'no-param-reassign': ['error', { props: false }],
         'no-return-assign': ['error', 'always'],
+        'no-plusplus': 0,
 
     },
     globals: {

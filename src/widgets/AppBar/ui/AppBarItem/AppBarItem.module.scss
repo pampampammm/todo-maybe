@@ -40,9 +40,13 @@
 .active {
     background: var(--border-color);
     font-weight: var(--font-weight-xl);
+    box-shadow: var(--box-shadow);
+    transition: var(--bg-transition);
 
     .notification {
         background: var(--inverted-border-color);
+        transition: var(--bg-transition);
+
     }
 }
 

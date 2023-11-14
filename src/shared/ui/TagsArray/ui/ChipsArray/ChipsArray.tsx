@@ -50,11 +50,15 @@ const ChipsArray = (props: ChipsProps) => {
         }
     };
 
+    if (items === undefined) {
+        return null;
+    }
+
     const renderItems = useMemo(() => {
         const length = maxLength === 0 ? items.length : maxLength;
-        const splicedArray = items?.slice(0, length);
+        const splicedArray = items.slice(0, length);
 
-        return splicedArray.map((value) => (
+        return splicedArray?.map((value) => (
             <li
                 className={styles.item}
                 key={value.id}

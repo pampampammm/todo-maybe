@@ -1,0 +1,14 @@
+.Popup {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-bg-color);
+    padding: var(--padding-primary);
+    border-radius: var(--border-radius);
+}

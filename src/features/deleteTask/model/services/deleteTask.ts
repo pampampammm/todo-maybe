@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkExtraArg } from 'app/StoreProvider';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { TaskEntity } from 'entities/Tasks';
+import { fetchTasks } from 'pages/model/services/fetchTasks';
 
 interface DeleteTaskProps {
     id: string
@@ -20,6 +21,8 @@ export const deleteTask = createAsyncThunk<TaskEntity,
                 if (!response.data) {
                     throw new Error();
                 }
+
+                dispatch(fetchTasks());
 
                 localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
 

@@ -1,5 +1,7 @@
 .wrapper {
     padding: var(--padding-primary);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 
 .border {
@@ -12,12 +14,28 @@
     margin-left: 14px;
     gap: 14px;
     overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+}
+
+.list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.list::-webkit-scrollbar-track {
+    background-color: var(--primary-bg-color);
+    border-radius: 100px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background-color: var(--inverted-primary-bg-color);
+    border-radius: 100px;
+    background-clip: content-box;
 }
 
 .listOverflow {
-    height: 280px;
+    height: 250px;
     overflow-y: auto;
-
 }
 
 .body {

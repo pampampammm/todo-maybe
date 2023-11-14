@@ -31,11 +31,65 @@
   ],
   "tasks": [
     {
-      "id": "1697998482370",
-      "title": "cfghjjsfgjf",
+      "id": "1699371103131",
+      "title": "sadgasdgasdgsad",
       "time": {
-        "startDate": "2023-10-22T18:14:42"
+        "start": {
+          "date": "2023-11-21",
+          "time": "19:00:00"
+        }
+      },
+      "tags": [
+        {
+          "id": 1,
+          "value": "324234312423"
+        },
+        {
+          "id": 2,
+          "value": "12412412"
+        }
+      ],
+      "list": {
+        "id": 1,
+        "label": "list 1",
+        "color": "#bbffb1"
       }
+    },
+    {
+      "id": "1699371105536",
+      "title": "sadgsadgsgasdg",
+      "time": {
+        "start": {
+          "date": "2023-11-16",
+          "time": "19:00:00"
+        }
+      },
+      "list": {
+        "id": 1,
+        "label": "list 3",
+        "color": "#b1dfff"
+      }
+    },
+    {
+      "id": "1699968688791",
+      "title": "dsgdsgsdg",
+      "time": {
+        "start": {
+          "time": "13:31:28",
+          "date": "2023-11-14"
+        }
+      },
+      "list": {
+        "id": 1,
+        "label": "list 3",
+        "color": "#b1dfff"
+      },
+      "tags": [
+        {
+          "id": 1,
+          "value": "sddsgsd"
+        }
+      ]
     }
   ]
 }

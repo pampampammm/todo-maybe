@@ -2,7 +2,7 @@ import { TaskEntity } from 'entities/Tasks';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/StoreProvider';
 import { PageSchema } from 'pages';
-import { fetchTasks } from '../services/fetchTasksByDate';
+import { fetchTasks } from '../services/fetchTasks';
 
 const pageAdapter = createEntityAdapter<TaskEntity>({
     selectId: (task) => task.id,
@@ -21,6 +21,7 @@ export const tasksSlice = createSlice({
         ids: [],
         entities: {},
         editFormView: false,
+        _inited: false,
     }),
     reducers: {
         setFormView: (state, action: PayloadAction<boolean>) => {
@@ -42,6 +43,7 @@ export const tasksSlice = createSlice({
         .addCase(fetchTasks.fulfilled, (state, action) => {
             state.isLoading = false;
             pageAdapter.setAll(state, action.payload);
+            state._inited = true;
         }),
 });
 

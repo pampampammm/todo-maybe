@@ -1,5 +1,5 @@
 import React, {
-    memo, useEffect, useId,
+    memo, useEffect, useId, useState,
 } from 'react';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';
@@ -8,14 +8,16 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { StyledProps } from 'shared/types/types';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { tempLists } from 'shared/temp/temp_tasks';
-import TaskList from 'entities/Tasks/ui/TaskList/TaskList';
 import { ChipsArray } from 'shared/ui/TagsArray';
 import { Dropdown } from 'shared/ui/Dropdown';
-import DynamicStoreReducerWrapper from 'shared/components/StoreReducerWrapper/StoreReducerWrapper';
+import DynamicStoreReducerWrapper from 'shared/components/DynamicStoreReducerWrapper/DynamicStoreReducerWrapper';
 import classNames from 'classnames';
 
 import { List } from 'entities/List';
 import { Tag } from 'entities/Tags';
+import DatePickerPopup from 'shared/ui/Calendar/ui/DatePickerPopup/DatePickerPopup';
+import { getFormattedDate, getParsedDate } from 'shared/lib/helpers/getFormattedDate';
+import DeleteTaskButton from 'features/deleteTask/ui/DeleteTaskButton/DeleteTaskButton';
 import { taskFormActions, taskFormReducer } from '../../model/slice/taskFormSlice';
 import { updateTaskData } from '../../model/services/udpateTaskData';
 import { getTaskData } from '../../model/selector/getTaskData/getTaskData';
@@ -25,6 +27,7 @@ import { getTaskError } from '../../model/selector/getTaskError/getTaskError';
 import { getTaskTags } from '../../model/selector/getTaskTags/getTaskTags';
 import { getTaskForm } from '../../model/selector/getTaskForm/getTaskForm';
 import { fetchTaskData } from '../../model/services/fetchTaskData';
+import { getTaskTime } from '../../model/selector/getTaskTime/getTaskStartTime';
 import styles from './TaskEditFrom.module.scss';
 
 interface DetailsProps extends StyledProps {
@@ -50,12 +53,64 @@ const TaskEditForm = memo((props: DetailsProps) => {
     const tags = useSelector(getTaskTags);
     const isLoading = useSelector(getTaskLoading);
     const isError = useSelector(getTaskError);
+    const taskTime = useSelector(getTaskTime);
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (id) dispatch(fetchTaskData({ id }));
     }, [dispatch, id]);
+
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newTitle = e.target.value;
+        dispatch(taskFormActions.updateTask({ title: newTitle }));
+    };
+    const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newDescription = e.target.value;
+        dispatch(taskFormActions.updateTask({ description: newDescription }));
+    };
+    const handleTagsChange = (tag: Tag) => {
+        dispatch(taskFormActions.updateTask({ tags: [...tags, tag] }));
+    };
+    const handleListChange = (list: List) => {
+        dispatch(taskFormActions.updateTask({ list }));
+    };
+    const handleFormSubmit = () => {
+        dispatch(updateTaskData());
+        if (onSubmit) {
+            onSubmit();
+        }
+    };
+    const handleFormCancel = () => {
+        dispatch(taskFormActions.cancelTask());
+    };
+    const handleClose = () => {
+        if (onClose) {
+            onClose();
+            dispatch(taskFormActions.cancelTask());
+        }
+    };
+
+    const handleStartDateChange = (date: Date) => {
+        const newDate = getFormattedDate(date);
+        console.log(newDate);
+
+        dispatch(taskFormActions.updateTask({
+            time: {
+                start: newDate,
+            },
+        }));
+    };
+
+    const handleEndDateChange = (date: Date) => {
+        const newDate = getFormattedDate(date);
+
+        dispatch(taskFormActions.updateTask({
+            time: {
+                end: newDate,
+            },
+        }));
+    };
 
     if (isLoading) {
         return (
@@ -64,7 +119,7 @@ const TaskEditForm = memo((props: DetailsProps) => {
             </div>
         );
     }
-    if (isError) {
+    if (isError || !id) {
         return (
             <div className={styles.section}>
                 <p>Error</p>
@@ -72,37 +127,14 @@ const TaskEditForm = memo((props: DetailsProps) => {
         );
     }
 
-    const handleClose = () => {
-        if (onClose) onClose();
-    };
-    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newTitle = e.target.value;
-        dispatch(taskFormActions.updateTask({ title: newTitle }));
-    };
+    const startTime = taskTime.start || 0
+        ? getParsedDate(taskTime.start)
+        : new Date(2011, 1, 11);
 
-    const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newDescription = e.target.value;
-        dispatch(taskFormActions.updateTask({ description: newDescription }));
-    };
-
-    const handleTagsChange = (tag: Tag) => {
-        dispatch(taskFormActions.updateTask({ tags: [...tags, tag] }));
-    };
-
-    const handleListChange = (list: List) => {
-        dispatch(taskFormActions.updateTask({ list }));
-    };
-
-    const handleFormSubmit = () => {
-        dispatch(updateTaskData());
-
-        if (onSubmit) {
-            onSubmit();
+    const handleTaskDeleted = () => {
+        if (onClose) {
+            onClose();
         }
-    };
-
-    const handleFormCancel = () => {
-        dispatch(taskFormActions.cancelTask());
     };
 
     return (
@@ -132,9 +164,15 @@ const TaskEditForm = memo((props: DetailsProps) => {
                             type="text"
                             className={styles.titleInput}
                             theme={InputTheme.OUTLINE}
-                            placeholder={data.description}
+                            placeholder={data.description ? data.description : 'Description...'}
                             onChange={handleDescriptionChange}
                             value={form.description}
+                        />
+                    </div>
+                    <div className={styles.date}>
+                        <DatePickerPopup
+                            value={startTime}
+                            onDateChange={handleStartDateChange}
                         />
                     </div>
                     <div className={styles.chipsRow}>
@@ -152,14 +190,12 @@ const TaskEditForm = memo((props: DetailsProps) => {
                             List
                             <Dropdown
                                 items={tempLists}
+                                defaultValue={list?.label}
                                 onChange={handleListChange}
                             />
                         </label>
                     </div>
-                    {/* <div className={styles.subtasks}> */}
-                    {/*    <h1>Subtask: </h1> */}
-                    {/*    <TaskList className={styles.list} /> */}
-                    {/* </div> */}
+
                 </form>
                 <div className={styles.footer}>
                     <div className={styles.editButtons}>
@@ -179,6 +215,7 @@ const TaskEditForm = memo((props: DetailsProps) => {
                         >
                             Reset Changes
                         </Button>
+                        <DeleteTaskButton id={id} onTaskDeleted={handleTaskDeleted} />
                     </div>
                 </div>
             </div>

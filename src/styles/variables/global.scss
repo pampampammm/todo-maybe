@@ -1,5 +1,7 @@
 :root {
-    --font-family-main: consolas, "Times New Roman", serif;
+    --font-family-main: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
     --font-size-m: 12px;
     --font-line-m: 12px;
     --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -13,7 +15,8 @@
     --font-weight-l: bold;
     --font-weight-m: normal;
     --page-width: 1100px;
-    --page-height: 800px;
+    --page-height: 850px;
+    --page-header-height: 50px;
     --border-radius: 7px;
     --border: 1px solid var(--border-color);
     --padding-primary: 7px;
@@ -22,5 +25,9 @@
     --sidebar-width: 400px;
     --sidebar-height: 900px;
     --sidebar-width-collapsed: 80px;
+    --box-shadow: 0 0 7px 0 #d4d4d4;
+    --bg-transition: background-color 0.2s linear;
+
+    --scrollbar-width: 7px;
 
 }

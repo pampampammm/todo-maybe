@@ -3,14 +3,16 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Page } from 'widgets/Page';
+import { Page, PageHeader } from 'widgets/Page';
 import { useAppDispatch } from 'app/StoreProvider';
-import { pageActions } from 'pages/model/slice/pageSlice';
-import { fetchTasks } from 'pages/model/services/fetchTasksByDate';
+import { fetchTasks } from 'pages/model/services/fetchTasks';
 import { getPageTaskFormId, getPageView } from 'pages/model/selectors/pageSelectors';
 
 import MainPageGridList from 'pages/ui/MainPage/ui/MainPageGridList/MainPageGridList';
 import { TaskEditForm } from 'features/editTaskForm';
+import { useInitPageEffect } from 'pages/model/lib/useInitPageEffect';
+import { DynamicStoreReducerWrapper } from 'shared/components/DynamicStoreReducerWrapper';
+import { pageActions, pageReducer } from '../../../../model/slice/pageSlice';
 import styles from './MainPage.module.scss';
 
 const MainPage = memo(() => {
@@ -18,9 +20,9 @@ const MainPage = memo(() => {
     const id = useSelector(getPageTaskFormId);
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
+    useInitPageEffect(() => {
         dispatch(fetchTasks());
-    }, [dispatch]);
+    });
 
     const handleClose = () => {
         dispatch(pageActions.setFormView(false));
@@ -32,21 +34,25 @@ const MainPage = memo(() => {
     };
 
     return (
-        <Page className={styles.section}>
-            <MainPageGridList
-                onTaskClick={handleClickDetails}
-            />
-            {view && id !== undefined
-                        && (
-                            <TaskEditForm
-                                className={styles.editForm}
-                                id={id}
-                                onClose={handleClose}
-                                onSubmit={handleClose}
-                            />
-                        )}
-        </Page>
-
+        <DynamicStoreReducerWrapper reducerKey="page" reducer={pageReducer} removeAfterUnmount={false}>
+            <Page className={styles.section}>
+                <PageHeader>
+                    <h3>Main</h3>
+                </PageHeader>
+                <div className={styles.lists}>
+                    <MainPageGridList
+                        onTaskClick={handleClickDetails}
+                    />
+                    {view && (
+                        <TaskEditForm
+                            id={id}
+                            onClose={handleClose}
+                            onSubmit={handleClose}
+                        />
+                    )}
+                </div>
+            </Page>
+        </DynamicStoreReducerWrapper>
     );
 });
 

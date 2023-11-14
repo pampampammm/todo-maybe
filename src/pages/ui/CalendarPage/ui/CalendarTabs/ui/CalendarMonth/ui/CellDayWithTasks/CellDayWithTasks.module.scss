@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s linear;
+    padding: var(--padding-primary);
+    justify-content: flex-start;
+
+    &:hover {
+        background-color: var(--inverted-primary-bg-color);
+    }
+}
+
+.header {
+    display: flex;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}
+
+.task {
+    width: 100%;
+    height: calc((var(--cellHeight) - 14px) / 5);
+}
+
+.current {
+    opacity: 1;
+    color: #579300;
+}
+
+.next {
+    background-color: var(--inverted-primary-bg-color);
+}
+
+.past {
+    background-color: var(--inverted-primary-bg-color);
+}

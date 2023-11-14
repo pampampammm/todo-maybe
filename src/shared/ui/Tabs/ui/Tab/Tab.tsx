@@ -8,7 +8,7 @@ export interface TabProps {
 }
 
 const Tab = (props : TabProps) => {
-    const { className, value, children } = props;
+    const { children } = props;
 
     return (
         <div>

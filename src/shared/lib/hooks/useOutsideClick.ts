@@ -10,10 +10,7 @@ interface UseOutsideClickOptions {
 }
 
 export default function useOutsideClick({
-    elementRef,
-    triggerRef,
-    enabled = true,
-    onOutsideClick,
+    elementRef, triggerRef, enabled = true, onOutsideClick,
 }: UseOutsideClickOptions) {
     const handleOutsideClick = useEvent(onOutsideClick);
 
@@ -40,6 +37,7 @@ export default function useOutsideClick({
 
             if (!ignoreElements.some((element) => element.contains(target))) {
                 handleOutsideClick(e);
+                console.log('outside click');
             }
         };
 

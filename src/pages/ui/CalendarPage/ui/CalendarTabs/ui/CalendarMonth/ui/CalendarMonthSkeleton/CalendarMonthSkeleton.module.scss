@@ -1,0 +1,27 @@
+.wrapper {
+    position: relative;
+
+    --cellHeight: calc((var(--page-height) - var(--page-header-height) + 28px) / 7)
+}
+
+.cellsHeader {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 7px;
+    height: 40px;
+}
+
+.skeletonHeaderCell {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 7px;
+    height: 30px;
+    background-color: var(--inverted-primary-bg-color);
+    border-radius: var(--border-radius);
+}
+
+.skeletonCell {
+    height: calc((var(--page-height) - var(--page-header-height) - 10px) / 7);
+    background-color: var(--inverted-primary-bg-color);
+    border-radius: var(--border-radius);
+}

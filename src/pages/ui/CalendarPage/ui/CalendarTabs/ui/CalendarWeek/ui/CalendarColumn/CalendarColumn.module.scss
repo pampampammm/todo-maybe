@@ -1,0 +1,20 @@
+.wrapper {
+    position: relative;
+    border-radius: var(--border-radius);
+    padding: var(--padding-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    &:hover {
+        background-color: var(--inverted-primary-bg-color);
+    }
+}
+
+.active {
+    background: var(--inverted-primary-bg-color);
+}
+
+.task {
+    width: 100%;
+}

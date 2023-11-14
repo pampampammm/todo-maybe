@@ -7,13 +7,13 @@ import classNames from 'classnames';
 import styles from './Tabs.module.scss';
 
 interface TabsProps {
-    onChange: (value: string) => void,
+    onChange?: (value: string) => void,
     defaultValue?: string,
     className?: string,
     children?: React.ReactElement<TabProps>[];
 }
 
-export const Tabs = (props: TabsProps) => {
+const Tabs = (props: TabsProps) => {
     const {
         onChange,
         defaultValue,
@@ -21,11 +21,10 @@ export const Tabs = (props: TabsProps) => {
         className,
     } = props;
 
-    const [activeTab, setActiveTab] = useState<string>(defaultValue);
-
     const handleTabClick = (value: string) => {
-        setActiveTab(value);
-        onChange(value);
+        if (onChange) {
+            onChange(value);
+        }
     };
 
     const itemsToRender = () => children.map((item) => {
@@ -35,7 +34,7 @@ export const Tabs = (props: TabsProps) => {
             <TabItem
                 value={value}
                 label={label}
-                active={activeTab === value}
+                active={defaultValue === value}
                 key={value}
                 onClick={handleTabClick}
             />
@@ -44,7 +43,10 @@ export const Tabs = (props: TabsProps) => {
 
     // eslint-disable-next-line consistent-return
     const renderComponent = () => {
-        if (children) { return children.find((item) => item.props.value === activeTab); }
+        if (children) {
+            return children
+                .find((item) => item.props.value === defaultValue);
+        }
     };
 
     return (
@@ -58,3 +60,5 @@ export const Tabs = (props: TabsProps) => {
         </div>
     );
 };
+
+export default Tabs;

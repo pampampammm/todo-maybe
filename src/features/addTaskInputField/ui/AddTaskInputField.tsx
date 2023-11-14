@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import Input, { InputTheme } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
-import DynamicStoreReducerWrapper from 'shared/components/StoreReducerWrapper/StoreReducerWrapper';
+import DynamicStoreReducerWrapper from 'shared/components/DynamicStoreReducerWrapper/DynamicStoreReducerWrapper';
 import { addTaskActions, addTaskReducer } from 'features/addTaskInputField';
 import { useAppDispatch } from 'app/StoreProvider';
 import { useSelector } from 'react-redux';

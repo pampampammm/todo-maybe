@@ -13,15 +13,22 @@ export interface SubTask {
     complete?: boolean
 }
 
+export interface FormattedTime {
+    date?: string,
+    time?: string,
+}
+
+export interface TaskFormattedTime {
+    start?: FormattedTime
+    end?: FormattedTime
+}
+
 export interface TaskEntity {
     id?: string;
     title?: string,
     completed?: boolean,
     description?: string,
-    time?: {
-        startDate: string,
-        endDate?: string,
-    },
+    time?: TaskFormattedTime,
     tags?: Tag[],
     list?: List,
     type?: TaskProcess,

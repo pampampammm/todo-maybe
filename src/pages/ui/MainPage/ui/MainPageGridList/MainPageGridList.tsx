@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { getTasks } from 'pages/model/slice/pageSlice';
 import { getPageLoading } from 'pages/model/selectors/pageSelectors';
 
+import { getFormattedDate, getParsedDate } from 'shared/lib/helpers/getFormattedDate';
 import styles from './MainPageGridList.module.scss';
 
 interface ListProps {
@@ -26,7 +27,7 @@ const MainPageGridList = (props: ListProps) => {
     };
 
     return (
-        <div className={styles.lists}>
+        <div className={styles.wrapper}>
             <TaskList
                 isLoading={isLoading}
                 onTaskClick={handleTaskClick}
